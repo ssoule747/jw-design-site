@@ -1,0 +1,2627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Command Center — J.W. Design &amp; Construction</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <meta name="color-scheme" content="light dark">
+  <style>
+/* ===== CUSTOM PROPERTIES ===== */
+:root {
+  --slate-950: #0C1219;
+  --slate-900: #141C26;
+  --slate-800: #1C2736;
+  --slate-700: #2A3A4E;
+  --slate-600: #3D5068;
+  --slate-300: #B0BEC5;
+  --slate-200: #CBD5E1;
+  --slate-100: #F2F4F7;
+  --slate-50: #F8FAFB;
+  --white: #FFFFFF;
+
+  --text-hero: #FFFFFF;
+  --text-light-primary: #F0F2F5;
+  --text-light-secondary: #94A3B8;
+  --text-light-muted: #64748B;
+  --text-dark-primary: #0F172A;
+  --text-dark-secondary: #334155;
+  --text-dark-muted: #64748B;
+
+  --accent: #3B7CC0;
+  --accent-warm: #C9A96E;
+  --accent-hover: #2D6AAF;
+  --accent-glow: rgba(59, 124, 192, 0.15);
+  --accent-warm-glow: rgba(201, 169, 110, 0.12);
+
+  --success: #34D399;
+  --warning: #FBBF24;
+  --danger: #F87171;
+
+  --glass: rgba(255, 255, 255, 0.03);
+  --glass-border: rgba(255, 255, 255, 0.06);
+  --grain-opacity: 0.03;
+
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --font-heading: 'Outfit', sans-serif;
+  --font-body: 'Source Sans 3', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+
+  --section-pad-y: clamp(80px, 10vw, 140px);
+  --section-pad-x: clamp(20px, 5vw, 80px);
+  --content-max: 1200px;
+  --prose-max: 720px;
+
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 4px 6px rgba(0,0,0,0.04), 0 10px 20px rgba(0,0,0,0.06);
+  --shadow-lg: 0 8px 16px rgba(0,0,0,0.06), 0 20px 40px rgba(0,0,0,0.08);
+}
+
+/* ===== RESET ===== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.75;
+  color: var(--text-dark-secondary);
+  background-color: var(--slate-50);
+  overflow-x: hidden;
+}
+
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+ul, ol { list-style: none; }
+
+/* ===== TYPOGRAPHY ===== */
+h1, .display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.15;
+  color: var(--text-dark-primary);
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.3;
+  color: var(--text-dark-primary);
+}
+
+h3 {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 1.25rem;
+  line-height: 1.4;
+  color: var(--text-dark-primary);
+}
+
+p {
+  max-width: var(--prose-max);
+}
+
+.label {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--text-dark-muted);
+}
+
+.stat-number {
+  font-family: var(--font-mono);
+  font-weight: 600;
+}
+
+/* ===== DARK SECTION OVERRIDES ===== */
+.section-dark {
+  background-color: var(--slate-900);
+  color: var(--text-light-secondary);
+}
+
+.section-dark h1,
+.section-dark .display {
+  color: var(--text-hero);
+}
+
+.section-dark h2,
+.section-dark h3 {
+  color: var(--text-light-primary);
+}
+
+.section-dark p {
+  color: var(--text-light-secondary);
+}
+
+.section-dark .label {
+  color: var(--text-light-muted);
+}
+
+/* ===== LAYOUT ===== */
+.container {
+  width: 100%;
+  max-width: var(--content-max);
+  margin: 0 auto;
+  padding: 0 var(--section-pad-x);
+}
+
+section, footer {
+  padding: var(--section-pad-y) 0;
+}
+
+/* ===== NAVBAR ===== */
+#navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 72px;
+  z-index: 1000;
+  background: transparent;
+  transition: background 400ms cubic-bezier(0.16, 1, 0.3, 1),
+              backdrop-filter 400ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#navbar .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+#navbar .nav-logo svg {
+  width: 220px;
+  height: auto;
+}
+
+.btn-sm {
+  padding: 10px 20px !important;
+  font-size: 0.8125rem !important;
+}
+
+#navbar.nav-scrolled {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(12, 18, 25, 0.88);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* ===== HERO ===== */
+#hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 180px 0 var(--section-pad-y);
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(59, 124, 192, 0.06) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 100%, rgba(201, 169, 110, 0.04) 0%, transparent 50%),
+    repeating-linear-gradient(45deg, transparent, transparent 39px, rgba(255, 255, 255, 0.015) 39px, rgba(255, 255, 255, 0.015) 40px),
+    var(--slate-900);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  gap: 60px;
+  align-items: center;
+}
+
+.hero-left {
+  position: relative;
+  z-index: 1;
+}
+
+/* -- Hero Overline -- */
+.hero-overline {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.hero-overline .hero-eyebrow-line {
+  width: 40px;
+  height: 1px;
+  background-color: var(--accent-warm);
+  flex-shrink: 0;
+}
+
+.hero-overline .label {
+  color: var(--accent-warm);
+  font-size: 0.7rem;
+}
+
+@keyframes hero-overline {
+  from { opacity: 0; transform: translateX(-20px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+.hero-overline {
+  animation: hero-overline 600ms ease-out 200ms both;
+}
+
+/* -- Hero Headline -- */
+.hero-headline {
+  color: var(--text-hero);
+  max-width: 580px;
+  margin-bottom: 24px;
+}
+
+.hero-headline .accent-dot {
+  color: var(--accent);
+}
+
+@keyframes hero-headline {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-headline {
+  animation: hero-headline 800ms cubic-bezier(0.16, 1, 0.3, 1) 400ms both;
+}
+
+/* -- Hero Sub -- */
+.hero-sub {
+  font-family: var(--font-body);
+  font-size: 1.125rem;
+  color: var(--text-light-secondary);
+  max-width: 520px;
+  line-height: 1.7;
+}
+
+@keyframes hero-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.hero-sub {
+  animation: hero-fade 600ms ease-out 800ms both;
+}
+
+/* -- Hero Buttons -- */
+.hero-buttons {
+  display: flex;
+  gap: 16px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.hero-buttons .btn-secondary {
+  color: var(--text-light-secondary);
+}
+
+@keyframes hero-buttons {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.hero-buttons {
+  animation: hero-buttons 500ms ease-out 1000ms both;
+}
+
+/* -- Hero Scroll Indicator -- */
+.hero-scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 32px;
+  height: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--white);
+  opacity: 0.4;
+  transition: opacity 300ms ease;
+  animation: bounce 2s infinite;
+  z-index: 2;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%      { transform: translateX(-50%) translateY(6px); }
+}
+
+/* ===== HERO BLUEPRINT ===== */
+#hero-blueprint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  user-select: none;
+}
+
+#hero-blueprint svg {
+  width: 100%;
+  height: auto;
+  max-height: 500px;
+}
+
+/* ===== HERO TRANSITION ===== */
+#hero-transition {
+  height: 200px;
+  background: linear-gradient(to bottom, var(--slate-900), var(--slate-50));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+#hero-transition .transition-line {
+  width: 80px;
+  height: 2px;
+  background-color: var(--accent-warm);
+}
+
+#hero-transition .transition-text {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: var(--text-dark-muted);
+  max-width: none;
+}
+
+/* ===== COMPONENTS ===== */
+.card {
+  background-color: var(--white);
+  box-shadow: var(--shadow-sm);
+  border-radius: var(--radius-md);
+  padding: 36px;
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.section-dark .card {
+  background-color: var(--slate-800);
+  border: 1px solid var(--glass-border);
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  padding: 14px 28px;
+  background-color: var(--accent);
+  color: var(--white);
+  border: none;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 0.9375rem;
+  padding: 14px 28px;
+  background-color: transparent;
+  color: inherit;
+  border: 1px solid var(--slate-600);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 200ms ease, color 200ms ease;
+}
+
+.btn-secondary:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.btn-primary:focus-visible,
+.btn-secondary:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.badge {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.65rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.btn-group {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ===== SECTION HEADERS ===== */
+.section-header {
+  margin-bottom: 64px;
+}
+
+.section-header .label {
+  margin-bottom: 16px;
+}
+
+.section-header h2 {
+  margin-bottom: 16px;
+}
+
+.section-header p {
+  color: var(--text-dark-muted);
+  font-size: 1.05rem;
+}
+
+.section-dark .section-header p {
+  color: var(--text-light-secondary);
+}
+
+/* ===== PAIN POINTS ===== */
+.pain-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 24px;
+}
+
+.pain-card {
+  background-color: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  box-shadow: var(--shadow-md);
+  border-top: 3px solid var(--slate-300);
+  position: relative;
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.pain-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.pain-card:nth-child(-n+3) {
+  grid-column: span 2;
+}
+
+.pain-card:nth-child(4) {
+  grid-column: 2 / span 2;
+}
+
+.pain-card:nth-child(5) {
+  grid-column: 4 / span 2;
+}
+
+.pain-card .pain-number {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  font-family: var(--font-mono);
+  font-size: 2.5rem;
+  color: var(--text-dark-muted);
+  opacity: 0.1;
+  line-height: 1;
+}
+
+.pain-card h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text-dark-primary);
+  margin-bottom: 12px;
+}
+
+.pain-card p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-dark-secondary);
+  line-height: 1.65;
+}
+
+.pain-card.pain-hero {
+  border-top-color: var(--accent-warm);
+  background: rgba(201, 169, 110, 0.03);
+}
+
+.pain-card.pain-hero .badge {
+  background: var(--accent-warm-glow);
+  color: var(--accent-warm);
+  margin-bottom: 12px;
+}
+
+/* ===== VALIDATION ===== */
+#validation {
+  padding: calc(var(--section-pad-y) * 1.5) 0;
+}
+
+#validation .container {
+  max-width: var(--prose-max);
+  text-align: center;
+  position: relative;
+}
+
+#validation .container::before {
+  content: '\201C';
+  font-family: var(--font-display);
+  font-size: 5rem;
+  color: var(--accent-warm);
+  opacity: 0.3;
+  position: absolute;
+  top: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  line-height: 1;
+  pointer-events: none;
+}
+
+.validation-quote {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: italic;
+  font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+  color: var(--text-light-primary);
+  line-height: 1.6;
+  text-align: center;
+  margin-bottom: 40px;
+  max-width: none;
+}
+
+.validation-divider {
+  width: 60px;
+  height: 1px;
+  background-color: var(--accent-warm);
+  margin: 0 auto 16px;
+}
+
+/* ===== SOLUTION CARDS ===== */
+.solutions-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.solution-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+  border-left: 3px solid var(--slate-300);
+  transition: transform 300ms ease, box-shadow 300ms ease, border-left-width 300ms ease;
+}
+
+.solution-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+  border-left-width: 5px;
+}
+
+.solution-icon-circle {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.solution-icon-circle svg {
+  width: 24px;
+  height: 24px;
+}
+
+.solution-card h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.15rem;
+  color: var(--text-dark-primary);
+  margin-top: 16px;
+  margin-bottom: 12px;
+}
+
+.solution-card p {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text-dark-secondary);
+  line-height: 1.65;
+}
+
+.solution-card.sol-warm {
+  border-left-color: var(--accent-warm);
+  background: rgba(201,169,110,0.02);
+}
+.solution-card.sol-warm .solution-icon-circle {
+  background: rgba(201,169,110,0.08);
+  color: var(--accent-warm);
+}
+.solution-card.sol-warm .badge {
+  background: var(--accent-warm-glow);
+  color: var(--accent-warm);
+  margin-bottom: 8px;
+}
+
+.solution-card.sol-blue {
+  border-left-color: var(--accent);
+}
+.solution-card.sol-blue .solution-icon-circle {
+  background: rgba(59,124,192,0.08);
+  color: var(--accent);
+}
+
+.solution-card.sol-indigo {
+  border-left-color: #6366F1;
+}
+.solution-card.sol-indigo .solution-icon-circle {
+  background: rgba(99,102,241,0.08);
+  color: #6366F1;
+}
+
+.solution-card.sol-emerald {
+  border-left-color: #10B981;
+}
+.solution-card.sol-emerald .solution-icon-circle {
+  background: rgba(16,185,129,0.08);
+  color: #10B981;
+}
+
+/* ===== FEATURES ===== */
+#features {
+  background: var(--white);
+}
+
+.features-tab-bar {
+  display: flex;
+  gap: 4px;
+  border-bottom: 1px solid var(--slate-200);
+  margin-bottom: 40px;
+  overflow-x: visible;
+  flex-wrap: wrap;
+}
+
+.features-tab-btn {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text-dark-muted);
+  background: none;
+  border: none;
+  padding: 12px 20px;
+  min-height: 44px;
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  transition: color 200ms ease;
+}
+
+.features-tab-btn::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: transform 200ms ease;
+}
+
+.features-tab-btn.active {
+  color: var(--accent);
+}
+
+.features-tab-btn.active::after {
+  transform: scaleX(1);
+}
+
+.features-tab-btn:hover {
+  color: var(--text-dark-primary);
+}
+
+.features-tab-panel {
+  display: none;
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.features-tab-panel.active {
+  display: block;
+  opacity: 1;
+}
+
+.features-tab-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 640px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.features-tab-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: var(--text-dark-secondary);
+  line-height: 1.7;
+}
+
+.features-tab-item .check-icon {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  margin-top: 4px;
+  color: var(--accent);
+  opacity: 0.7;
+}
+
+/* ===== TIERS ===== */
+.tiers-row {
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.tier-card {
+  flex: 1;
+  max-width: 380px;
+  background: var(--slate-800);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius-lg);
+  padding: 40px 32px;
+  position: relative;
+  transition: transform 200ms ease, box-shadow 200ms ease;
+}
+
+.tier-card.emphasized {
+  background: var(--slate-700);
+  border-color: var(--accent);
+  box-shadow: 0 0 60px var(--accent-glow), 0 8px 32px rgba(0,0,0,0.3);
+  transform: scale(1.03);
+  z-index: 2;
+}
+
+.tier-card.emphasized::before {
+  content: 'RECOMMENDED';
+  position: absolute;
+  top: -13px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-heading);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 5px 20px;
+  border-radius: var(--radius-sm);
+}
+
+.tier-name {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: var(--text-light-primary);
+  margin-bottom: 4px;
+}
+
+.tier-tagline {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  color: var(--text-light-muted);
+  margin-bottom: 28px;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.tier-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tier-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 0.85rem;
+  color: var(--text-light-secondary);
+  line-height: 1.6;
+}
+
+.tier-item .tier-check {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  margin-top: 3px;
+  color: var(--success);
+}
+
+.tier-item.starred {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.tier-item.starred .tier-check {
+  color: var(--accent);
+}
+
+.tiers-footer {
+  text-align: center;
+  margin-top: 48px;
+  font-size: 0.85rem;
+  color: var(--text-light-muted);
+  font-style: italic;
+}
+
+/* ===== CLIENT EXPERIENCE ===== */
+.ce-grid {
+  display: grid;
+  grid-template-columns: 55% 45%;
+  gap: 40px;
+  align-items: start;
+}
+
+.ce-timeline {
+  position: relative;
+}
+
+.ce-timeline::before {
+  content: '';
+  position: absolute;
+  left: 17px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--slate-200);
+}
+
+.ce-step {
+  display: flex;
+  gap: 24px;
+  margin-bottom: 48px;
+  position: relative;
+}
+
+.ce-step:last-child {
+  margin-bottom: 0;
+}
+
+.ce-marker {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--white);
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  position: relative;
+  z-index: 1;
+}
+
+.ce-step.ce-active .ce-marker {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 0 0 6px rgba(59,124,192,0.12);
+}
+
+.ce-body h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-dark-primary);
+  margin-bottom: 6px;
+}
+
+.ce-body p {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--text-dark-muted);
+  line-height: 1.7;
+}
+
+/* Phone Mockup — realistic iPhone style */
+.ce-phone-mockup {
+  flex-shrink: 0;
+  width: 280px;
+  margin: 0 auto;
+  perspective: 800px;
+}
+
+@keyframes phone-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.ce-phone-mockup.visible {
+  animation: phone-float 4s ease-in-out infinite;
+}
+
+.ce-phone-mockup:hover {
+  animation-play-state: paused;
+}
+
+.ce-phone-frame {
+  background: #1A1A1A;
+  border-radius: 44px;
+  padding: 12px;
+  aspect-ratio: 9 / 19.5;
+  transition: transform 0.6s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+  transform-style: preserve-3d;
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 20px 60px rgba(0, 0, 0, 0.25),
+    0 8px 24px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+  position: relative;
+}
+
+.ce-phone-mockup:hover .ce-phone-frame {
+  transform: rotateY(-4deg) rotateX(2deg) scale(1.02);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.1),
+    0 30px 80px rgba(0, 0, 0, 0.3),
+    0 15px 40px rgba(0, 0, 0, 0.18),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+/* Side buttons */
+.ce-phone-frame::before {
+  content: '';
+  position: absolute;
+  right: -2px;
+  top: 100px;
+  width: 3px;
+  height: 40px;
+  background: #2A2A2A;
+  border-radius: 0 2px 2px 0;
+  box-shadow: 0 50px 0 #2A2A2A;
+}
+
+.ce-phone-frame::after {
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: 80px;
+  width: 3px;
+  height: 24px;
+  background: #2A2A2A;
+  border-radius: 2px 0 0 2px;
+  box-shadow: 0 36px 0 #2A2A2A, 0 72px 0 #2A2A2A;
+}
+
+.ce-phone-screen {
+  background: #FFFFFF;
+  border-radius: 34px;
+  overflow: hidden;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.ce-phone-status-bar {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  padding: 14px 0 0;
+  font-size: 12px;
+  font-weight: 600;
+  color: #1A1A1A;
+  position: relative;
+  z-index: 3;
+}
+
+.ce-phone-status-time {
+  letter-spacing: 0.02em;
+  text-align: center;
+}
+
+.ce-phone-status-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.ce-phone-dynamic-island {
+  width: 90px;
+  height: 24px;
+  background: #1A1A1A;
+  border-radius: 20px;
+}
+
+.ce-phone-content {
+  padding: 14px 16px 0;
+  flex: 1;
+  overflow: hidden;
+}
+
+.ce-phone-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.ce-phone-header-logo {
+  width: 32px;
+  height: 32px;
+  background: var(--accent);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.5px;
+}
+
+.ce-phone-header-text {
+  flex: 1;
+}
+
+.ce-phone-header-company {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: #888;
+  line-height: 1;
+}
+
+.ce-phone-project-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1A1A1A;
+  line-height: 1.3;
+  margin-top: 2px;
+}
+
+.ce-phone-milestone {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: rgba(59, 124, 192, 0.08);
+  color: var(--accent);
+  font-size: 10px;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+}
+
+.ce-phone-milestone-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.ce-phone-section-label {
+  font-size: 9px;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 8px;
+}
+
+.ce-phone-progress-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.ce-phone-progress-ring {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+}
+
+.ce-phone-progress-ring-bg {
+  fill: none;
+  stroke: #E8EDF2;
+  stroke-width: 4;
+}
+
+.ce-phone-progress-ring-fill {
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 4;
+  stroke-linecap: round;
+  stroke-dasharray: 138.2;
+  stroke-dashoffset: 52.5;
+  transform: rotate(-90deg);
+  transform-origin: center;
+}
+
+.ce-phone-progress-pct {
+  font-size: 11px;
+  font-weight: 700;
+  color: #1A1A1A;
+  fill: #1A1A1A;
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.ce-phone-progress-details {
+  flex: 1;
+}
+
+.ce-phone-progress-phase {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1A1A1A;
+  line-height: 1.3;
+}
+
+.ce-phone-progress-next {
+  font-size: 10px;
+  color: #888;
+  margin-top: 2px;
+}
+
+.ce-phone-photo-row {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 12px;
+}
+
+.ce-phone-photo-thumb {
+  flex: 1;
+  height: 48px;
+  border-radius: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ce-phone-photo-thumb:nth-child(1) {
+  background: linear-gradient(135deg, #7EB0D9 0%, #5A9ACE 100%);
+}
+
+.ce-phone-photo-thumb:nth-child(2) {
+  background: linear-gradient(135deg, #A8C4D8 0%, #88AAC4 100%);
+}
+
+.ce-phone-photo-thumb:nth-child(3) {
+  background: linear-gradient(135deg, #C9A96E 0%, #B08E50 100%);
+  position: relative;
+}
+
+.ce-phone-photo-count {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  border-radius: 8px;
+}
+
+.ce-phone-budget-card {
+  background: #F2F4F7;
+  border-radius: 10px;
+  padding: 8px 12px;
+  margin-bottom: 4px;
+}
+
+.ce-phone-budget-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.ce-phone-budget-row:last-child {
+  margin-bottom: 0;
+}
+
+.ce-phone-budget-category {
+  font-size: 11px;
+  color: #555;
+}
+
+.ce-phone-budget-amount {
+  font-size: 11px;
+  font-weight: 600;
+  color: #1A1A1A;
+}
+
+.ce-phone-budget-bar-track {
+  height: 3px;
+  background: #E0E4EA;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.ce-phone-budget-bar-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+.ce-phone-budget-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 12px 0;
+  margin-top: 2px;
+}
+
+.ce-phone-budget-total-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.ce-phone-budget-total-amount {
+  font-size: 14px;
+  font-weight: 700;
+  color: #1A1A1A;
+}
+
+.ce-phone-nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 8px 16px 6px;
+  border-top: 1px solid #E8EDF2;
+  margin-top: auto;
+}
+
+.ce-phone-nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  font-size: 8px;
+  font-weight: 500;
+  color: #888;
+  letter-spacing: 0.3px;
+}
+
+.ce-phone-nav-item.active {
+  color: var(--accent);
+}
+
+.ce-phone-nav-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.ce-phone-home-indicator {
+  width: 100px;
+  height: 4px;
+  background: #1A1A1A;
+  border-radius: 2px;
+  margin: 4px auto 6px;
+  opacity: 0.2;
+}
+
+.ce-pwa-callout {
+  margin-top: 48px;
+  padding: 20px 24px;
+  background: var(--white);
+  border-left: 3px solid var(--accent);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.ce-pwa-callout svg {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  color: var(--accent);
+}
+
+.ce-pwa-callout p {
+  font-size: 0.85rem;
+  color: var(--text-dark-secondary);
+  line-height: 1.5;
+}
+
+.ce-pwa-callout strong {
+  color: var(--text-dark-primary);
+}
+
+/* ===== SECURITY ===== */
+#security {
+  padding: 48px 0;
+  border-top: 1px solid var(--slate-200);
+}
+
+.security-header {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--text-dark-primary);
+  margin-bottom: 24px;
+}
+
+.security-row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+}
+
+.security-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--text-dark-muted);
+  line-height: 1.4;
+}
+
+.security-chip svg {
+  flex-shrink: 0;
+  width: 14px;
+  height: 14px;
+  color: var(--accent);
+  opacity: 0.5;
+}
+
+/* ===== ROI STATS ===== */
+.roi-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: clamp(32px, 5vw, 56px);
+  padding-top: 16px;
+}
+
+.roi-stat {
+  text-align: center;
+  flex: 1;
+  max-width: 180px;
+}
+
+.roi-stat .stat-number {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: clamp(2.5rem, 4vw, 3.25rem);
+  color: var(--text-hero);
+  display: block;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+}
+
+.roi-stat .stat-unit {
+  font-family: var(--font-heading);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--accent);
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 10px;
+}
+
+.roi-stat .stat-desc {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  color: var(--text-light-muted);
+  line-height: 1.5;
+  max-width: 160px;
+  margin: 0 auto;
+}
+
+.roi-divider {
+  width: 1px;
+  height: 64px;
+  background: var(--slate-700);
+  flex-shrink: 0;
+  margin-top: 8px;
+}
+
+.counter-done {
+  text-shadow: 0 0 20px rgba(59,124,192,0.3);
+  transition: text-shadow 600ms ease;
+}
+
+/* ===== TIMELINE ===== */
+.timeline-track {
+  position: relative;
+  padding-top: 40px;
+}
+
+.timeline-line {
+  position: absolute;
+  top: 59px;
+  left: 5%;
+  right: 5%;
+  height: 2px;
+  background: var(--slate-200);
+}
+
+.timeline-progress {
+  height: 100%;
+  width: 0;
+  background: var(--accent);
+  transition: width 1.5s ease-out;
+  border-radius: 1px;
+}
+
+.timeline-nodes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  position: relative;
+}
+
+.phase-node {
+  text-align: center;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 400ms ease, transform 400ms ease;
+}
+
+.phase-node.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.phase-circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.phase-circle span {
+  font-family: var(--font-heading);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.phase-node h3 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--text-dark-primary);
+  margin-bottom: 4px;
+}
+
+.phase-node .phase-time {
+  font-family: var(--font-heading);
+  font-weight: 400;
+  font-size: 0.8rem;
+  color: var(--text-dark-muted);
+  margin-bottom: 12px;
+}
+
+.phase-node p:last-child {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--text-dark-muted);
+  line-height: 1.6;
+  max-width: 220px;
+  margin: 0 auto;
+}
+
+/* ===== CTA ===== */
+#cta {
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  padding: 140px var(--section-pad-x);
+}
+
+#cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(59, 124, 192, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 70% 60%, rgba(201, 169, 110, 0.08) 0%, transparent 50%);
+}
+
+#cta .container {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+}
+
+#cta h2 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--text-hero);
+  line-height: 1.2;
+  margin-bottom: 24px;
+}
+
+#cta .accent-period {
+  color: var(--accent-warm);
+}
+
+#cta p {
+  margin: 0 auto 40px;
+  font-size: 1.1rem;
+  color: var(--text-light-secondary);
+  text-align: center;
+  max-width: 560px;
+}
+
+#cta .btn-group {
+  justify-content: center;
+  gap: 16px;
+}
+
+#cta .btn-primary {
+  padding: 16px 36px;
+}
+
+#cta .btn-secondary:hover {
+  border-color: var(--accent-warm);
+  color: var(--accent-warm);
+}
+
+/* ===== FOOTER ===== */
+#footer {
+  background: var(--slate-950);
+  border-top: 1px solid var(--slate-700);
+  padding: 32px 0;
+  text-align: center;
+}
+
+#footer .container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-main {
+  font-family: var(--font-body);
+  font-size: 0.8125rem;
+  color: var(--text-light-muted);
+}
+
+.footer-copy {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--text-light-muted);
+  opacity: 0.5;
+}
+
+/* ===== SCROLL ANIMATIONS ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 600ms ease-out, transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 100ms; }
+.reveal-delay-2 { transition-delay: 200ms; }
+.reveal-delay-3 { transition-delay: 300ms; }
+.reveal-delay-4 { transition-delay: 400ms; }
+.reveal-delay-5 { transition-delay: 500ms; }
+.reveal-delay-6 { transition-delay: 600ms; }
+
+/* ===== FILM GRAIN ===== */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: var(--grain-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  :root {
+    --section-pad-x: clamp(20px, 4vw, 40px);
+  }
+
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .desktop-only {
+    display: none !important;
+  }
+
+  .pain-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .pain-card:nth-child(-n+3),
+  .pain-card:nth-child(4),
+  .pain-card:nth-child(5) {
+    grid-column: auto;
+  }
+
+  .pain-card:nth-child(5) {
+    grid-column: 1 / -1;
+  }
+
+  .tiers-row {
+    flex-direction: column;
+    align-items: center;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+
+  .tier-card {
+    width: 100%;
+  }
+
+  .tier-card.emphasized {
+    transform: none;
+  }
+
+  .ce-grid { grid-template-columns: 1fr; }
+
+  .security-row { grid-template-columns: repeat(3, 1fr); }
+
+  .timeline-line { display: none; }
+  .timeline-nodes { grid-template-columns: repeat(2, 1fr); }
+  .phase-node { opacity: 1; transform: none; }
+
+  .roi-row { flex-wrap: wrap; }
+  .roi-divider { display: none; }
+}
+
+@media (max-width: 768px) {
+  section, footer {
+    padding: 60px 0;
+  }
+
+  #hero {
+    padding-top: 140px;
+  }
+
+  .hero-headline {
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+
+  .pain-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .pain-card:nth-child(5) {
+    grid-column: auto;
+  }
+
+  .solutions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .btn-group {
+    flex-direction: column;
+  }
+
+  .security-row { grid-template-columns: repeat(2, 1fr); }
+
+  .roi-row { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+
+  .timeline-nodes {
+    grid-template-columns: 1fr;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 375px) {
+  :root {
+    --section-pad-x: 20px;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+    justify-content: center;
+    min-height: 44px;
+  }
+}
+
+/* ===== PRINT ===== */
+@media print {
+  *, *::before, *::after {
+    background: transparent !important;
+    color: #000 !important;
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  body {
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  body::after {
+    display: none !important;
+  }
+
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .phase-node {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  nav, .btn-primary, .btn-secondary, .btn-group {
+    display: none !important;
+  }
+
+  section, footer {
+    padding: 32px 0 !important;
+    page-break-inside: avoid;
+    page-break-before: auto;
+  }
+
+  h1, h2, h3 {
+    page-break-after: avoid;
+    color: #000 !important;
+  }
+
+  .section-dark {
+    background: #fff !important;
+  }
+
+  .card, .pain-card, .solution-card, .tier-card, .ce-phone-mockup {
+    border: 1px solid #ccc !important;
+    padding: 16px !important;
+    page-break-inside: avoid;
+  }
+
+  #hero {
+    min-height: auto !important;
+  }
+
+  #hero-transition {
+    display: none !important;
+  }
+
+  .stat-number[data-target] {
+    font-size: 1.5rem !important;
+  }
+
+  .hero-scroll-indicator {
+    display: none !important;
+  }
+
+  .hero-overline,
+  .hero-headline,
+  .hero-sub,
+  .hero-buttons {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+}
+  </style>
+</head>
+<body>
+
+  <!-- SVG TEMPLATES (hidden) -->
+  <div style="display:none">
+    <template id="logo">
+      <svg viewBox="0 0 240 48" xmlns="http://www.w3.org/2000/svg" class="logo">
+        <defs>
+          <style>
+            .logo-light .logo-primary { fill: #ffffff; }
+            .logo-light .logo-secondary { fill: rgba(255,255,255,0.8); }
+            .logo-light .logo-accent { stroke: rgba(255,255,255,0.4); }
+            .logo-dark .logo-primary { fill: #0f172a; }
+            .logo-dark .logo-secondary { fill: #334155; }
+            .logo-dark .logo-accent { stroke: #cbd5e1; }
+          </style>
+        </defs>
+        <text x="0" y="30" class="logo-primary" font-family="'Georgia', 'Times New Roman', serif" font-size="34" font-weight="700" letter-spacing="-1">J.W.</text>
+        <line x1="82" y1="10" x2="82" y2="34" class="logo-accent" stroke-width="1.25" fill="none"/>
+        <text x="90" y="20" class="logo-secondary" font-family="'Helvetica Neue', 'Arial', sans-serif" font-size="11" font-weight="300" letter-spacing="2.5">DESIGN</text>
+        <text x="90" y="34" class="logo-secondary" font-family="'Helvetica Neue', 'Arial', sans-serif" font-size="8.5" font-weight="300" letter-spacing="2.5">&amp; CONSTRUCTION</text>
+      </svg>
+    </template>
+  </div>
+
+  <!-- ===== NAVBAR ===== -->
+  <nav id="navbar">
+    <div class="container">
+      <a href="#hero" class="nav-logo logo-light" aria-label="J.W. Design & Construction"></a>
+      <a href="#cta" class="btn-primary btn-sm">Schedule a Walkthrough</a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO ===== -->
+  <section id="hero" class="section-dark">
+    <div class="container hero-grid">
+      <div class="hero-left">
+        <div class="hero-overline">
+          <span class="hero-eyebrow-line"></span>
+          <span class="label">Prepared for J.W. Design &amp; Construction</span>
+        </div>
+        <h1 class="display hero-headline">Your projects deserve a command center<span class="accent-dot">.</span></h1>
+        <p class="hero-sub">You've completed over 350 projects across 48 years. The Command Center gives your team &mdash; and your clients &mdash; real-time visibility into every one.</p>
+        <div class="hero-buttons">
+          <a href="#cta" class="btn-primary">Schedule a Walkthrough</a>
+          <a href="#pain-points" class="btn-secondary">See How It Works</a>
+        </div>
+      </div>
+      <div id="hero-blueprint" class="desktop-only">
+        <svg id="hero-blueprint-svg" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <!-- Main structure — outer building envelope -->
+          <rect x="40" y="60" width="200" height="280" stroke="rgba(59,124,192,0.18)" stroke-width="1" data-draw data-length="960"/>
+          <rect x="240" y="120" width="120" height="220" stroke="rgba(59,124,192,0.18)" stroke-width="1" data-draw data-length="680"/>
+          <line x1="240" y1="120" x2="240" y2="340" stroke="rgba(59,124,192,0.18)" stroke-width="1" data-draw/>
+          <!-- Interior walls -->
+          <line x1="40" y1="180" x2="200" y2="180" stroke="rgba(59,124,192,0.18)" stroke-width="1" data-draw/>
+          <line x1="40" y1="260" x2="240" y2="260" stroke="rgba(59,124,192,0.18)" stroke-width="1" data-draw/>
+          <line x1="140" y1="60" x2="140" y2="180" stroke="rgba(59,124,192,0.18)" stroke-width="1" data-draw/>
+          <line x1="140" y1="260" x2="140" y2="340" stroke="rgba(59,124,192,0.18)" stroke-width="1" data-draw/>
+          <line x1="240" y1="220" x2="360" y2="220" stroke="rgba(59,124,192,0.18)" stroke-width="1" data-draw/>
+          <line x1="300" y1="120" x2="300" y2="220" stroke="rgba(59,124,192,0.18)" stroke-width="1" data-draw/>
+          <!-- Partial walls extending beyond visible area -->
+          <line x1="0" y1="180" x2="40" y2="180" stroke="rgba(59,124,192,0.12)" stroke-width="0.75" data-draw/>
+          <line x1="0" y1="260" x2="40" y2="260" stroke="rgba(59,124,192,0.12)" stroke-width="0.75" data-draw/>
+          <line x1="360" y1="160" x2="400" y2="160" stroke="rgba(59,124,192,0.12)" stroke-width="0.75" data-draw/>
+          <line x1="360" y1="280" x2="400" y2="280" stroke="rgba(59,124,192,0.12)" stroke-width="0.75" data-draw/>
+          <!-- L-shaped partitions -->
+          <polyline points="90,60 90,120 140,120" stroke="rgba(59,124,192,0.18)" stroke-width="1" data-draw/>
+          <polyline points="300,340 300,300 360,300" stroke="rgba(59,124,192,0.18)" stroke-width="1" data-draw/>
+          <rect x="42" y="262" width="40" height="30" stroke="rgba(59,124,192,0.15)" stroke-width="0.75" data-draw data-length="140"/>
+          <!-- Highlighted accent elements -->
+          <line x1="40" y1="340" x2="240" y2="340" stroke="rgba(201,169,110,0.28)" stroke-width="2.5" data-draw/>
+          <rect x="145" y="185" width="50" height="70" stroke="rgba(201,169,110,0.28)" stroke-width="2.5" data-draw data-length="240"/>
+          <line x1="145" y1="195" x2="195" y2="195" stroke="rgba(201,169,110,0.18)" stroke-width="1" data-draw/>
+          <line x1="145" y1="205" x2="195" y2="205" stroke="rgba(201,169,110,0.18)" stroke-width="1" data-draw/>
+          <line x1="145" y1="215" x2="195" y2="215" stroke="rgba(201,169,110,0.18)" stroke-width="1" data-draw/>
+          <line x1="145" y1="225" x2="195" y2="225" stroke="rgba(201,169,110,0.18)" stroke-width="1" data-draw/>
+          <line x1="145" y1="235" x2="195" y2="235" stroke="rgba(201,169,110,0.18)" stroke-width="1" data-draw/>
+          <line x1="145" y1="245" x2="195" y2="245" stroke="rgba(201,169,110,0.18)" stroke-width="1" data-draw/>
+          <line x1="80" y1="340" x2="120" y2="340" stroke="rgba(201,169,110,0.28)" stroke-width="2.5" data-draw/>
+          <rect x="237" y="257" width="6" height="6" stroke="rgba(201,169,110,0.28)" stroke-width="2" data-draw data-length="24"/>
+          <!-- Door arcs -->
+          <path d="M 100,180 A 20,20 0 0,1 120,180" stroke="rgba(59,124,192,0.15)" stroke-width="0.75" data-draw/>
+          <line x1="100" y1="180" x2="100" y2="176" stroke="rgba(59,124,192,0.15)" stroke-width="0.75" data-draw/>
+          <path d="M 300,220 A 18,18 0 0,0 300,238" stroke="rgba(59,124,192,0.15)" stroke-width="0.75" data-draw/>
+          <line x1="300" y1="238" x2="296" y2="238" stroke="rgba(59,124,192,0.15)" stroke-width="0.75" data-draw/>
+          <path d="M 200,260 A 16,16 0 0,1 216,260" stroke="rgba(59,124,192,0.15)" stroke-width="0.75" data-draw/>
+          <!-- Window marks -->
+          <line x1="55" y1="58" x2="55" y2="62" stroke="rgba(59,124,192,0.15)" stroke-width="0.75" data-draw/>
+          <line x1="75" y1="58" x2="75" y2="62" stroke="rgba(59,124,192,0.15)" stroke-width="0.75" data-draw/>
+          <line x1="55" y1="60" x2="75" y2="60" stroke="rgba(59,124,192,0.15)" stroke-width="0.5" data-draw/>
+          <line x1="358" y1="150" x2="362" y2="150" stroke="rgba(59,124,192,0.15)" stroke-width="0.75" data-draw/>
+          <line x1="358" y1="170" x2="362" y2="170" stroke="rgba(59,124,192,0.15)" stroke-width="0.75" data-draw/>
+          <line x1="360" y1="150" x2="360" y2="170" stroke="rgba(59,124,192,0.15)" stroke-width="0.5" data-draw/>
+          <line x1="38" y1="290" x2="42" y2="290" stroke="rgba(59,124,192,0.15)" stroke-width="0.75" data-draw/>
+          <line x1="38" y1="320" x2="42" y2="320" stroke="rgba(59,124,192,0.15)" stroke-width="0.75" data-draw/>
+          <line x1="40" y1="290" x2="40" y2="320" stroke="rgba(59,124,192,0.15)" stroke-width="0.5" data-draw/>
+          <!-- Dimension lines -->
+          <line x1="40" y1="42" x2="240" y2="42" stroke="rgba(148,163,184,0.22)" stroke-width="0.5" data-draw/>
+          <line x1="40" y1="38" x2="40" y2="46" stroke="rgba(148,163,184,0.22)" stroke-width="0.5" data-draw/>
+          <line x1="240" y1="38" x2="240" y2="46" stroke="rgba(148,163,184,0.22)" stroke-width="0.5" data-draw/>
+          <text x="125" y="39" class="bp-label" opacity="0" font-size="6" fill="rgba(148,163,184,0.35)" font-family="monospace" text-anchor="middle">42'-0"</text>
+          <line x1="378" y1="120" x2="378" y2="340" stroke="rgba(148,163,184,0.22)" stroke-width="0.5" data-draw/>
+          <line x1="374" y1="120" x2="382" y2="120" stroke="rgba(148,163,184,0.22)" stroke-width="0.5" data-draw/>
+          <line x1="374" y1="340" x2="382" y2="340" stroke="rgba(148,163,184,0.22)" stroke-width="0.5" data-draw/>
+          <text x="388" y="234" class="bp-label" opacity="0" font-size="6" fill="rgba(148,163,184,0.35)" font-family="monospace" transform="rotate(90,388,234)" text-anchor="middle">36'-6"</text>
+          <line x1="40" y1="358" x2="360" y2="358" stroke="rgba(148,163,184,0.22)" stroke-width="0.5" data-draw/>
+          <line x1="40" y1="354" x2="40" y2="362" stroke="rgba(148,163,184,0.22)" stroke-width="0.5" data-draw/>
+          <line x1="360" y1="354" x2="360" y2="362" stroke="rgba(148,163,184,0.22)" stroke-width="0.5" data-draw/>
+          <text x="200" y="370" class="bp-label" opacity="0" font-size="6" fill="rgba(148,163,184,0.35)" font-family="monospace" text-anchor="middle">68'-0"</text>
+          <line x1="145" y1="175" x2="195" y2="175" stroke="rgba(148,163,184,0.18)" stroke-width="0.4" data-draw/>
+          <line x1="145" y1="172" x2="145" y2="178" stroke="rgba(148,163,184,0.18)" stroke-width="0.4" data-draw/>
+          <line x1="195" y1="172" x2="195" y2="178" stroke="rgba(148,163,184,0.18)" stroke-width="0.4" data-draw/>
+          <!-- Dashed detail callout circle -->
+          <circle cx="170" cy="215" r="48" stroke="rgba(59,124,192,0.12)" stroke-width="0.75" stroke-dasharray="4 3" data-draw data-length="302"/>
+          <line x1="210" y1="185" x2="265" y2="140" stroke="rgba(59,124,192,0.12)" stroke-width="0.5" stroke-dasharray="3 2" data-draw/>
+          <circle cx="265" cy="140" r="2" stroke="rgba(59,124,192,0.12)" stroke-width="0.5" data-draw data-length="13"/>
+          <!-- Cross reference points -->
+          <line x1="37" y1="60" x2="43" y2="60" stroke="rgba(148,163,184,0.25)" stroke-width="0.5" data-draw/>
+          <line x1="40" y1="57" x2="40" y2="63" stroke="rgba(148,163,184,0.25)" stroke-width="0.5" data-draw/>
+          <line x1="357" y1="340" x2="363" y2="340" stroke="rgba(148,163,184,0.25)" stroke-width="0.5" data-draw/>
+          <line x1="360" y1="337" x2="360" y2="343" stroke="rgba(148,163,184,0.25)" stroke-width="0.5" data-draw/>
+          <line x1="297" y1="170" x2="303" y2="170" stroke="rgba(148,163,184,0.25)" stroke-width="0.5" data-draw/>
+          <line x1="300" y1="167" x2="300" y2="173" stroke="rgba(148,163,184,0.25)" stroke-width="0.5" data-draw/>
+          <line x1="87" y1="300" x2="93" y2="300" stroke="rgba(148,163,184,0.25)" stroke-width="0.5" data-draw/>
+          <line x1="90" y1="297" x2="90" y2="303" stroke="rgba(148,163,184,0.25)" stroke-width="0.5" data-draw/>
+          <!-- Column markers -->
+          <circle cx="140" cy="180" r="2.5" stroke="rgba(59,124,192,0.18)" stroke-width="0.75" fill="rgba(59,124,192,0.06)" data-draw data-length="16"/>
+          <circle cx="240" cy="260" r="2.5" stroke="rgba(59,124,192,0.18)" stroke-width="0.75" fill="rgba(59,124,192,0.06)" data-draw data-length="16"/>
+          <circle cx="240" cy="120" r="2.5" stroke="rgba(59,124,192,0.18)" stroke-width="0.75" fill="rgba(59,124,192,0.06)" data-draw data-length="16"/>
+          <!-- Grid alignment ticks -->
+          <line x1="40" y1="0" x2="40" y2="20" stroke="rgba(148,163,184,0.08)" stroke-width="0.5" data-draw/>
+          <line x1="140" y1="0" x2="140" y2="20" stroke="rgba(148,163,184,0.08)" stroke-width="0.5" data-draw/>
+          <line x1="240" y1="0" x2="240" y2="20" stroke="rgba(148,163,184,0.08)" stroke-width="0.5" data-draw/>
+          <line x1="360" y1="0" x2="360" y2="20" stroke="rgba(148,163,184,0.08)" stroke-width="0.5" data-draw/>
+          <!-- North arrow -->
+          <line x1="20" y1="480" x2="20" y2="450" stroke="rgba(148,163,184,0.25)" stroke-width="0.75" data-draw/>
+          <polyline points="15,458 20,450 25,458" stroke="rgba(148,163,184,0.25)" stroke-width="0.75" data-draw/>
+          <text x="20" y="445" class="bp-label" opacity="0" font-size="7" fill="rgba(148,163,184,0.35)" font-family="monospace" text-anchor="middle">N</text>
+          <!-- Text labels -->
+          <text x="80" y="130" class="bp-label" opacity="0" font-size="7" fill="rgba(148,163,184,0.35)" font-family="monospace" text-anchor="middle">FOUNDATION</text>
+          <text x="170" y="330" class="bp-label" opacity="0" font-size="7" fill="rgba(148,163,184,0.35)" font-family="monospace" text-anchor="middle">LEVEL 2</text>
+          <text x="270" y="138" class="bp-label" opacity="0" font-size="6.5" fill="rgba(148,163,184,0.35)" font-family="monospace" text-anchor="start">DETAIL A</text>
+          <text x="320" y="275" class="bp-label" opacity="0" font-size="6.5" fill="rgba(148,163,184,0.35)" font-family="monospace" text-anchor="middle">SECTION B-B</text>
+          <text x="60" y="215" class="bp-label" opacity="0" font-size="6" fill="rgba(148,163,184,0.3)" font-family="monospace" text-anchor="middle">A3.1</text>
+          <text x="330" y="195" class="bp-label" opacity="0" font-size="6" fill="rgba(148,163,184,0.3)" font-family="monospace" text-anchor="middle">A2.4</text>
+          <!-- Scale bar -->
+          <line x1="40" y1="490" x2="120" y2="490" stroke="rgba(148,163,184,0.2)" stroke-width="0.75" data-draw/>
+          <line x1="40" y1="487" x2="40" y2="493" stroke="rgba(148,163,184,0.2)" stroke-width="0.75" data-draw/>
+          <line x1="80" y1="487" x2="80" y2="493" stroke="rgba(148,163,184,0.2)" stroke-width="0.75" data-draw/>
+          <line x1="120" y1="487" x2="120" y2="493" stroke="rgba(148,163,184,0.2)" stroke-width="0.75" data-draw/>
+          <text x="80" y="499" class="bp-label" opacity="0" font-size="5.5" fill="rgba(148,163,184,0.3)" font-family="monospace" text-anchor="middle">SCALE: 1/4" = 1'-0"</text>
+          <!-- Title block -->
+          <rect x="260" y="420" width="130" height="70" stroke="rgba(59,124,192,0.1)" stroke-width="0.5" data-draw data-length="400"/>
+          <line x1="260" y1="445" x2="390" y2="445" stroke="rgba(59,124,192,0.1)" stroke-width="0.5" data-draw/>
+          <line x1="260" y1="465" x2="390" y2="465" stroke="rgba(59,124,192,0.1)" stroke-width="0.5" data-draw/>
+          <text x="325" y="437" class="bp-label" opacity="0" font-size="6.5" fill="rgba(148,163,184,0.3)" font-family="monospace" text-anchor="middle">J.W. DESIGN</text>
+          <text x="325" y="457" class="bp-label" opacity="0" font-size="5.5" fill="rgba(148,163,184,0.25)" font-family="monospace" text-anchor="middle">FLOOR PLAN — A1.0</text>
+          <text x="325" y="482" class="bp-label" opacity="0" font-size="5" fill="rgba(148,163,184,0.2)" font-family="monospace" text-anchor="middle">COMMAND CENTER</text>
+        </svg>
+      </div>
+    </div>
+    <div class="hero-scroll-indicator">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="6 9 12 15 18 9"/></svg>
+    </div>
+  </section>
+
+  <!-- ===== HERO TRANSITION ===== -->
+  <div id="hero-transition">
+    <div class="transition-line"></div>
+    <p class="transition-text">The challenges you know</p>
+  </div>
+
+  <!-- ===== PAIN POINTS ===== -->
+  <section id="pain-points">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2>The Challenges You Know</h2>
+      </div>
+      <div class="pain-grid">
+        <div class="card pain-card reveal reveal-delay-1">
+          <span class="pain-number">01</span>
+          <h3>Four Job Sites. Zero Shared View.</h3>
+          <p>With a 200-room Marriott, the Hotel AVA, a winery, and a mixed-use building running simultaneously, project status lives in different project managers' heads. There's no single dashboard where Derek can see every project's budget health, schedule position, and open issues at a glance.</p>
+        </div>
+        <div class="card pain-card reveal reveal-delay-2">
+          <span class="pain-number">02</span>
+          <h3>Dozens of Subs. One Big Spreadsheet.</h3>
+          <p>JW coordinates dozens of subcontractors across multiple active sites — electrical, plumbing, HVAC, framing, concrete, finish trades. Insurance expirations, schedule conflicts, and RFI responses are tracked through phone calls, emails, and spreadsheets that no one person can keep current.</p>
+        </div>
+        <div class="card pain-card pain-hero reveal reveal-delay-3">
+          <span class="pain-number">03</span>
+          <span class="badge">Core Challenge</span>
+          <h3>Open-Book Budgeting Without the Open Book.</h3>
+          <p>JW promises 'honest open-book budgeting' — it's a core value. But delivering on that promise today means manually exporting spreadsheets into PDF reports and emailing them to clients. By the time the client reads it, the numbers have changed.</p>
+        </div>
+        <div class="card pain-card reveal reveal-delay-4">
+          <span class="pain-number">04</span>
+          <h3>48 Years of Knowledge Walking Out the Door.</h3>
+          <p>Jerry Williams ran 350+ projects with a system that lived in his experience — which subs to trust, which clients need hand-holding, which budget categories always run over on wineries. As Derek takes the lead, that institutional knowledge needs to live in a platform, not a person.</p>
+        </div>
+        <div class="card pain-card reveal reveal-delay-5">
+          <span class="pain-number">05</span>
+          <h3>350 Projects. Zero Reviews.</h3>
+          <p>JW has completed over 350 projects with a high repeat client rate — yet they have zero reviews on BuildZoom, zero on Yelp, and no visible Google review profile. The window to capture a testimonial closes within weeks of project completion.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== VALIDATION ===== -->
+  <section id="validation" class="section-dark">
+    <div class="container">
+      <blockquote class="validation-quote reveal">348 projects completed. Repeat clients who've trusted you for 20+ years. A preconstruction process that competitors can't match. The question isn't whether JW Design &amp; Construction delivers — it's whether your systems reflect the standard you've already set.</blockquote>
+      <div class="validation-divider reveal reveal-delay-1"></div>
+      <p class="label reveal reveal-delay-2" style="color: var(--text-light-muted);">Recognized excellence</p>
+    </div>
+  </section>
+
+  <!-- ===== SOLUTIONS ===== -->
+  <section id="solutions">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="label" style="color: var(--accent);">The Platform</p>
+        <h2>Built Around How You Actually Work</h2>
+      </div>
+      <div class="solutions-grid">
+        <div class="solution-card sol-warm reveal reveal-delay-1">
+          <div class="solution-icon-circle" id="sol-icon-chart"></div>
+          <span class="badge">Core Feature</span>
+          <h3>Live Budget Dashboard</h3>
+          <p>Every dollar tracked by category, in real time. Change orders, contingency draws, and variance alerts visible to your team — and optionally to your client. Your open-book promise, delivered as infrastructure.</p>
+        </div>
+        <div class="solution-card sol-blue reveal reveal-delay-2">
+          <div class="solution-icon-circle" id="sol-icon-network"></div>
+          <h3>Sub Coordination Hub</h3>
+          <p>Every subcontractor across every project — one view. Insurance expirations flagged 60 days out. Schedule conflicts caught before they become delays. RFIs routed and tracked.</p>
+        </div>
+        <div class="solution-card sol-indigo reveal reveal-delay-3">
+          <div class="solution-icon-circle" id="sol-icon-grid"></div>
+          <h3>Central Command Dashboard</h3>
+          <p>Four active projects. Three PMs. One screen. Budget health, schedule status, open change orders, and pending client messages — all visible in a single portfolio view.</p>
+        </div>
+        <div class="solution-card sol-emerald reveal reveal-delay-4">
+          <div class="solution-icon-circle" id="sol-icon-user"></div>
+          <h3>Client Portal</h3>
+          <p>Your clients see their project — progress, budget, photos, milestones, weekly updates — without calling you. Branded to JW Design &amp; Construction. Accessible from any device.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FEATURES ===== -->
+  <section id="features">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="label">Platform Details</p>
+        <h2>Everything under the hood</h2>
+        <p>Five categories of capability, built for how JW actually works.</p>
+      </div>
+      <div class="features-tabs reveal reveal-delay-1">
+        <div class="features-tab-bar" role="tablist">
+          <button class="features-tab-btn active" data-tab="pm" role="tab">Project Management</button>
+          <button class="features-tab-btn" data-tab="portal" role="tab">Client Portal</button>
+          <button class="features-tab-btn" data-tab="field" role="tab">Field Operations</button>
+          <button class="features-tab-btn" data-tab="admin" role="tab">Office &amp; Admin</button>
+          <button class="features-tab-btn" data-tab="intel" role="tab">Intelligence</button>
+        </div>
+        <div class="features-tab-panel active" data-panel="pm">
+          <ul class="features-tab-list">
+            <li class="features-tab-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6"/></svg><span>Portfolio dashboard with real-time status across all active projects</span></li>
+            <li class="features-tab-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6"/></svg><span>Preconstruction-to-construction data continuity (budget estimates carry through)</span></li>
+            <li class="features-tab-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6"/></svg><span>Milestone tracking with automated notifications</span></li>
+            <li class="features-tab-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6"/></svg><span>Change order creation, approval workflows, and audit trail</span></li>
+            <li class="features-tab-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6"/></svg><span>Daily logs and field reporting</span></li>
+          </ul>
+        </div>
+        <div class="features-tab-panel" data-panel="portal">
+          <ul class="features-tab-list">
+            <li class="features-tab-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6"/></svg><span>Real-time budget dashboard by building category — the open-book made visible</span></li>
+            <li class="features-tab-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6"/></svg><span>Progress photos with automatic date/location tagging</span></li>
+            <li class="features-tab-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6"/></svg><span>Milestone timeline with completion tracking</span></li>
+            <li class="features-tab-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6"/></svg><span>Weekly update automation (generated from field data, reviewed before sending)</span></li>
+            <li class="features-tab-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6"/></svg><span>Client messaging with full thread history</span></li>
+          </ul>
+        </div>
+        <div class="features-tab-panel" data-panel="field">
+          <ul class="features-tab-list">
+            <li class="features-tab-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6"/></svg><span>Sub coordination hub with insurance and license tracking</span></li>
+            <li class="features-tab-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6"/></svg><span>Schedule conflict detection across projects</span></li>
+            <li class="features-tab-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6"/></svg><span>RFI routing and response tracking</span></li>
+            <li class="features-tab-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6"/></svg><span>Digital daily logs (weather, labor, equipment, activity)</span></li>
+            <li class="features-tab-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6"/></svg><span>Inspection scheduling and result documentation</span></li>
+          </ul>
+        </div>
+        <div class="features-tab-panel" data-panel="admin">
+          <ul class="features-tab-list">
+            <li class="features-tab-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6"/></svg><span>Document management organized by project, phase, and trade</span></li>
+            <li class="features-tab-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6"/></svg><span>Automated preliminary notices and lien waiver tracking (extends your Levelset workflow)</span></li>
+            <li class="features-tab-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6"/></svg><span>Warranty tracking beyond project completion</span></li>
+            <li class="features-tab-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6"/></svg><span>Contact and vendor database with performance ratings</span></li>
+            <li class="features-tab-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6"/></svg><span>Template library for recurring project types (wineries, hotels, TIs)</span></li>
+          </ul>
+        </div>
+        <div class="features-tab-panel" data-panel="intel">
+          <ul class="features-tab-list">
+            <li class="features-tab-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6"/></svg><span>Budget variance trending across project portfolio</span></li>
+            <li class="features-tab-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6"/></svg><span>Sub performance analytics (on-time, on-budget, issue frequency)</span></li>
+            <li class="features-tab-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6"/></svg><span>Project profitability by type (commercial vs hospitality vs winery)</span></li>
+            <li class="features-tab-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6"/></svg><span>Preconstruction accuracy scoring (estimated vs actual by category)</span></li>
+            <li class="features-tab-item"><svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="4 12.5 9.5 18 20 6"/></svg><span>Client satisfaction tracking and automated review requests</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- investment tiers section removed for now -->
+
+  <!-- ===== CLIENT EXPERIENCE ===== -->
+  <section id="client-experience">
+    <div class="container">
+      <div class="section-header reveal">
+        <p class="label">The Client Experience</p>
+        <h2>What Your Clients Actually See</h2>
+      </div>
+      <div class="ce-grid">
+        <div class="ce-timeline">
+          <div class="ce-step reveal reveal-delay-1">
+            <div class="ce-marker">1</div>
+            <div class="ce-body">
+              <h3>Welcome to Your Project</h3>
+              <p>The client receives a branded portal invitation — personalized to their project with JW Design &amp; Construction's logo, their project name, and a welcome message from their PM.</p>
+            </div>
+          </div>
+          <div class="ce-step ce-active reveal reveal-delay-2">
+            <div class="ce-marker">2</div>
+            <div class="ce-body">
+              <h3>Your Budget, Live</h3>
+              <p>The open book is always open. Clients see their budget by category — what's been spent, what's committed, what's remaining — updated in real time.</p>
+            </div>
+          </div>
+          <div class="ce-step reveal reveal-delay-3">
+            <div class="ce-marker">3</div>
+            <div class="ce-body">
+              <h3>See the Progress</h3>
+              <p>Photos uploaded from the field appear in the client's gallery automatically. Organized by date and phase.</p>
+            </div>
+          </div>
+          <div class="ce-step reveal reveal-delay-4">
+            <div class="ce-marker">4</div>
+            <div class="ce-body">
+              <h3>Weekly Updates Without the Work</h3>
+              <p>The system generates a weekly summary from field data. The PM reviews it in two minutes and sends.</p>
+            </div>
+          </div>
+          <div class="ce-step reveal reveal-delay-5">
+            <div class="ce-marker">5</div>
+            <div class="ce-body">
+              <h3>Milestones That Matter</h3>
+              <p>Key moments are flagged and celebrated — foundation poured, framing complete, final inspection passed. At completion, an automated review request captures satisfaction.</p>
+            </div>
+          </div>
+        </div>
+        <div class="desktop-only">
+          <div class="ce-phone-mockup reveal">
+            <div class="ce-phone-frame">
+              <div class="ce-phone-screen">
+                <div class="ce-phone-status-bar">
+                  <span class="ce-phone-status-time">9:41</span>
+                  <div class="ce-phone-dynamic-island"></div>
+                  <span class="ce-phone-status-icons">
+                    <svg width="14" height="11" viewBox="0 0 14 11" fill="currentColor"><rect x="0" y="4" width="2.5" height="7" rx="0.5"/><rect x="3.5" y="2.5" width="2.5" height="8.5" rx="0.5"/><rect x="7" y="1" width="2.5" height="10" rx="0.5"/><rect x="10.5" y="0" width="2.5" height="11" rx="0.5"/></svg>
+                    <svg width="15" height="11" viewBox="0 0 15 11" fill="currentColor"><path d="M7.5 2.8C9.3 2.8 10.9 3.5 12.1 4.7L13.5 3.3C11.9 1.7 9.8.8 7.5.8S3.1 1.7 1.5 3.3L2.9 4.7C4.1 3.5 5.7 2.8 7.5 2.8ZM7.5 6.3C8.5 6.3 9.5 6.7 10.2 7.4L11.6 6C10.5 4.9 9.1 4.3 7.5 4.3S4.5 4.9 3.4 6L4.8 7.4C5.5 6.7 6.5 6.3 7.5 6.3ZM9 9.5C9 8.7 8.3 8 7.5 8S6 8.7 6 9.5 6.7 11 7.5 11 9 10.3 9 9.5Z"/></svg>
+                    <svg width="22" height="11" viewBox="0 0 22 11" fill="currentColor"><rect x="0" y="1" width="18" height="9" rx="2" stroke="currentColor" stroke-width="1" fill="none"/><rect x="18.5" y="3.5" width="1.5" height="4" rx="0.5" opacity="0.4"/><rect x="1.5" y="2.5" width="12" height="6" rx="1"/></svg>
+                  </span>
+                </div>
+                <div class="ce-phone-content">
+                  <div class="ce-phone-header">
+                    <div class="ce-phone-header-logo">JW</div>
+                    <div class="ce-phone-header-text">
+                      <div class="ce-phone-header-company">J.W. Design &amp; Construction</div>
+                      <div class="ce-phone-project-name">Adelaida Ridge Winery</div>
+                    </div>
+                  </div>
+
+                  <div class="ce-phone-milestone">
+                    <span class="ce-phone-milestone-dot"></span>
+                    Cladding In Progress
+                  </div>
+
+                  <div class="ce-phone-section-label">Progress</div>
+                  <div class="ce-phone-progress-row">
+                    <svg class="ce-phone-progress-ring" viewBox="0 0 48 48">
+                      <circle class="ce-phone-progress-ring-bg" cx="24" cy="24" r="22"/>
+                      <circle class="ce-phone-progress-ring-fill" cx="24" cy="24" r="22"/>
+                      <text class="ce-phone-progress-pct" x="24" y="24">62%</text>
+                    </svg>
+                    <div class="ce-phone-progress-details">
+                      <div class="ce-phone-progress-phase">Exterior Cladding</div>
+                      <div class="ce-phone-progress-next">Next: Interior Finishes</div>
+                    </div>
+                  </div>
+
+                  <div class="ce-phone-section-label">Recent Photos</div>
+                  <div class="ce-phone-photo-row">
+                    <div class="ce-phone-photo-thumb"></div>
+                    <div class="ce-phone-photo-thumb"></div>
+                    <div class="ce-phone-photo-thumb">
+                      <div class="ce-phone-photo-count">+8</div>
+                    </div>
+                  </div>
+
+                  <div class="ce-phone-section-label">Budget</div>
+                  <div class="ce-phone-budget-card">
+                    <div class="ce-phone-budget-row">
+                      <span class="ce-phone-budget-category">Foundation</span>
+                      <span class="ce-phone-budget-amount">$86,400</span>
+                    </div>
+                    <div class="ce-phone-budget-bar-track"><div class="ce-phone-budget-bar-fill" style="width: 100%"></div></div>
+                  </div>
+                  <div class="ce-phone-budget-card">
+                    <div class="ce-phone-budget-row">
+                      <span class="ce-phone-budget-category">Framing</span>
+                      <span class="ce-phone-budget-amount">$124,500</span>
+                    </div>
+                    <div class="ce-phone-budget-bar-track"><div class="ce-phone-budget-bar-fill" style="width: 85%"></div></div>
+                  </div>
+                  <div class="ce-phone-budget-card">
+                    <div class="ce-phone-budget-row">
+                      <span class="ce-phone-budget-category">Cladding</span>
+                      <span class="ce-phone-budget-amount">$67,200</span>
+                    </div>
+                    <div class="ce-phone-budget-bar-track"><div class="ce-phone-budget-bar-fill" style="width: 40%"></div></div>
+                  </div>
+                  <div class="ce-phone-budget-total">
+                    <span class="ce-phone-budget-total-label">Total</span>
+                    <span class="ce-phone-budget-total-amount">$278,100</span>
+                  </div>
+                </div>
+
+                <div class="ce-phone-nav">
+                  <div class="ce-phone-nav-item active">
+                    <svg class="ce-phone-nav-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2L2 8.5V17a1 1 0 001 1h4v-5h6v5h4a1 1 0 001-1V8.5L10 2z"/></svg>
+                    Home
+                  </div>
+                  <div class="ce-phone-nav-item">
+                    <svg class="ce-phone-nav-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M4 4h4v4H4V4zm0 6h4v4H4v-4zm6-6h4v4h-4V4zm6 0h0v4h-4V4h4zm-6 6h4v4h-4v-4zm6 0h0v4h-4v-4h4z" opacity="0.4"/></svg>
+                    Budget
+                  </div>
+                  <div class="ce-phone-nav-item">
+                    <svg class="ce-phone-nav-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M2 4a2 2 0 012-2h12a2 2 0 012 2v8a2 2 0 01-2 2H6l-4 4V4z" opacity="0.4"/></svg>
+                    Messages
+                  </div>
+                  <div class="ce-phone-nav-item">
+                    <svg class="ce-phone-nav-icon" viewBox="0 0 20 20" fill="currentColor"><path d="M4 3a2 2 0 00-2 2v2h20V5a2 2 0 00-2-2H4zm16 6H2v6a2 2 0 002 2h12a2 2 0 002-2V9z" opacity="0.4"/></svg>
+                    Photos
+                  </div>
+                </div>
+                <div class="ce-phone-home-indicator"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ce-pwa-callout reveal reveal-delay-6">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18.01"/></svg>
+        <p><strong>Works as an app on any phone.</strong> No download required.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SECURITY ===== -->
+  <!-- security section removed -->
+
+  <!-- ===== ROI STATS ===== -->
+  <section id="roi-stats" class="section-dark">
+    <div class="container">
+      <div class="section-header reveal" style="text-align: center;">
+        <p class="label" style="color: var(--accent-warm);">The Impact</p>
+        <h2 style="font-family: var(--font-display);">The Numbers That Matter</h2>
+      </div>
+      <div class="roi-row reveal reveal-delay-1">
+        <div class="roi-stat">
+          <span class="stat-number" data-target="20">0</span>
+          <span class="stat-unit">hrs / week</span>
+          <span class="stat-desc">Saved on manual reporting</span>
+        </div>
+        <div class="roi-divider desktop-only"></div>
+        <div class="roi-stat">
+          <span class="stat-number" data-target="100" data-suffix="%">0</span>
+          <span class="stat-unit">coverage</span>
+          <span class="stat-desc">Sub insurance tracked automatically</span>
+        </div>
+        <div class="roi-divider desktop-only"></div>
+        <div class="roi-stat">
+          <span class="stat-number">All</span>
+          <span class="stat-unit">projects</span>
+          <span class="stat-desc">Viewable in one dashboard</span>
+        </div>
+        <div class="roi-divider desktop-only"></div>
+        <div class="roi-stat">
+          <span class="stat-number" data-target="3">0</span>
+          <span class="stat-unit">minutes</span>
+          <span class="stat-desc">To approve a change order</span>
+        </div>
+        <div class="roi-divider desktop-only"></div>
+        <div class="roi-stat">
+          <span class="stat-number" data-target="48">0</span>
+          <span class="stat-unit">years</span>
+          <span class="stat-desc">Of knowledge captured</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TIMELINE ===== -->
+  <section id="timeline">
+    <div class="container">
+      <div class="section-header reveal" style="text-align: center;">
+        <p class="label">Implementation</p>
+        <h2>Live in 8 Weeks</h2>
+      </div>
+      <div class="timeline-track">
+        <div class="timeline-line"><div class="timeline-progress"></div></div>
+        <div class="timeline-nodes">
+          <div class="phase-node">
+            <div class="phase-circle"><span>1</span></div>
+            <h3>Discovery &amp; Setup</h3>
+            <p class="phase-time">Week 1–2</p>
+            <p>Map JW's current workflows. Import active projects. Configure JW-branded portal.</p>
+          </div>
+          <div class="phase-node">
+            <div class="phase-circle"><span>2</span></div>
+            <h3>Internal Launch</h3>
+            <p class="phase-time">Week 3–4</p>
+            <p>Team uses dashboard on one project. Chris validates budget reporting.</p>
+          </div>
+          <div class="phase-node">
+            <div class="phase-circle"><span>3</span></div>
+            <h3>Client Portal Pilot</h3>
+            <p class="phase-time">Week 5–6</p>
+            <p>Launch portal with a trusted client. Budget, photos, updates go live.</p>
+          </div>
+          <div class="phase-node">
+            <div class="phase-circle"><span>4</span></div>
+            <h3>Full Rollout</h3>
+            <p class="phase-time">Week 7–8</p>
+            <p>All projects live. Sub hub portfolio-wide. Review requests on. Debrief with Derek and Chris.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section id="cta" class="section-dark">
+    <div class="container">
+      <h2 class="reveal">From Concept to Warranty<span class="accent-period">.</span><br>Now With the Infrastructure to Prove It.</h2>
+      <p class="reveal reveal-delay-1">See how the Command Center brings JW Design &amp; Construction's open-book commitment to life — for your team and your clients.</p>
+      <div class="btn-group reveal reveal-delay-2">
+        <a href="#" class="btn-primary">Schedule a Walkthrough</a>
+        <a href="#" class="btn-secondary">View Live Demo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer id="footer" class="section-dark">
+    <div class="container">
+      <p class="footer-main">Prepared by Pinecrest AI for J.W. Design &amp; Construction &nbsp;|&nbsp; Confidential</p>
+      <p class="footer-copy">&copy; 2026 Pinecrest AI</p>
+    </div>
+  </footer>
+
+  <script>
+    // ===== CLONE SVG TEMPLATES =====
+    function cloneSVG(templateId, targetEl, cssClass) {
+      const tmpl = document.getElementById(templateId);
+      if (!tmpl || !targetEl) return;
+      const clone = tmpl.content.cloneNode(true);
+      const svg = clone.querySelector('svg');
+      if (svg && cssClass) svg.classList.add(cssClass);
+      targetEl.appendChild(clone);
+    }
+
+    // Nav + Footer logos
+    cloneSVG('logo', document.querySelector('.nav-logo'), 'logo-light');
+
+    // Solution card icons
+    const iconMap = {
+      'sol-icon-chart': 'icon-chart-bar',
+      'sol-icon-network': 'icon-network',
+      'sol-icon-grid': 'icon-grid-layout',
+      'sol-icon-user': 'icon-user-window'
+    };
+
+    // Note: icon templates aren't in the DOM since we embedded them inline.
+    // Create the SVG icons directly instead.
+    function createIcon(paths, target) {
+      if (!target) return;
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('viewBox', '0 0 24 24');
+      svg.setAttribute('fill', 'none');
+      svg.setAttribute('stroke', 'currentColor');
+      svg.setAttribute('stroke-width', '1.5');
+      svg.setAttribute('stroke-linecap', 'round');
+      svg.setAttribute('stroke-linejoin', 'round');
+      svg.innerHTML = paths;
+      target.appendChild(svg);
+    }
+
+    // Chart bar icon
+    createIcon(
+      '<rect x="3" y="12" width="4" height="9" rx="0.5"/><rect x="10" y="6" width="4" height="15" rx="0.5"/><rect x="17" y="3" width="4" height="18" rx="0.5"/>',
+      document.getElementById('sol-icon-chart')
+    );
+
+    // Network icon
+    createIcon(
+      '<circle cx="12" cy="5" r="2.5"/><circle cx="5" cy="19" r="2.5"/><circle cx="19" cy="19" r="2.5"/><line x1="12" y1="7.5" x2="5" y2="16.5"/><line x1="12" y1="7.5" x2="19" y2="16.5"/><line x1="7.5" y1="19" x2="16.5" y2="19"/>',
+      document.getElementById('sol-icon-network')
+    );
+
+    // Grid layout icon
+    createIcon(
+      '<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>',
+      document.getElementById('sol-icon-grid')
+    );
+
+    // User window icon
+    createIcon(
+      '<rect x="2" y="3" width="20" height="18" rx="2"/><line x1="2" y1="8" x2="22" y2="8"/><circle cx="12" cy="13.5" r="2.5"/><path d="M7.5 21c0-2.5 2-4.5 4.5-4.5s4.5 2 4.5 4.5"/>',
+      document.getElementById('sol-icon-user')
+    );
+
+
+    // ===== NAVBAR SCROLL =====
+    window.addEventListener('scroll', () => {
+      document.getElementById('navbar').classList.toggle('nav-scrolled', window.scrollY > 80);
+    }, { passive: true });
+
+    // ===== SCROLL INDICATOR FADE =====
+    const scrollIndicator = document.querySelector('.hero-scroll-indicator');
+    if (scrollIndicator) {
+      window.addEventListener('scroll', () => {
+        scrollIndicator.style.opacity = window.scrollY > 100 ? '0' : '1';
+      }, { passive: true });
+    }
+
+    // ===== BLUEPRINT LINE-DRAW ANIMATION =====
+    setTimeout(() => {
+      document.querySelectorAll('#hero-blueprint [data-draw]').forEach((el, i) => {
+        const len = el.getTotalLength
+          ? el.getTotalLength()
+          : parseFloat(el.dataset.length) || 0;
+        if (!len) return;
+        el.style.strokeDasharray = len;
+        el.style.strokeDashoffset = len;
+        el.style.transition = `stroke-dashoffset 2s ease-out ${0.6 + i * 0.06}s`;
+        requestAnimationFrame(() => { el.style.strokeDashoffset = '0'; });
+      });
+      setTimeout(() => {
+        document.querySelectorAll('.bp-label').forEach((el, i) => {
+          el.style.transition = `opacity 500ms ease-out ${i * 60}ms`;
+          el.style.opacity = '1';
+        });
+      }, 2800);
+    }, 100);
+
+    // ===== INTERSECTION OBSERVER — REVEAL ANIMATIONS =====
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // ===== ROI COUNTER ANIMATION =====
+    const statsSection = document.getElementById('roi-stats');
+    const statsObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          document.querySelectorAll('[data-target]').forEach(el => {
+            const target = parseInt(el.dataset.target);
+            const suffix = el.dataset.suffix || '';
+            const start = performance.now();
+            el.textContent = '0';
+            function tick(now) {
+              const p = Math.min((now - start) / 2200, 1);
+              const eased = 1 - Math.pow(1 - p, 3);
+              el.textContent = Math.round(eased * target) + suffix;
+              if (p < 1) requestAnimationFrame(tick);
+              else { el.textContent = target + suffix; el.classList.add('counter-done'); }
+            }
+            requestAnimationFrame(tick);
+          });
+          statsObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    if (statsSection) statsObs.observe(statsSection);
+
+    // Print: set final counter values
+    window.addEventListener('beforeprint', () => {
+      document.querySelectorAll('[data-target]').forEach(el => {
+        el.textContent = el.dataset.target + (el.dataset.suffix || '');
+      });
+    });
+
+    // ===== TIMELINE DRAW ANIMATION =====
+    const tlObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const progress = e.target.querySelector('.timeline-progress');
+          if (progress) progress.style.width = '100%';
+          e.target.querySelectorAll('.phase-node').forEach((n, i) => {
+            setTimeout(() => n.classList.add('visible'), 300 + i * 300);
+          });
+          tlObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    const tlTrack = document.querySelector('.timeline-track');
+    if (tlTrack) tlObs.observe(tlTrack);
+
+    // ===== FEATURES TAB SWITCHING =====
+    document.querySelectorAll('.features-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.features-tab-btn').forEach(b => b.classList.remove('active'));
+        document.querySelectorAll('.features-tab-panel').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+        document.querySelector(`[data-panel="${btn.dataset.tab}"]`).classList.add('active');
+      });
+    });
+
+    // Re-observe any reveals not yet registered
+    document.querySelectorAll('.reveal:not(.visible)').forEach(el => revealObserver.observe(el));
+  </script>
+
+</body>
+</html>
