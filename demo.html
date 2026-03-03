@@ -14,57 +14,106 @@
 
 /* ===== CSS CUSTOM PROPERTIES ===== */
 :root {
-  /* BACKGROUNDS */
-  --bg-primary: #FAFBFC;
-  --bg-secondary: #F1F3F6;
-  --bg-card: #FFFFFF;
-  --bg-hover: #ECEEF2;
-  --bg-input: #FFFFFF;
-  --bg-sidebar: #141C26;
-  --bg-sidebar-hover: #1E2A38;
-  --bg-sidebar-active: rgba(59, 124, 192, 0.12);
-  --bg-banner: #2C5F8A;
+  /* ── Primitive Color Tokens ── */
+  --slate-50: #F8FAFC;
+  --slate-100: #F1F5F9;
+  --slate-200: #E2E8F0;
+  --slate-300: #CBD5E1;
+  --slate-400: #94A3B8;
+  --slate-500: #64748B;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1E293B;
+  --slate-900: #0F172A;
+  --slate-950: #020617;
 
-  /* TEXT */
-  --text-primary: #0F172A;
-  --text-secondary: #475569;
-  --text-muted: #94A3B8;
-  --text-sidebar: #94A3B8;
+  --blue-50: #EFF6FF;
+  --blue-100: #DBEAFE;
+  --blue-400: #60A5FA;
+  --blue-500: #2C5F8A;
+  --blue-600: #1E4A6E;
+  --blue-700: #163A57;
+  --blue-900: #0C2340;
+
+  --emerald-50: #ECFDF5;
+  --emerald-500: #059669;
+  --amber-50: #FFFBEB;
+  --amber-500: #D97706;
+  --red-50: #FEF2F2;
+  --red-500: #DC2626;
+
+  /* ── Semantic Surface Tokens ── */
+  --surface-primary: var(--slate-50);
+  --surface-secondary: var(--slate-100);
+  --surface-card: #FFFFFF;
+  --surface-elevated: #FFFFFF;
+  --surface-overlay: rgba(15, 23, 42, 0.6);
+  --surface-sidebar: var(--slate-900);
+  --surface-sidebar-hover: var(--slate-800);
+  --surface-sidebar-active: rgba(44, 95, 138, 0.15);
+
+  /* ── Semantic Text Tokens ── */
+  --text-primary: var(--slate-900);
+  --text-secondary: var(--slate-600);
+  --text-tertiary: var(--slate-400);
+  --text-inverse: #FFFFFF;
+  --text-sidebar: var(--slate-400);
   --text-sidebar-active: #FFFFFF;
 
-  /* ACCENT — JW's steel blue */
-  --accent: #2C5F8A;
-  --accent-hover: #1E4A6E;
-  --accent-light: rgba(44, 95, 138, 0.08);
-  --accent-lighter: rgba(44, 95, 138, 0.04);
+  /* ── Accent ── */
+  --accent: var(--blue-500);
+  --accent-hover: var(--blue-600);
+  --accent-subtle: var(--blue-50);
+  --accent-muted: rgba(44, 95, 138, 0.08);
 
-  /* STATUS */
-  --success: #059669;
-  --success-light: rgba(5, 150, 105, 0.08);
-  --warning: #D97706;
-  --warning-light: rgba(217, 119, 6, 0.08);
-  --danger: #DC2626;
-  --danger-light: rgba(220, 38, 38, 0.08);
+  /* ── Border ── */
+  --border-default: var(--slate-200);
+  --border-subtle: var(--slate-100);
+  --border-strong: var(--slate-300);
+  --border-focus: var(--blue-400);
 
-  /* STRUCTURE */
-  --border: #E2E8F0;
-  --border-light: #F1F5F9;
+  /* ── Status ── */
+  --status-success: var(--emerald-500);
+  --status-success-subtle: var(--emerald-50);
+  --status-warning: var(--amber-500);
+  --status-warning-subtle: var(--amber-50);
+  --status-danger: var(--red-500);
+  --status-danger-subtle: var(--red-50);
+
+  /* ── Multi-layer Shadow System ── */
+  --shadow-xs: 0 1px 2px rgba(0,0,0,0.03);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.04), 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-md: 0 2px 4px rgba(0,0,0,0.03), 0 4px 8px rgba(0,0,0,0.04), 0 8px 16px rgba(0,0,0,0.03);
+  --shadow-lg: 0 4px 8px rgba(0,0,0,0.03), 0 8px 16px rgba(0,0,0,0.04), 0 16px 32px rgba(0,0,0,0.06);
+  --shadow-xl: 0 8px 16px rgba(0,0,0,0.04), 0 16px 32px rgba(0,0,0,0.06), 0 24px 48px rgba(0,0,0,0.08);
+  --shadow-focus: 0 0 0 2px var(--surface-card), 0 0 0 4px var(--accent);
+  --shadow-card-hover: 0 4px 12px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.08);
+
+  /* ── Radii ── */
   --radius-xs: 4px;
   --radius-sm: 6px;
   --radius-md: 10px;
   --radius-lg: 14px;
-  --shadow-xs: 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-md: 0 4px 6px rgba(0,0,0,0.04), 0 10px 15px rgba(0,0,0,0.06);
-  --shadow-lg: 0 10px 25px rgba(0,0,0,0.08), 0 4px 10px rgba(0,0,0,0.04);
 
-  /* SIDEBAR */
+  /* ── Layout ── */
   --sidebar-width: 260px;
   --sidebar-collapsed: 64px;
   --banner-height: 36px;
   --header-height: 56px;
 
-  /* TYPOGRAPHY */
+  /* ── Easing & Duration ── */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --duration-instant: 100ms;
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --duration-slow: 400ms;
+  --duration-slower: 600ms;
+  --duration-slowest: 800ms;
+
+  /* ── Typography ── */
   --font-heading: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono', 'SF Mono', 'Consolas', monospace;
@@ -83,7 +132,7 @@ body {
   font-weight: 400;
   line-height: 1.6;
   color: var(--text-secondary);
-  background: var(--bg-primary);
+  background: var(--surface-primary);
   overflow-x: hidden;
 }
 ::selection { background: rgba(44, 95, 138, 0.15); }
@@ -100,7 +149,8 @@ p { margin-bottom: 0; }
 .text-sm { font-size: 0.8125rem; }
 .text-xs { font-size: 0.75rem; }
 .text-mono { font-family: var(--font-mono); font-weight: 500; }
-.text-muted { color: var(--text-muted); }
+.text-muted { color: var(--text-tertiary); }
+.text-tertiary { color: var(--text-tertiary); }
 .text-primary { color: var(--text-primary); }
 .text-accent { color: var(--accent); }
 
@@ -116,8 +166,8 @@ p { margin-bottom: 0; }
   left: 0;
   right: 0;
   height: var(--banner-height);
-  background: var(--bg-banner);
-  color: #FFFFFF;
+  background: var(--accent);
+  color: var(--text-inverse);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -142,13 +192,13 @@ p { margin-bottom: 0; }
   top: var(--banner-height);
   width: var(--sidebar-width);
   height: calc(100vh - var(--banner-height));
-  background: var(--bg-sidebar);
+  background: linear-gradient(180deg, var(--slate-900) 0%, var(--slate-950) 100%);
   z-index: 100;
   display: flex;
   flex-direction: column;
   overflow-y: auto;
   overflow-x: hidden;
-  transition: transform 250ms ease, width 250ms ease;
+  transition: transform var(--duration-normal) var(--ease-smooth), width var(--duration-normal) var(--ease-smooth);
 }
 .sidebar-brand {
   padding: 24px 20px 4px;
@@ -184,23 +234,42 @@ p { margin-bottom: 0; }
   margin: 2px 0;
   border-radius: var(--radius-sm);
   color: var(--text-sidebar);
-  font-family: var(--font-body);
+  font-family: var(--font-heading);
   font-size: 0.8125rem;
   font-weight: 400;
   cursor: pointer;
-  transition: background 150ms ease, color 150ms ease;
+  transition: all var(--duration-fast) var(--ease-smooth);
   border: none;
   background: none;
   width: 100%;
   text-align: left;
+  position: relative;
 }
-.nav-item:hover { background: var(--bg-sidebar-hover); color: #CBD5E1; }
-.nav-item.active { background: var(--bg-sidebar-active); color: var(--text-sidebar-active); font-weight: 500; }
+.nav-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 3px;
+  height: 0;
+  background: var(--accent);
+  border-radius: 0 2px 2px 0;
+  transform: translateY(-50%);
+  transition: height var(--duration-normal) var(--ease-out-expo);
+}
+.nav-item:hover { background: var(--surface-sidebar-hover); color: var(--slate-300); }
+.nav-item.active {
+  background: var(--surface-sidebar-active);
+  color: var(--text-sidebar-active);
+  font-weight: 500;
+}
+.nav-item.active::before { height: 60%; }
+.nav-item.active svg { filter: drop-shadow(0 0 3px rgba(44,95,138,0.4)); }
 .nav-item svg { width: 20px; height: 20px; flex-shrink: 0; stroke-width: 1.5; }
 .nav-item .nav-label { flex: 1; }
 .nav-item .nav-chevron {
   width: 16px; height: 16px;
-  transition: transform 200ms ease;
+  transition: transform var(--duration-fast) var(--ease-smooth);
   opacity: 0.5;
 }
 .nav-item .nav-chevron.expanded { transform: rotate(90deg); }
@@ -209,9 +278,10 @@ p { margin-bottom: 0; }
 .project-subnav {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 300ms ease;
+  opacity: 0;
+  transition: max-height 300ms var(--ease-out-expo), opacity 300ms var(--ease-out-expo);
 }
-.project-subnav.expanded { max-height: 500px; }
+.project-subnav.expanded { max-height: 500px; opacity: 1; }
 .project-subnav-item {
   display: flex;
   align-items: center;
@@ -222,20 +292,20 @@ p { margin-bottom: 0; }
   font-size: 0.8125rem;
   cursor: pointer;
   border-radius: var(--radius-xs);
-  transition: background 150ms ease, opacity 150ms ease;
+  transition: background var(--duration-fast) var(--ease-smooth), opacity var(--duration-fast) var(--ease-smooth);
   border: none;
   background: none;
   width: 100%;
   text-align: left;
   font-family: var(--font-body);
 }
-.project-subnav-item:hover { background: var(--bg-sidebar-hover); opacity: 1; }
+.project-subnav-item:hover { background: var(--surface-sidebar-hover); opacity: 1; }
 .project-subnav-item .status-dot {
   width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
 }
-.project-subnav-item .status-dot.active { background: var(--success); }
+.project-subnav-item .status-dot.active { background: var(--status-success); }
 .project-subnav-item .status-dot.complete { background: var(--accent); }
-.project-subnav-item .status-dot.punch-list { background: var(--warning); }
+.project-subnav-item .status-dot.punch-list { background: var(--status-warning); }
 
 .sidebar-footer {
   padding: 16px 20px;
@@ -252,23 +322,23 @@ p { margin-bottom: 0; }
   left: var(--sidebar-width);
   right: 0;
   height: var(--header-height);
-  background: var(--bg-card);
-  border-bottom: 1px solid var(--border);
+  background: var(--surface-card);
+  border-bottom: none;
   box-shadow: var(--shadow-xs);
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 0 24px;
   z-index: 99;
-  transition: left 250ms ease;
+  transition: left var(--duration-normal) var(--ease-smooth);
 }
 .breadcrumb {
   font-family: var(--font-heading);
   font-size: 0.8125rem;
-  color: var(--text-muted);
+  color: var(--text-tertiary);
 }
 .breadcrumb span { color: var(--text-primary); font-weight: 500; }
-.breadcrumb-sep { margin: 0 8px; color: var(--text-muted); }
+.breadcrumb-sep { margin: 0 8px; color: var(--text-tertiary); }
 .header-actions {
   display: flex;
   align-items: center;
@@ -282,9 +352,16 @@ p { margin-bottom: 0; }
   border-radius: var(--radius-sm);
   color: var(--text-secondary);
   cursor: pointer;
-  transition: background 150ms ease;
+  transition: all var(--duration-fast) var(--ease-out-expo);
 }
-.notification-btn:hover { background: var(--bg-hover); }
+.notification-btn:hover {
+  background: var(--surface-secondary);
+  transform: scale(1.05);
+}
+.notification-btn:active {
+  transform: scale(0.95);
+  transition-duration: 50ms;
+}
 .notification-btn svg { width: 20px; height: 20px; }
 .notification-badge {
   position: absolute;
@@ -293,20 +370,21 @@ p { margin-bottom: 0; }
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: var(--danger);
-  color: #FFFFFF;
+  background: var(--status-danger);
+  color: var(--text-inverse);
   font-size: 0.625rem;
   font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
   line-height: 1;
+  animation: pulse-ring 1.5s var(--ease-smooth) infinite;
 }
 .user-avatar {
   width: 32px;
   height: 32px;
   border-radius: 50%;
-  background: var(--accent-light);
+  background: var(--accent-muted);
   color: var(--accent);
   font-family: var(--font-heading);
   font-size: 0.75rem;
@@ -314,16 +392,24 @@ p { margin-bottom: 0; }
   display: flex;
   align-items: center;
   justify-content: center;
+  cursor: pointer;
+  transition: box-shadow var(--duration-fast) var(--ease-out-expo);
+}
+.user-avatar:hover {
+  box-shadow: 0 0 0 2px var(--accent-subtle);
 }
 .hamburger-btn {
   display: none;
   background: none;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-default);
   padding: 8px;
   border-radius: var(--radius-sm);
   color: var(--text-primary);
   cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out-expo);
 }
+.hamburger-btn:hover { background: var(--surface-secondary); }
+.hamburger-btn:active { transform: scale(0.95); transition-duration: 50ms; }
 .hamburger-btn svg { width: 20px; height: 20px; }
 
 /* Main Content */
@@ -332,6 +418,9 @@ p { margin-bottom: 0; }
   padding-top: calc(var(--banner-height) + var(--header-height));
   min-height: 100vh;
   overflow-y: auto;
+  background: var(--surface-primary);
+  background-image: radial-gradient(circle at 1px 1px, var(--slate-200) 0.5px, transparent 0);
+  background-size: 24px 24px;
 }
 .content-inner {
   max-width: 1200px;
@@ -345,20 +434,29 @@ p { margin-bottom: 0; }
 
 /* ===== CARDS ===== */
 .card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: 24px;
   box-shadow: var(--shadow-sm);
-  transition: box-shadow 200ms ease, transform 200ms ease;
+  transition: transform var(--duration-fast) var(--ease-out-expo),
+              box-shadow var(--duration-fast) var(--ease-out-expo),
+              border-color var(--duration-fast) var(--ease-smooth);
+}
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card-hover);
+}
+.card:active {
+  transform: translateY(0) scale(0.995);
+  transition-duration: 50ms;
 }
 .card.card-clickable:hover {
-  box-shadow: var(--shadow-md);
-  transform: translateY(-1px);
+  box-shadow: var(--shadow-card-hover);
 }
 .card-flat {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: 24px;
 }
@@ -366,8 +464,8 @@ p { margin-bottom: 0; }
 
 /* Metric Cards */
 .metric-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: 20px;
   box-shadow: var(--shadow-sm);
@@ -383,7 +481,7 @@ p { margin-bottom: 0; }
 }
 .metric-card-icon svg { width: 20px; height: 20px; }
 .metric-card-value {
-  font-family: var(--font-heading);
+  font-family: var(--font-mono);
   font-weight: 700;
   font-size: 1.75rem;
   line-height: 1;
@@ -392,7 +490,7 @@ p { margin-bottom: 0; }
 }
 .metric-card-label {
   font-size: 0.8125rem;
-  color: var(--text-muted);
+  color: var(--text-tertiary);
 }
 
 /* ===== BADGES ===== */
@@ -407,14 +505,16 @@ p { margin-bottom: 0; }
   text-transform: uppercase;
   letter-spacing: 0.04em;
   line-height: 1.4;
+  transition: transform var(--duration-instant) var(--ease-out-expo);
 }
-.badge-success { background: var(--success-light); color: var(--success); }
-.badge-warning { background: var(--warning-light); color: var(--warning); }
-.badge-danger { background: var(--danger-light); color: var(--danger); }
-.badge-accent { background: var(--accent-light); color: var(--accent); }
-.badge-muted { background: var(--bg-secondary); color: var(--text-muted); }
-.badge-complete { background: var(--success-light); color: var(--success); }
-.badge-punch-list { background: var(--success-light); color: var(--success); }
+.badge:hover { transform: scale(1.03); }
+.badge-success { background: var(--status-success-subtle); color: var(--status-success); }
+.badge-warning { background: var(--status-warning-subtle); color: var(--status-warning); }
+.badge-danger { background: var(--status-danger-subtle); color: var(--status-danger); }
+.badge-accent { background: var(--accent-muted); color: var(--accent); }
+.badge-muted { background: var(--surface-secondary); color: var(--text-tertiary); }
+.badge-complete { background: var(--status-success-subtle); color: var(--status-success); }
+.badge-punch-list { background: var(--status-success-subtle); color: var(--status-success); }
 
 /* ===== BUTTONS ===== */
 .btn {
@@ -429,38 +529,46 @@ p { margin-bottom: 0; }
   border-radius: var(--radius-sm);
   border: none;
   cursor: pointer;
-  transition: all 150ms ease;
+  transition: all var(--duration-fast) var(--ease-out-expo);
   line-height: 1.4;
+}
+.btn:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+.btn:active {
+  transform: translateY(0) scale(0.98);
+  transition-duration: 50ms;
 }
 .btn-primary {
   background: var(--accent);
-  color: #FFFFFF;
+  color: var(--text-inverse);
 }
 .btn-primary:hover {
   background: var(--accent-hover);
   box-shadow: 0 2px 8px rgba(44, 95, 138, 0.25);
 }
 .btn-secondary {
-  background: #FFFFFF;
+  background: var(--surface-card);
   color: var(--accent);
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-default);
 }
-.btn-secondary:hover { background: var(--bg-hover); }
+.btn-secondary:hover { background: var(--surface-secondary); }
 .btn-ghost {
   background: transparent;
   color: var(--text-secondary);
 }
-.btn-ghost:hover { background: var(--bg-hover); }
+.btn-ghost:hover { background: var(--surface-secondary); }
 .btn-sm { padding: 6px 12px; font-size: 0.75rem; }
-.btn-danger { background: var(--danger); color: #FFFFFF; }
-.btn-danger:hover { background: #B91C1C; }
-.btn-success { background: var(--success); color: #FFFFFF; }
-.btn-success:hover { background: #047857; }
+.btn-danger { background: var(--status-danger); color: var(--text-inverse); }
+.btn-danger:hover { background: var(--status-danger); filter: brightness(0.85); }
+.btn-success { background: var(--status-success); color: var(--text-inverse); }
+.btn-success:hover { background: var(--status-success); filter: brightness(0.85); }
 
 /* ===== PROGRESS BAR ===== */
 .progress-bar {
   height: 6px;
-  background: var(--bg-secondary);
+  background: var(--surface-secondary);
   border-radius: var(--radius-xs);
   overflow: hidden;
 }
@@ -470,16 +578,17 @@ p { margin-bottom: 0; }
   height: 100%;
   background: var(--accent);
   border-radius: var(--radius-xs);
-  transition: width 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: width var(--duration-slowest) var(--ease-out-expo);
+  animation: progressFill var(--duration-slowest) var(--ease-out-expo) both;
 }
-.progress-fill.success { background: var(--success); }
-.progress-fill.warning { background: var(--warning); }
-.progress-fill.danger { background: var(--danger); }
+.progress-fill.success { background: var(--status-success); }
+.progress-fill.warning { background: var(--status-warning); }
+.progress-fill.danger { background: var(--status-danger); }
 
 /* ===== PROGRESS RING ===== */
 .progress-ring-bg {
   fill: none;
-  stroke: var(--bg-secondary);
+  stroke: var(--surface-secondary);
   stroke-width: 6;
 }
 .progress-ring-fill {
@@ -489,10 +598,10 @@ p { margin-bottom: 0; }
   stroke-linecap: round;
   transform: rotate(-90deg);
   transform-origin: center;
-  transition: stroke-dashoffset 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: stroke-dashoffset var(--duration-slowest) var(--ease-out-expo);
 }
 .progress-ring-text {
-  font-family: var(--font-heading);
+  font-family: var(--font-mono);
   font-weight: 700;
   fill: var(--text-primary);
   text-anchor: middle;
@@ -507,23 +616,23 @@ p { margin-bottom: 0; }
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  color: var(--text-muted);
+  color: var(--text-tertiary);
   padding: 10px 16px;
-  border-bottom: 2px solid var(--border);
+  border-bottom: 2px solid var(--border-default);
   text-align: left;
   white-space: nowrap;
 }
 .data-table td {
   padding: 12px 16px;
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-subtle);
   font-size: 0.8125rem;
   color: var(--text-secondary);
   vertical-align: middle;
 }
-.data-table tbody tr { transition: background 150ms ease; }
-.data-table tbody tr:hover { background: var(--bg-hover); }
-.data-table tbody tr:nth-child(even) { background: var(--accent-lighter); }
-.data-table tbody tr:nth-child(even):hover { background: var(--bg-hover); }
+.data-table tbody tr { transition: background var(--duration-instant) var(--ease-smooth); }
+.data-table tbody tr:hover { background: var(--accent-muted); }
+.data-table tbody tr:nth-child(even) { background: var(--accent-muted); }
+.data-table tbody tr:nth-child(even):hover { background: var(--accent-muted); }
 .data-table .text-right { text-align: right; }
 .data-table .text-bold { font-weight: 600; color: var(--text-primary); }
 .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; }
@@ -532,7 +641,7 @@ p { margin-bottom: 0; }
 .tab-bar {
   display: flex;
   gap: 0;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid var(--border-default);
   margin-bottom: 24px;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -542,32 +651,32 @@ p { margin-bottom: 0; }
   font-family: var(--font-heading);
   font-size: 0.8125rem;
   font-weight: 500;
-  color: var(--text-muted);
+  color: var(--text-tertiary);
   background: none;
   border: none;
   cursor: pointer;
   position: relative;
   white-space: nowrap;
-  transition: color 200ms ease;
+  transition: color var(--duration-fast) var(--ease-smooth);
 }
 .tab-btn::after {
   content: '';
   position: absolute;
   bottom: -1px;
-  left: 0;
-  right: 0;
+  left: 50%;
+  width: 0;
   height: 2px;
   background: var(--accent);
-  transform: scaleX(0);
-  transition: transform 200ms ease;
+  transition: all var(--duration-normal) var(--ease-out-expo);
+  transform: translateX(-50%);
 }
 .tab-btn.active { color: var(--text-primary); }
-.tab-btn.active::after { transform: scaleX(1); }
+.tab-btn.active::after { width: 100%; }
 .tab-btn:hover { color: var(--text-primary); }
 
 /* Tab content */
 .tab-content { display: none; }
-.tab-content.active { display: block; animation: fadeIn 200ms ease; }
+.tab-content.active { display: block; animation: fadeIn var(--duration-fast) var(--ease-smooth); }
 
 /* ===== TOAST ===== */
 .toast-container {
@@ -582,8 +691,8 @@ p { margin-bottom: 0; }
   align-items: center;
 }
 .toast {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
+  background: var(--surface-card);
+  border: 1px solid var(--border-default);
   box-shadow: var(--shadow-lg);
   border-radius: var(--radius-md);
   padding: 14px 20px;
@@ -593,15 +702,17 @@ p { margin-bottom: 0; }
   font-size: 0.8125rem;
   color: var(--text-primary);
   opacity: 0;
-  transform: translateY(20px);
-  transition: opacity 300ms ease, transform 300ms ease;
+  transform: translateY(20px) scale(0.95);
+  transition: opacity var(--duration-normal) var(--ease-smooth),
+              transform var(--duration-normal) var(--ease-spring);
   max-width: 520px;
   white-space: normal;
   text-align: center;
 }
-.toast.show { opacity: 1; transform: translateY(0); }
+.toast.show { opacity: 1; transform: translateY(0) scale(1); }
+.toast.fade-out { opacity: 0; transform: translateY(-10px) scale(0.95); }
 .toast-icon { width: 18px; height: 18px; flex-shrink: 0; }
-.toast-success .toast-icon { color: var(--success); }
+.toast-success .toast-icon { color: var(--status-success); }
 .toast-accent .toast-icon { color: var(--accent); }
 
 /* ===== NOTIFICATION DROPDOWN ===== */
@@ -610,8 +721,8 @@ p { margin-bottom: 0; }
   top: calc(100% + 8px);
   right: 0;
   width: 360px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
+  background: var(--surface-card);
+  border: 1px solid var(--border-default);
   box-shadow: var(--shadow-lg);
   border-radius: var(--radius-md);
   max-height: 400px;
@@ -619,10 +730,17 @@ p { margin-bottom: 0; }
   z-index: 200;
   display: none;
 }
-.notification-dropdown.open { display: block; animation: slideDown 200ms ease; }
+.notification-dropdown.open {
+  display: block;
+  transform-origin: top right;
+  animation: scaleIn var(--duration-normal) var(--ease-out-expo);
+}
+.notification-dropdown.open .notification-item {
+  animation: slideInRight 250ms var(--ease-out-expo) both;
+}
 .notification-dropdown-header {
   padding: 14px 16px;
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-subtle);
   font-family: var(--font-heading);
   font-size: 0.8125rem;
   font-weight: 600;
@@ -633,11 +751,11 @@ p { margin-bottom: 0; }
   align-items: flex-start;
   gap: 10px;
   padding: 12px 16px;
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-subtle);
   cursor: pointer;
-  transition: background 150ms ease;
+  transition: background var(--duration-instant) var(--ease-smooth);
 }
-.notification-item:hover { background: var(--bg-hover); }
+.notification-item:hover { background: var(--accent-muted); }
 .notification-item:last-child { border-bottom: none; }
 .notification-dot {
   width: 8px;
@@ -658,7 +776,7 @@ p { margin-bottom: 0; }
   align-items: flex-start;
   gap: 12px;
   padding: 12px 0;
-  border-bottom: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-subtle);
 }
 .feed-item:last-child { border-bottom: none; }
 .feed-dot {
@@ -676,7 +794,7 @@ p { margin-bottom: 0; }
 }
 .feed-time {
   font-size: 0.75rem;
-  color: var(--text-muted);
+  color: var(--text-tertiary);
   white-space: nowrap;
   flex-shrink: 0;
 }
@@ -690,18 +808,24 @@ p { margin-bottom: 0; }
   align-items: flex-start;
   border-left: 4px solid;
   margin-bottom: 12px;
+  transition: transform var(--duration-fast) var(--ease-out-expo),
+              box-shadow var(--duration-fast) var(--ease-out-expo);
+}
+.alert-banner:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
 }
 .alert-banner-warning {
-  background: var(--warning-light);
-  border-left-color: var(--warning);
+  background: var(--status-warning-subtle);
+  border-left-color: var(--status-warning);
 }
 .alert-banner-danger {
-  background: var(--danger-light);
-  border-left-color: var(--danger);
+  background: var(--status-danger-subtle);
+  border-left-color: var(--status-danger);
 }
 .alert-icon { width: 20px; height: 20px; flex-shrink: 0; margin-top: 2px; }
-.alert-banner-warning .alert-icon { color: var(--warning); }
-.alert-banner-danger .alert-icon { color: var(--danger); }
+.alert-banner-warning .alert-icon { color: var(--status-warning); }
+.alert-banner-danger .alert-icon { color: var(--status-danger); }
 .alert-content { flex: 1; }
 .alert-title {
   font-family: var(--font-heading);
@@ -755,21 +879,21 @@ p { margin-bottom: 0; }
 
 /* ===== PROJECT CARD ===== */
 .project-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: 20px;
   box-shadow: var(--shadow-sm);
   cursor: pointer;
-  transition: box-shadow 200ms ease, transform 200ms ease;
+  transition: box-shadow var(--duration-fast) var(--ease-out-expo), transform var(--duration-fast) var(--ease-out-expo);
 }
 .project-card:hover {
-  box-shadow: var(--shadow-md);
+  box-shadow: var(--shadow-card-hover);
   transform: translateY(-2px);
 }
 .project-card.completed {
   opacity: 0.75;
-  background: var(--bg-secondary);
+  background: var(--surface-secondary);
 }
 .project-card-header {
   display: flex;
@@ -787,7 +911,7 @@ p { margin-bottom: 0; }
 }
 .project-card-address {
   font-size: 0.75rem;
-  color: var(--text-muted);
+  color: var(--text-tertiary);
   margin-bottom: 2px;
 }
 .project-card-client {
@@ -810,16 +934,16 @@ p { margin-bottom: 0; }
 }
 .project-card-milestone {
   font-size: 0.75rem;
-  color: var(--text-muted);
+  color: var(--text-tertiary);
 }
-.project-card-milestone.urgent { color: var(--warning); font-weight: 500; }
+.project-card-milestone.urgent { color: var(--status-warning); font-weight: 500; }
 
 /* ===== MILESTONE TIMELINE ===== */
 .milestone-timeline { position: relative; padding-left: 24px; }
 .milestone-item {
   position: relative;
   padding: 12px 0 12px 24px;
-  border-left: 2px solid var(--border);
+  border-left: 2px solid var(--border-default);
 }
 .milestone-item:last-child { border-left-color: transparent; }
 .milestone-item.current { border-left-color: var(--accent); }
@@ -830,20 +954,20 @@ p { margin-bottom: 0; }
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  background: var(--bg-card);
-  border: 2px solid var(--border);
+  background: var(--surface-card);
+  border: 2px solid var(--border-default);
   display: flex;
   align-items: center;
   justify-content: center;
 }
 .milestone-item.complete .milestone-dot {
-  background: var(--success);
-  border-color: var(--success);
+  background: var(--status-success);
+  border-color: var(--status-success);
 }
 .milestone-item.current .milestone-dot {
   background: var(--accent);
   border-color: var(--accent);
-  animation: pulse 2s infinite;
+  animation: pulse-ring 1.5s var(--ease-smooth) infinite;
 }
 .milestone-item.upcoming .milestone-dot {
   border-style: dashed;
@@ -854,11 +978,11 @@ p { margin-bottom: 0; }
   font-weight: 500;
   color: var(--text-primary);
 }
-.milestone-item.upcoming .milestone-name { color: var(--text-muted); }
+.milestone-item.upcoming .milestone-name { color: var(--text-tertiary); }
 .milestone-item.current .milestone-name { color: var(--accent); font-weight: 600; }
 .milestone-date {
   font-size: 0.75rem;
-  color: var(--text-muted);
+  color: var(--text-tertiary);
   margin-top: 2px;
 }
 
@@ -866,18 +990,19 @@ p { margin-bottom: 0; }
 .photo-card {
   border-radius: var(--radius-md);
   overflow: hidden;
-  border: 1px solid var(--border-light);
-  transition: box-shadow 200ms ease, transform 200ms ease;
+  border: 1px solid var(--border-subtle);
+  transition: box-shadow var(--duration-fast) var(--ease-out-expo), transform var(--duration-fast) var(--ease-out-expo);
   cursor: pointer;
 }
-.photo-card:hover { box-shadow: var(--shadow-md); transform: scale(1.02); }
+.photo-card:hover { box-shadow: var(--shadow-card-hover); transform: translateY(-2px) scale(1.01); }
+.photo-card:active { transform: translateY(0) scale(0.99); transition-duration: 50ms; }
 .photo-placeholder {
   height: 200px;
-  background: var(--bg-secondary);
+  background: var(--surface-secondary);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-muted);
+  color: var(--text-tertiary);
 }
 .photo-placeholder svg { width: 32px; height: 32px; opacity: 0.5; }
 .photo-info { padding: 12px 16px; }
@@ -890,12 +1015,12 @@ p { margin-bottom: 0; }
 }
 .photo-meta {
   font-size: 0.75rem;
-  color: var(--text-muted);
+  color: var(--text-tertiary);
 }
 
 /* ===== DOCUMENT FOLDERS ===== */
 .folder-item {
-  border: 1px solid var(--border-light);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   margin-bottom: 8px;
   overflow: hidden;
@@ -906,14 +1031,14 @@ p { margin-bottom: 0; }
   gap: 12px;
   padding: 14px 16px;
   cursor: pointer;
-  transition: background 150ms ease;
+  transition: background var(--duration-fast) var(--ease-smooth);
   background: none;
   border: none;
   width: 100%;
   text-align: left;
   font-family: var(--font-body);
 }
-.folder-header:hover { background: var(--bg-hover); }
+.folder-header:hover { background: var(--accent-muted); }
 .folder-icon { width: 20px; height: 20px; color: var(--accent); flex-shrink: 0; }
 .folder-name {
   flex: 1;
@@ -924,20 +1049,21 @@ p { margin-bottom: 0; }
 }
 .folder-count {
   font-size: 0.75rem;
-  color: var(--text-muted);
+  color: var(--text-tertiary);
 }
 .folder-chevron {
   width: 16px; height: 16px;
-  color: var(--text-muted);
-  transition: transform 200ms ease;
+  color: var(--text-tertiary);
+  transition: transform var(--duration-fast) var(--ease-smooth);
 }
 .folder-item.expanded .folder-chevron { transform: rotate(90deg); }
 .folder-children {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 300ms ease;
+  opacity: 0;
+  transition: max-height 300ms var(--ease-out-expo), opacity 300ms var(--ease-out-expo);
 }
-.folder-item.expanded .folder-children { max-height: 500px; }
+.folder-item.expanded .folder-children { max-height: 500px; opacity: 1; }
 .subfolder-item {
   display: flex;
   align-items: center;
@@ -946,15 +1072,15 @@ p { margin-bottom: 0; }
   font-size: 0.8125rem;
   color: var(--text-secondary);
   cursor: pointer;
-  transition: background 150ms ease;
+  transition: background var(--duration-fast) var(--ease-smooth);
   border: none;
   background: none;
   width: 100%;
   text-align: left;
   font-family: var(--font-body);
 }
-.subfolder-item:hover { background: var(--bg-hover); }
-.subfolder-icon { width: 16px; height: 16px; color: var(--text-muted); flex-shrink: 0; }
+.subfolder-item:hover { background: var(--accent-muted); }
+.subfolder-icon { width: 16px; height: 16px; color: var(--text-tertiary); flex-shrink: 0; }
 
 /* ===== CLIENT PORTAL ===== */
 .client-portal-layout {
@@ -968,8 +1094,8 @@ p { margin-bottom: 0; }
   align-items: center;
   justify-content: space-between;
   padding: 16px 32px;
-  background: var(--bg-card);
-  border-bottom: 1px solid var(--border);
+  background: var(--surface-card);
+  border-bottom: 1px solid var(--border-default);
 }
 .client-portal-brand {
   display: flex;
@@ -984,7 +1110,7 @@ p { margin-bottom: 0; }
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #FFFFFF;
+  color: var(--text-inverse);
   font-family: var(--font-heading);
   font-weight: 700;
   font-size: 0.875rem;
@@ -998,8 +1124,8 @@ p { margin-bottom: 0; }
 .client-portal-nav {
   display: flex;
   gap: 0;
-  border-bottom: 1px solid var(--border);
-  background: var(--bg-card);
+  border-bottom: 1px solid var(--border-default);
+  background: var(--surface-card);
   padding: 0 32px;
   overflow-x: auto;
 }
@@ -1008,31 +1134,31 @@ p { margin-bottom: 0; }
   font-family: var(--font-heading);
   font-size: 0.875rem;
   font-weight: 500;
-  color: var(--text-muted);
+  color: var(--text-tertiary);
   background: none;
   border: none;
   cursor: pointer;
   position: relative;
   white-space: nowrap;
-  transition: color 200ms ease;
+  transition: color var(--duration-fast) var(--ease-smooth);
 }
 .client-tab::after {
   content: '';
   position: absolute;
   bottom: -1px;
-  left: 0;
-  right: 0;
+  left: 50%;
+  width: 0;
   height: 2px;
   background: var(--accent);
-  transform: scaleX(0);
-  transition: transform 200ms ease;
+  transition: all var(--duration-normal) var(--ease-out-expo);
+  transform: translateX(-50%);
 }
 .client-tab.active { color: var(--text-primary); }
-.client-tab.active::after { transform: scaleX(1); }
+.client-tab.active::after { width: 100%; }
 .client-tab:hover { color: var(--text-primary); }
 
 .client-section { padding: 48px 0; }
-.client-section + .client-section { border-top: 1px solid var(--border-light); }
+.client-section + .client-section { border-top: 1px solid var(--border-subtle); }
 .client-section h3 {
   font-size: 1.125rem;
   margin-bottom: 24px;
@@ -1041,7 +1167,7 @@ p { margin-bottom: 0; }
 
 /* Client message bubble */
 .message-bubble {
-  background: var(--bg-secondary);
+  background: var(--surface-secondary);
   border-radius: var(--radius-lg);
   padding: 16px 20px;
   margin-bottom: 16px;
@@ -1055,7 +1181,7 @@ p { margin-bottom: 0; }
 }
 .message-date {
   font-size: 0.75rem;
-  color: var(--text-muted);
+  color: var(--text-tertiary);
   margin-bottom: 8px;
 }
 .message-text {
@@ -1070,14 +1196,14 @@ p { margin-bottom: 0; }
   width: 100%;
   min-height: 80px;
   padding: 12px 16px;
-  border: 1px solid var(--border);
+  border: 1px solid var(--border-default);
   border-radius: var(--radius-md);
   font-family: var(--font-body);
   font-size: 0.9375rem;
   color: var(--text-primary);
-  background: var(--bg-input);
+  background: var(--surface-card);
   resize: vertical;
-  transition: border-color 200ms ease;
+  transition: border-color var(--duration-fast) var(--ease-smooth);
 }
 .reply-textarea:focus { outline: none; border-color: var(--accent); }
 .reply-actions {
@@ -1091,7 +1217,7 @@ p { margin-bottom: 0; }
   margin-bottom: 24px;
 }
 .section-header h2 { margin-bottom: 4px; }
-.section-header p { color: var(--text-muted); font-size: 0.875rem; }
+.section-header p { color: var(--text-tertiary); font-size: 0.875rem; }
 
 /* ===== MOBILE OVERLAY ===== */
 .mobile-overlay {
@@ -1127,14 +1253,18 @@ p { margin-bottom: 0; }
 }
 
 .metric-tile {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: 18px 20px;
   display: flex;
   align-items: center;
   gap: 16px;
-  transition: all 200ms cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--duration-fast) var(--ease-out-expo),
+              box-shadow var(--duration-fast) var(--ease-out-expo),
+              border-color var(--duration-fast) var(--ease-smooth);
   position: relative;
   overflow: hidden;
 }
@@ -1148,11 +1278,16 @@ p { margin-bottom: 0; }
   border-radius: var(--radius-md) var(--radius-md) 0 0;
 }
 .metric-tile:hover {
-  border-color: var(--border);
-  box-shadow: var(--shadow-sm);
+  border-color: var(--border-default);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+.metric-tile:active {
+  transform: translateY(0) scale(0.995);
+  transition-duration: 50ms;
 }
 .metric-tile-accent::before { background: var(--accent); }
-.metric-tile-warning::before { background: var(--warning); }
+.metric-tile-warning::before { background: var(--status-warning); }
 
 .metric-icon {
   width: 40px;
@@ -1163,8 +1298,8 @@ p { margin-bottom: 0; }
   justify-content: center;
   flex-shrink: 0;
 }
-.metric-icon-accent { background: rgba(44, 95, 138, 0.06); color: var(--accent); }
-.metric-icon-warning { background: rgba(217, 119, 6, 0.06); color: var(--warning); }
+.metric-icon-accent { background: var(--accent-muted); color: var(--accent); }
+.metric-icon-warning { background: var(--status-warning-subtle); color: var(--status-warning); }
 
 .metric-text {
   flex: 1;
@@ -1182,13 +1317,12 @@ p { margin-bottom: 0; }
   font-family: var(--font-body);
   font-weight: 400;
   font-size: 0.6875rem;
-  color: var(--text-muted);
+  color: var(--text-tertiary);
   margin-top: 2px;
 }
 
 .metric-spark {
   flex-shrink: 0;
-  opacity: 0.25;
 }
 
 .portfolio-bar {
@@ -1197,7 +1331,7 @@ p { margin-bottom: 0; }
   align-items: center;
   justify-content: space-between;
   padding: 10px 16px;
-  background: linear-gradient(135deg, var(--accent), #1E4A6E);
+  background: linear-gradient(135deg, var(--accent), var(--blue-600));
   border-radius: var(--radius-sm);
   color: white;
 }
@@ -1220,6 +1354,11 @@ p { margin-bottom: 0; }
   flex-direction: column;
   min-height: 0;
   overflow: hidden;
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
 }
 .projects-header {
   display: flex;
@@ -1236,7 +1375,7 @@ p { margin-bottom: 0; }
 }
 .pill-toggle {
   display: flex;
-  background: var(--bg-secondary);
+  background: var(--surface-secondary);
   border-radius: var(--radius-sm);
   padding: 2px;
 }
@@ -1247,14 +1386,14 @@ p { margin-bottom: 0; }
   padding: 4px 12px;
   border: none;
   background: transparent;
-  color: var(--text-muted);
+  color: var(--text-tertiary);
   cursor: pointer;
   border-radius: calc(var(--radius-sm) - 2px);
-  transition: all 150ms ease;
+  transition: all var(--duration-fast) var(--ease-out-expo);
   white-space: nowrap;
 }
 .pill-toggle-option.active {
-  background: var(--bg-card);
+  background: var(--surface-card);
   color: var(--text-primary);
   box-shadow: var(--shadow-sm);
 }
@@ -1266,55 +1405,71 @@ p { margin-bottom: 0; }
 }
 .projects-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 12px;
 }
 
 .project-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-light);
+  background: var(--surface-card);
+  border: 1px solid var(--border-default);
   border-radius: var(--radius-md);
-  padding: 16px 18px;
-  box-shadow: none;
+  padding: 14px 16px;
+  box-shadow: var(--shadow-xs);
   cursor: pointer;
-  transition: all 150ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform var(--duration-fast) var(--ease-out-expo),
+              box-shadow var(--duration-fast) var(--ease-out-expo),
+              border-color var(--duration-fast) var(--ease-smooth);
   display: grid;
   grid-template-rows: auto auto auto;
-  gap: 10px;
+  gap: 8px;
+  min-width: 0;
+  overflow: hidden;
 }
 .project-card:hover {
   border-color: var(--accent);
-  box-shadow: 0 0 0 1px var(--accent), var(--shadow-sm);
-  transform: translateY(-1px);
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-2px);
+}
+.project-card:active {
+  transform: translateY(0) scale(0.995);
+  transition-duration: 50ms;
 }
 .project-card.complete {
   opacity: 0.55;
 }
 .project-card.complete:hover {
   opacity: 0.75;
-  border-color: var(--success);
-  box-shadow: 0 0 0 1px var(--success), var(--shadow-sm);
+  border-color: var(--status-success);
+  box-shadow: var(--shadow-card-hover);
 }
 
-.pc-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.pc-row { display: flex; align-items: center; gap: 8px; min-width: 0; overflow: hidden; }
 .pc-name {
   font-family: var(--font-heading);
   font-weight: 500;
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   color: var(--text-primary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   min-width: 0;
+  flex: 1 1 0;
+}
+.pc-row .badge {
+  flex: 0 0 auto;
+  white-space: nowrap;
+  font-size: 0.5625rem;
+  padding: 2px 8px;
 }
 .pc-address {
   font-family: var(--font-body);
   font-size: 0.6875rem;
-  color: var(--text-muted);
+  color: var(--text-tertiary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   min-width: 0;
+  flex: 1 1 0;
 }
 .pc-health {
   display: flex;
@@ -1323,7 +1478,7 @@ p { margin-bottom: 0; }
   font-size: 0.625rem;
   font-family: var(--font-body);
   white-space: nowrap;
-  flex-shrink: 0;
+  flex: 0 0 auto;
 }
 .pc-health-dot {
   width: 8px;
@@ -1332,31 +1487,31 @@ p { margin-bottom: 0; }
   flex-shrink: 0;
 }
 .pc-progress-track {
-  width: 100px;
+  flex: 0 0 60px;
   height: 4px;
-  background: var(--bg-secondary);
+  background: var(--surface-secondary);
   border-radius: 2px;
   overflow: hidden;
-  flex-shrink: 0;
 }
 .pc-progress-fill {
   height: 100%;
   border-radius: 2px;
-  transition: width 800ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: width var(--duration-slowest) var(--ease-out-expo);
+  animation: progressFill var(--duration-slowest) var(--ease-out-expo) both;
 }
 .pc-pct {
   font-family: var(--font-mono);
   font-weight: 500;
   font-size: 0.6875rem;
-  color: var(--text-muted);
+  color: var(--text-tertiary);
   flex-shrink: 0;
   width: 28px;
   text-align: right;
 }
 .pc-milestone {
   font-family: var(--font-body);
-  font-size: 0.6875rem;
-  color: var(--text-muted);
+  font-size: 0.625rem;
+  color: var(--text-tertiary);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -1370,6 +1525,11 @@ p { margin-bottom: 0; }
   flex-direction: column;
   min-height: 0;
   overflow: hidden;
+  background: var(--surface-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 20px;
+  box-shadow: var(--shadow-sm);
 }
 .activity-header {
   display: flex;
@@ -1403,17 +1563,21 @@ p { margin-bottom: 0; }
   left: 0;
   right: 0;
   height: 40px;
-  background: linear-gradient(transparent, var(--bg-primary));
+  background: linear-gradient(transparent, var(--surface-primary));
   pointer-events: none;
   display: block;
 }
 .feed-item-new {
   display: flex;
   gap: 12px;
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border-light);
+  padding: 12px 4px;
+  margin: 0 -4px;
+  border-bottom: 1px solid var(--border-subtle);
   align-items: flex-start;
+  border-radius: var(--radius-xs);
+  transition: background var(--duration-instant) var(--ease-smooth);
 }
+.feed-item-new:hover { background: var(--accent-muted); }
 .feed-item-new:last-child { border-bottom: none; }
 .feed-dot-new {
   width: 8px;
@@ -1444,39 +1608,223 @@ p { margin-bottom: 0; }
 .feed-time-new {
   font-family: var(--font-body);
   font-size: 0.6875rem;
-  color: var(--text-muted);
+  color: var(--text-tertiary);
   margin-top: 3px;
 }
 
 /* ===== ANIMATIONS ===== */
 @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-@keyframes slideUp {
-  from { transform: translateY(12px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-@keyframes slideDown {
-  from { transform: translateY(-8px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-@keyframes pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(44, 95, 138, 0.4); }
-  50% { box-shadow: 0 0 0 6px rgba(44, 95, 138, 0); }
-}
+@keyframes slideUp { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideDown { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes slideInRight { from { opacity: 0; transform: translateX(-12px); } to { opacity: 1; transform: translateX(0); } }
+@keyframes scaleIn { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+@keyframes pulse-ring { 0% { box-shadow: 0 0 0 0 rgba(44,95,138,0.3); } 70% { box-shadow: 0 0 0 6px rgba(44,95,138,0); } 100% { box-shadow: 0 0 0 0 rgba(44,95,138,0); } }
+@keyframes progressFill { from { width: 0; } }
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
 
-.view-enter { opacity: 0; transform: translateY(8px); }
-.view-enter-active {
+/* ===== SPARKLINES ===== */
+.sparkline-area {
+  opacity: 0.12;
+}
+.sparkline-line {
+  fill: none;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.sparkline-line.animate-draw {
+  animation: sparkDraw 1s var(--ease-out-expo) both;
+}
+@keyframes sparkDraw {
+  from { stroke-dashoffset: var(--spark-length); }
+  to { stroke-dashoffset: 0; }
+}
+
+/* ===== PROJECT CARD WATERMARK ===== */
+.pc-watermark {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 48px;
+  height: 48px;
+  opacity: 0.03;
+  pointer-events: none;
+}
+.project-card { position: relative; overflow: hidden; }
+
+/* ===== BUDGET SUMMARY WIDGET ===== */
+.budget-summary-bar {
+  height: 10px;
+  border-radius: 5px;
+  background: var(--surface-secondary);
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+.budget-summary-fill {
+  height: 100%;
+  border-radius: 5px;
+  background: var(--accent);
+  animation: progressFill var(--duration-slowest) var(--ease-out-expo) both;
+}
+.budget-row-bar {
+  width: 60px;
+  height: 6px;
+  border-radius: 3px;
+  background: var(--surface-secondary);
+  overflow: hidden;
+  display: inline-block;
+  vertical-align: middle;
+}
+.budget-row-fill {
+  height: 100%;
+  border-radius: 3px;
+  animation: progressFill 600ms var(--ease-out-expo) both;
+}
+
+/* Activity feed live pulse */
+.feed-dot-live {
+  animation: pulse-ring 1.5s var(--ease-smooth) infinite;
+}
+
+/* ===== CO-004 CINEMATIC APPROVAL ===== */
+@keyframes co-sweep {
+  from { background-position: -100% 0; }
+  to { background-position: 200% 0; }
+}
+@keyframes co-particle {
+  0% { opacity: 1; transform: translate(0, 0) scale(1); }
+  100% { opacity: 0; transform: translate(var(--px), var(--py)) scale(0); }
+}
+.co-sweep-active {
+  background-image: linear-gradient(90deg, transparent 0%, rgba(34,197,94,0.12) 40%, rgba(34,197,94,0.18) 50%, rgba(34,197,94,0.12) 60%, transparent 100%) !important;
+  background-size: 200% 100%;
+  animation: co-sweep 600ms var(--ease-out-expo) forwards;
+}
+.co-particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--status-success);
+  pointer-events: none;
+  animation: co-particle 800ms var(--ease-out-expo) forwards;
+}
+
+/* ===== CLIENT PORTAL ENTRANCE ===== */
+@keyframes portalFadeIn {
+  from { opacity: 0; transform: scale(1.02); }
+  to { opacity: 1; transform: scale(1); }
+}
+.portal-entrance {
+  animation: portalFadeIn 300ms var(--ease-out-expo) both;
+}
+.portal-white-overlay {
+  position: fixed;
+  inset: 0;
+  background: white;
+  z-index: 999;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--duration-fast) var(--ease-smooth);
+}
+.portal-white-overlay.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.client-ring-glow {
+  filter: drop-shadow(0 0 12px rgba(44,95,138,0.25));
+}
+.weekly-update-letter {
+  border: 1px solid var(--border-default);
+  border-top: 3px solid;
+  border-image: linear-gradient(90deg, var(--accent), var(--blue-400)) 1;
+  border-radius: 0 0 var(--radius-md) var(--radius-md);
+  padding: 32px 36px;
+  background: var(--surface-card);
+}
+.weekly-update-letter .letter-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--border-subtle);
+}
+.weekly-update-letter .letter-header .jw-logo {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--accent);
+}
+.weekly-update-letter .letter-body {
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.85;
+  color: var(--text-secondary);
+}
+.weekly-update-letter .letter-body p {
+  margin-bottom: 16px;
+}
+.weekly-update-letter .letter-body p:last-child {
+  margin-bottom: 0;
+}
+.weekly-update-letter .letter-credit {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-subtle);
+  font-size: 0.8125rem;
+  color: var(--text-tertiary);
+  font-style: italic;
+}
+
+/* ===== REPORTS ANIMATIONS ===== */
+@keyframes barGrow {
+  from { width: 0; }
+}
+@keyframes donutReveal {
+  from { --donut-angle: 0deg; }
+  to { --donut-angle: 360deg; }
+}
+.report-bar-animated {
+  animation: barGrow 600ms var(--ease-out-expo) both;
+}
+.report-card-accent {
+  border-top: 3px solid;
+  border-color: var(--accent);
+}
+.report-card-accent.success { border-color: var(--status-success); }
+
+/* ===== ANIMATE-IN SYSTEM ===== */
+.animate-in {
+  opacity: 0;
+  transform: translateY(12px);
+}
+.animate-in.animated {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 250ms ease, transform 250ms ease;
+  transition: opacity var(--duration-normal) var(--ease-out-expo),
+              transform var(--duration-normal) var(--ease-out-expo);
 }
+.animate-in.animated-scale {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity var(--duration-normal) var(--ease-out-expo),
+              transform var(--duration-normal) var(--ease-spring);
+}
+
+/* View transitions */
+.view-fade-out {
+  opacity: 0;
+  transition: opacity var(--duration-fast) var(--ease-smooth);
+}
+.view-fade-in {
+  animation: slideUp var(--duration-normal) var(--ease-out-expo) both;
+}
+
+/* view transitions handled by .view-fade-out / .view-fade-in + .animate-in */
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 1280px) {
@@ -1528,7 +1876,7 @@ p { margin-bottom: 0; }
   .sidebar-separator { margin: 16px 20px; }
 
   .app-header { left: 0; }
-  .main-content { padding-top: calc(var(--banner-height) + var(--header-height)); }
+  .main-content { margin-left: 0; padding-top: calc(var(--banner-height) + var(--header-height)); }
   .content-inner { padding: 20px 16px; }
   .hamburger-btn { display: block; }
   .project-grid { grid-template-columns: 1fr; }
@@ -1546,7 +1894,7 @@ p { margin-bottom: 0; }
   .metrics-grid { grid-template-columns: repeat(2, 1fr); }
   .report-metrics-grid { grid-template-columns: repeat(2, 1fr); }
   .photo-grid { grid-template-columns: 1fr; }
-  .btn { width: 100%; justify-content: center; }
+  .btn { width: 100%; justify-content: center; min-height: 44px; }
   .card { padding: 16px; }
   .metric-card { padding: 14px; }
   .metric-card-value { font-size: 1.375rem; }
@@ -1558,11 +1906,15 @@ p { margin-bottom: 0; }
   .client-portal-nav { padding: 0 16px; }
   .project-budget-summary { flex-direction: column; gap: 2px !important; }
   .project-budget-summary .budget-sep { display: none; }
-  .metric-tile { padding: 12px 14px; }
+  .metric-tile { padding: 12px 14px; min-height: 44px; }
   .metric-spark { display: none; }
   .portfolio-bar { flex-direction: column; gap: 4px; text-align: center; }
   .portfolio-bar-right { display: none; }
   .dashboard-grid { padding: 16px 12px; gap: 12px; }
+  .tab-btn { min-height: 44px; padding: 12px 16px; }
+  .nav-item { min-height: 44px; }
+  .notification-btn { min-width: 44px; min-height: 44px; }
+  .hamburger-btn { min-width: 44px; min-height: 44px; }
 }
 
 /* ===== PRINT ===== */
@@ -2505,33 +2857,79 @@ let projectListExpanded = false;
 
 // ===== NAVIGATION =====
 function navigateTo(view, projectId, projectTab) {
+  var prevView = currentView;
   currentView = view;
   currentProjectId = projectId || null;
   currentProjectTab = projectTab || 'overview';
   isClientPortal = (view === 'client-portal');
-  renderView();
-  closeMobileSidebar();
+
+  // Special cinematic entrance for client portal
+  if (view === 'client-portal' && prevView !== 'client-portal') {
+    // Create white overlay
+    var overlay = document.createElement('div');
+    overlay.className = 'portal-white-overlay';
+    document.body.appendChild(overlay);
+
+    // Fade current view to white
+    requestAnimationFrame(function() {
+      overlay.classList.add('active');
+    });
+
+    setTimeout(function() {
+      // Now render the portal behind the overlay
+      renderView();
+      closeMobileSidebar();
+
+      // Apply entrance class to portal container
+      var portalContainer = document.querySelector('[data-view-container="client-portal"]');
+      if (portalContainer) {
+        portalContainer.classList.add('portal-entrance');
+        setTimeout(function() {
+          portalContainer.classList.remove('portal-entrance');
+        }, 400);
+      }
+
+      // Hold white for 100ms, then fade out overlay
+      setTimeout(function() {
+        overlay.style.transition = 'opacity 300ms var(--ease-out-expo)';
+        overlay.style.opacity = '0';
+        setTimeout(function() {
+          if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+        }, 300);
+      }, 100);
+    }, 200);
+    return;
+  }
+
+  // Normal transition for other views
+  var prevContainer = document.querySelector('[data-view-container].active-view');
+  if (prevContainer && prevView !== view) {
+    prevContainer.classList.add('view-fade-out');
+    setTimeout(function() {
+      renderView();
+      closeMobileSidebar();
+    }, 150);
+  } else {
+    renderView();
+    closeMobileSidebar();
+  }
 }
 
 function renderView() {
   // Hide all views
   document.querySelectorAll('[data-view-container]').forEach(function(v) {
     v.style.display = 'none';
-    v.classList.remove('active-view');
+    v.classList.remove('active-view', 'view-fade-out', 'view-fade-in');
   });
 
-  // Show current view
+  // Show current view with animation
   var viewName = currentView === 'project-detail' ? 'project-detail' : currentView;
   var target = document.querySelector('[data-view-container="' + viewName + '"]');
   if (target) {
     target.style.display = 'block';
-    target.classList.add('active-view');
-    target.classList.add('view-enter');
-    requestAnimationFrame(function() {
-      target.classList.add('view-enter-active');
-    });
+    target.classList.add('active-view', 'view-fade-in');
     setTimeout(function() {
-      target.classList.remove('view-enter', 'view-enter-active');
+      target.classList.remove('view-fade-in');
     }, 300);
   }
 
@@ -2556,6 +2954,9 @@ function renderView() {
     case 'documents': renderDocuments(); break;
     case 'reports': renderReports(); break;
   }
+
+  // Stagger animate all .animate-in elements in the new view
+  requestAnimationFrame(function() { staggerAnimateIn(); });
 
   // Toggle sidebar/header visibility for client portal
   var sidebar = document.getElementById('sidebar');
@@ -2591,7 +2992,7 @@ function updateBreadcrumb() {
   } else if (currentView === 'project-detail' && currentProjectId) {
     var proj = DEMO_DATA.projects.find(function(p) { return p.id === currentProjectId; });
     var name = proj ? proj.name : currentProjectId;
-    parts.push('<a href="#" onclick="navigateTo(\'dashboard\');return false;" style="color:var(--text-muted)">Dashboard</a>');
+    parts.push('<a href="#" onclick="navigateTo(\'dashboard\');return false;" style="color:var(--text-tertiary)">Dashboard</a>');
     parts.push('<span class="breadcrumb-sep">/</span>');
     parts.push('<span>' + name + '</span>');
     if (currentProjectTab !== 'overview') {
@@ -2599,17 +3000,17 @@ function updateBreadcrumb() {
       parts.push('<span>' + currentProjectTab.charAt(0).toUpperCase() + currentProjectTab.slice(1) + '</span>');
     }
   } else if (currentView === 'subs') {
-    parts.push('<a href="#" onclick="navigateTo(\'dashboard\');return false;" style="color:var(--text-muted)">Dashboard</a>');
+    parts.push('<a href="#" onclick="navigateTo(\'dashboard\');return false;" style="color:var(--text-tertiary)">Dashboard</a>');
     parts.push('<span class="breadcrumb-sep">/</span>');
     parts.push('<span>Sub Coordination Hub</span>');
   } else if (currentView === 'client-portal') {
     parts.push('<span>Client Portal</span>');
   } else if (currentView === 'documents') {
-    parts.push('<a href="#" onclick="navigateTo(\'dashboard\');return false;" style="color:var(--text-muted)">Dashboard</a>');
+    parts.push('<a href="#" onclick="navigateTo(\'dashboard\');return false;" style="color:var(--text-tertiary)">Dashboard</a>');
     parts.push('<span class="breadcrumb-sep">/</span>');
     parts.push('<span>Documents</span>');
   } else if (currentView === 'reports') {
-    parts.push('<a href="#" onclick="navigateTo(\'dashboard\');return false;" style="color:var(--text-muted)">Dashboard</a>');
+    parts.push('<a href="#" onclick="navigateTo(\'dashboard\');return false;" style="color:var(--text-tertiary)">Dashboard</a>');
     parts.push('<span class="breadcrumb-sep">/</span>');
     parts.push('<span>Reports</span>');
   }
@@ -2672,12 +3073,12 @@ function populateNotifications() {
   var container = document.getElementById('notification-list');
   if (!container || typeof DEMO_DATA === 'undefined') return;
   var html = '';
-  DEMO_DATA.notifications.forEach(function(n) {
+  DEMO_DATA.notifications.forEach(function(n, idx) {
     var dotColor = 'var(--accent)';
-    if (n.color === 'danger') dotColor = 'var(--danger)';
-    else if (n.color === 'success') dotColor = 'var(--success)';
-    else if (n.color === 'warning') dotColor = 'var(--warning)';
-    html += '<div class="notification-item">';
+    if (n.color === 'danger') dotColor = 'var(--status-danger)';
+    else if (n.color === 'success') dotColor = 'var(--status-success)';
+    else if (n.color === 'warning') dotColor = 'var(--status-warning)';
+    html += '<div class="notification-item" style="animation-delay:' + (idx * 30) + 'ms">';
     html += '<span class="notification-dot" style="background:' + dotColor + '"></span>';
     html += '<span class="notification-text">' + n.text + '</span>';
     html += '</div>';
@@ -2710,6 +3111,7 @@ function showToast(message, type) {
   });
   setTimeout(function() {
     toast.classList.remove('show');
+    toast.classList.add('fade-out');
     setTimeout(function() { toast.remove(); }, 300);
   }, 3000);
 }
@@ -2762,7 +3164,7 @@ function getBudgetHealthBadge(health) {
 function getStars(rating) {
   var html = '';
   for (var i = 0; i < 5; i++) {
-    html += i < rating ? '<span style="color:var(--warning)">&#9733;</span>' : '<span style="color:var(--border)">&#9733;</span>';
+    html += i < rating ? '<span style="color:var(--status-warning)">&#9733;</span>' : '<span style="color:var(--border-default)">&#9733;</span>';
   }
   return html;
 }
@@ -2780,6 +3182,11 @@ function setProjectFilter(filter) {
     }
   }
   renderProjectCards();
+  // Re-trigger stagger animation for newly rendered cards
+  var gridEl = document.getElementById('project-grid');
+  if (gridEl) {
+    requestAnimationFrame(function() { staggerAnimateIn(gridEl); });
+  }
 }
 
 function renderProjectCards() {
@@ -2796,9 +3203,9 @@ function renderProjectCards() {
     if (dashboardFilter === 'active' && isComplete) continue;
 
     var completeClass = isComplete ? ' complete' : '';
-    var progressColor = isComplete ? 'var(--success)' : 'var(--accent)';
+    var progressColor = isComplete ? 'var(--status-success)' : 'var(--accent)';
 
-    var healthColor = p.budgetHealth === 'on-track' ? 'var(--success)' : p.budgetHealth === 'watch' ? 'var(--warning)' : 'var(--danger)';
+    var healthColor = p.budgetHealth === 'on-track' ? 'var(--status-success)' : p.budgetHealth === 'watch' ? 'var(--status-warning)' : 'var(--status-danger)';
     var healthLabel = p.budgetHealth === 'on-track' ? 'On Track' : p.budgetHealth === 'watch' ? 'Watch' : 'Over';
 
     var milestoneText = '';
@@ -2809,12 +3216,12 @@ function renderProjectCards() {
       if (mName.length > 20) mName = mName.substring(0, 20) + '...';
       milestoneText = mName + ' \u2014 ' + p.daysToMilestone + 'd';
     }
-    var milestoneStyle = (!isComplete && p.daysToMilestone !== null && p.daysToMilestone <= 5) ? 'color:var(--warning);font-weight:600' : '';
+    var milestoneStyle = (!isComplete && p.daysToMilestone !== null && p.daysToMilestone <= 5) ? 'color:var(--status-warning);font-weight:600' : '';
 
     var shortAddr = p.address;
     if (shortAddr.length > 40) shortAddr = shortAddr.substring(0, 40) + '...';
 
-    ghtml += '<div class="project-card' + completeClass + '" data-id="' + p.id + '" onclick="navigateTo(\'project-detail\',\'' + p.id + '\')">';
+    ghtml += '<div class="project-card animate-in' + completeClass + '" data-id="' + p.id + '" onclick="navigateTo(\'project-detail\',\'' + p.id + '\')">';
 
     ghtml += '<div class="pc-row">';
     ghtml += '<span class="pc-name">' + p.name + '</span>';
@@ -2835,6 +3242,22 @@ function renderProjectCards() {
     ghtml += '<span class="pc-milestone" style="' + milestoneStyle + '">' + milestoneText + '</span>';
     ghtml += '</div>';
 
+    // Watermark icon by project type
+    var wmIcon = '';
+    var ptype = (p.type || '').toLowerCase();
+    if (ptype.indexOf('winery') >= 0 || ptype.indexOf('tasting') >= 0) {
+      wmIcon = '<svg class="pc-watermark" viewBox="0 0 24 24" fill="currentColor"><path d="M6 2l6 6 6-6v10a6 6 0 0 1-12 0V2z"/><line x1="12" y1="18" x2="12" y2="22" stroke="currentColor" stroke-width="2"/><line x1="8" y1="22" x2="16" y2="22" stroke="currentColor" stroke-width="2"/></svg>';
+    } else if (ptype.indexOf('retail') >= 0 || ptype.indexOf('grocery') >= 0 || ptype.indexOf('market') >= 0) {
+      wmIcon = '<svg class="pc-watermark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>';
+    } else if (ptype.indexOf('mixed') >= 0 || ptype.indexOf('commercial') >= 0) {
+      wmIcon = '<svg class="pc-watermark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="6" x2="9" y2="6.01"/><line x1="15" y1="6" x2="15" y2="6.01"/><line x1="9" y1="10" x2="9" y2="10.01"/><line x1="15" y1="10" x2="15" y2="10.01"/><line x1="9" y1="14" x2="9" y2="14.01"/><line x1="15" y1="14" x2="15" y2="14.01"/><path d="M9 18h6"/></svg>';
+    } else if (ptype.indexOf('residential') >= 0) {
+      wmIcon = '<svg class="pc-watermark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>';
+    } else if (ptype.indexOf('hospitality') >= 0 || ptype.indexOf('hotel') >= 0) {
+      wmIcon = '<svg class="pc-watermark" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"/><path d="M2 8h18a2 2 0 012 2v10"/><path d="M2 17h20"/><path d="M6 8v9"/></svg>';
+    }
+    if (wmIcon) ghtml += wmIcon;
+
     ghtml += '</div>';
   }
 
@@ -2851,32 +3274,32 @@ function renderDashboard() {
       {
         value: metrics.activeProjects, label: 'Active Projects', color: 'accent',
         icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>',
-        spark: '<svg class="metric-spark" width="48" height="20" viewBox="0 0 48 20"><polyline points="0,15 8,12 16,14 24,8 32,10 40,5 48,7" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+        spark: '<svg class="metric-spark" width="60" height="24" viewBox="0 0 60 24" style="flex-shrink:0"><defs><linearGradient id="spark-4609" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--accent)" stop-opacity="0.12"/><stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/></linearGradient></defs><polygon points="2.0,14.0 11.3,12.0 20.7,13.0 30.0,10.0 39.3,11.0 48.7,8.0 58.0,9.0 58.0,22.0 2.0,22.0" fill="url(#spark-4609)"/><polyline class="sparkline-line animate-draw" points="2.0,14.0 11.3,12.0 20.7,13.0 30.0,10.0 39.3,11.0 48.7,8.0 58.0,9.0" stroke="var(--accent)" style="stroke-dasharray:57.3;stroke-dashoffset:57.3;--spark-length:57.3"/></svg>'
       },
       {
         value: metrics.openChangeOrders, label: 'Open Change Orders', color: 'warning',
         icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>',
-        spark: '<svg class="metric-spark" width="48" height="20" viewBox="0 0 48 20"><polyline points="0,10 8,12 16,8 24,14 32,11 40,13 48,9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+        spark: '<svg class="metric-spark" width="60" height="24" viewBox="0 0 60 24" style="flex-shrink:0"><defs><linearGradient id="spark-4084" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--status-warning)" stop-opacity="0.12"/><stop offset="100%" stop-color="var(--status-warning)" stop-opacity="0"/></linearGradient></defs><polygon points="2.0,16.0 11.3,12.0 20.7,14.0 30.0,10.0 39.3,16.0 48.7,14.0 58.0,12.0 58.0,22.0 2.0,22.0" fill="url(#spark-4084)"/><polyline class="sparkline-line animate-draw" points="2.0,16.0 11.3,12.0 20.7,14.0 30.0,10.0 39.3,16.0 48.7,14.0 58.0,12.0" stroke="var(--status-warning)" style="stroke-dasharray:60.0;stroke-dashoffset:60.0;--spark-length:60.0"/></svg>'
       },
       {
         value: metrics.portfolioVariance.value, label: 'Budget Variance', color: 'warning',
         icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>',
-        spark: '<svg class="metric-spark" width="48" height="20" viewBox="0 0 48 20"><polyline points="0,16 8,14 16,15 24,10 32,12 40,6 48,8" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+        spark: '<svg class="metric-spark" width="60" height="24" viewBox="0 0 60 24" style="flex-shrink:0"><defs><linearGradient id="spark-5797" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--status-warning)" stop-opacity="0.12"/><stop offset="100%" stop-color="var(--status-warning)" stop-opacity="0"/></linearGradient></defs><polygon points="2.0,18.0 11.3,17.0 20.7,16.0 30.0,18.0 39.3,19.0 48.7,18.0 58.0,16.0 58.0,22.0 2.0,22.0" fill="url(#spark-5797)"/><polyline class="sparkline-line animate-draw" points="2.0,18.0 11.3,17.0 20.7,16.0 30.0,18.0 39.3,19.0 48.7,18.0 58.0,16.0" stroke="var(--status-warning)" style="stroke-dasharray:56.6;stroke-dashoffset:56.6;--spark-length:56.6"/></svg>'
       },
       {
         value: metrics.messagesPending, label: 'Messages Pending', color: 'accent',
         icon: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>',
-        spark: '<svg class="metric-spark" width="48" height="20" viewBox="0 0 48 20"><polyline points="0,12 8,10 16,13 24,9 32,11 40,7 48,10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+        spark: '<svg class="metric-spark" width="60" height="24" viewBox="0 0 60 24" style="flex-shrink:0"><defs><linearGradient id="spark-216" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="var(--accent)" stop-opacity="0.12"/><stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/></linearGradient></defs><polygon points="2.0,10.0 11.3,14.0 20.7,12.0 30.0,16.0 39.3,12.0 48.7,16.0 58.0,14.0 58.0,22.0 2.0,22.0" fill="url(#spark-216)"/><polyline class="sparkline-line animate-draw" points="2.0,10.0 11.3,14.0 20.7,12.0 30.0,16.0 39.3,12.0 48.7,16.0 58.0,14.0" stroke="var(--accent)" style="stroke-dasharray:59.7;stroke-dashoffset:59.7;--spark-length:59.7"/></svg>'
       }
     ];
 
     var mhtml = '';
     for (var i = 0; i < tiles.length; i++) {
       var t = tiles[i];
-      mhtml += '<div class="metric-tile metric-tile-' + t.color + '">';
+      mhtml += '<div class="metric-tile metric-tile-' + t.color + ' animate-in">';
       mhtml += '<div class="metric-icon metric-icon-' + t.color + '">' + t.icon + '</div>';
       mhtml += '<div class="metric-text">';
-      mhtml += '<div class="metric-number">' + t.value + '</div>';
+      mhtml += '<div class="metric-number" data-animate-target="' + t.value + '">' + t.value + '</div>';
       mhtml += '<div class="metric-label">' + t.label + '</div>';
       mhtml += '</div>';
       mhtml += t.spark;
@@ -2888,8 +3311,34 @@ function renderDashboard() {
   // === PORTFOLIO BAR ===
   var barEl = document.getElementById('portfolio-bar');
   if (barEl) {
-    barEl.innerHTML = '<span class="portfolio-bar-left">Total Portfolio: $92.7M across 7 projects</span>' +
-      '<span class="portfolio-bar-right">Active: $12.7M &nbsp;|&nbsp; Completed: $81.9M &nbsp;|&nbsp; Warranty: 2 projects</span>';
+    barEl.classList.add('animate-in');
+    barEl.innerHTML = '<span class="portfolio-bar-left">Total Portfolio: <span id="portfolio-total" data-animate-target="92.7">$0M</span> across 7 projects</span>' +
+      '<span class="portfolio-bar-right">Active: <span id="portfolio-active" data-animate-target="12.7">$0M</span> &nbsp;|&nbsp; Completed: $81.9M &nbsp;|&nbsp; Warranty: 2 projects</span>';
+    // Animate the count-up numbers after stagger completes
+    setTimeout(function() {
+      var totalEl = document.getElementById('portfolio-total');
+      var activeEl = document.getElementById('portfolio-active');
+      if (totalEl && !totalEl.getAttribute('data-animated')) {
+        totalEl.setAttribute('data-animated', 'true');
+        var startT = performance.now();
+        (function frameT(now) {
+          var p = Math.min((now - startT) / 1200, 1);
+          var e = 1 - Math.pow(1 - p, 4);
+          totalEl.textContent = '$' + (92.7 * e).toFixed(1) + 'M';
+          if (p < 1) requestAnimationFrame(frameT);
+        })(performance.now());
+      }
+      if (activeEl && !activeEl.getAttribute('data-animated')) {
+        activeEl.setAttribute('data-animated', 'true');
+        var startA = performance.now();
+        (function frameA(now) {
+          var p = Math.min((now - startA) / 1200, 1);
+          var e = 1 - Math.pow(1 - p, 4);
+          activeEl.textContent = '$' + (12.7 * e).toFixed(1) + 'M';
+          if (p < 1) requestAnimationFrame(frameA);
+        })(performance.now());
+      }
+    }, 300);
   }
 
   // === FILTER TOGGLE ===
@@ -2906,11 +3355,11 @@ function renderDashboard() {
   var feedEl = document.getElementById('activity-feed');
   if (feedEl) {
     var feed = DEMO_DATA.activityFeed;
-    var colorMap = { warning: 'var(--warning)', accent: 'var(--accent)', success: 'var(--success)', muted: 'var(--text-muted)' };
+    var colorMap = { warning: 'var(--status-warning)', accent: 'var(--accent)', success: 'var(--status-success)', muted: 'var(--text-tertiary)' };
     var fhtml = '';
     for (var f = 0; f < feed.length; f++) {
       var item = feed[f];
-      var dotColor = colorMap[item.color] || 'var(--text-muted)';
+      var dotColor = colorMap[item.color] || 'var(--text-tertiary)';
 
       var text = item.text
         .replace(/Adelaida Ridge Winery/g, '<strong>Adelaida Ridge Winery</strong>')
@@ -2921,8 +3370,9 @@ function renderDashboard() {
         .replace(/Steven Ferrara/g, '<strong>Steven Ferrara</strong>')
         .replace(/\$[\d,]+/g, '<span class="mono">$&</span>');
 
-      fhtml += '<div class="feed-item-new">';
-      fhtml += '<div class="feed-dot-new" style="background:' + dotColor + '"></div>';
+      var liveClass = (f === 0) ? ' feed-dot-live' : '';
+      fhtml += '<div class="feed-item-new animate-in">';
+      fhtml += '<div class="feed-dot-new' + liveClass + '" style="background:' + dotColor + '"></div>';
       fhtml += '<div class="feed-content">';
       fhtml += '<div class="feed-text-new">' + text + '</div>';
       fhtml += '<div class="feed-time-new">' + item.time + '</div>';
@@ -2932,21 +3382,8 @@ function renderDashboard() {
     feedEl.innerHTML = fhtml;
   }
 
-  // Trigger stagger animation on project cards
-  setTimeout(function() {
-    var cards = document.querySelectorAll('#project-grid .project-card');
-    for (var c = 0; c < cards.length; c++) {
-      (function(card, index) {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(8px)';
-        setTimeout(function() {
-          card.style.transition = 'all 350ms cubic-bezier(0.16, 1, 0.3, 1)';
-          card.style.opacity = card.classList.contains('complete') ? '0.55' : '1';
-          card.style.transform = 'translateY(0)';
-        }, 80 + index * 50);
-      })(cards[c], c);
-    }
-  }, 10);
+  // Trigger stagger animation on all animate-in elements
+  requestAnimationFrame(function() { staggerAnimateIn(); });
 }
 function renderProjectDetail() {
   var proj = DEMO_DATA.projects.find(function(p) { return p.id === currentProjectId; });
@@ -2957,7 +3394,7 @@ function renderProjectDetail() {
   // === 1. HEADER ===
   var headerEl = document.getElementById('project-detail-header');
   var headerHTML = '';
-  headerHTML += '<a href="#" onclick="navigateTo(\'dashboard\');return false;" style="color:var(--text-muted);text-decoration:none;font-size:0.875rem;display:inline-flex;align-items:center;gap:6px;margin-bottom:16px">&larr; Dashboard</a>';
+  headerHTML += '<a href="#" onclick="navigateTo(\'dashboard\');return false;" style="color:var(--text-tertiary);text-decoration:none;font-size:0.875rem;display:inline-flex;align-items:center;gap:6px;margin-bottom:16px">&larr; Dashboard</a>';
   headerHTML += '<h2 style="font-family:var(--font-heading);font-weight:700;margin-bottom:4px">' + proj.name + '</h2>';
   headerHTML += '<p style="color:var(--text-secondary);font-size:0.875rem;margin-bottom:12px">' + proj.address + ' &middot; ' + proj.client + '</p>';
   headerHTML += '<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px">' + getStatusBadge(proj.status) + ' ' + getBudgetHealthBadge(proj.budgetHealth);
@@ -2967,12 +3404,12 @@ function renderProjectDetail() {
     headerHTML += ' <span class="badge badge-success" style="font-size:0.75rem">Completed ' + cdStr + '</span>';
   }
   headerHTML += '</div>';
-  var progressBarColor = proj.progress === 100 ? 'var(--success)' : 'var(--accent)';
-  headerHTML += '<div style="height:8px;border-radius:4px;background:var(--border);margin:16px 0 8px;max-width:600px">';
-  headerHTML += '<div style="height:100%;border-radius:4px;background:' + progressBarColor + ';width:' + proj.progress + '%;transition:width 0.6s ease"></div>';
+  var progressBarColor = proj.progress === 100 ? 'var(--status-success)' : 'var(--accent)';
+  headerHTML += '<div style="height:8px;border-radius:4px;background:var(--border-default);margin:16px 0 8px;max-width:600px">';
+  headerHTML += '<div style="height:100%;border-radius:4px;background:' + progressBarColor + ';width:' + proj.progress + '%;transition:width var(--duration-slower) var(--ease-out-expo)"></div>';
   headerHTML += '</div>';
-  headerHTML += '<p style="color:var(--text-muted);font-size:0.8125rem;margin-bottom:8px">' + proj.progress + '% Complete</p>';
-  headerHTML += '<div class="project-budget-summary" style="color:var(--text-secondary);font-size:0.8125rem;display:flex;flex-wrap:wrap;gap:4px 12px"><span>Contract: ' + formatCurrencyFull(proj.budget.revised) + '</span><span class="budget-sep" style="color:var(--text-muted)">|</span><span>Spent: ' + formatCurrencyFull(proj.budget.spent) + '</span><span class="budget-sep" style="color:var(--text-muted)">|</span><span>Remaining: ' + formatCurrencyFull(proj.budget.remaining) + '</span></div>';
+  headerHTML += '<p style="color:var(--text-tertiary);font-size:0.8125rem;margin-bottom:8px">' + proj.progress + '% Complete</p>';
+  headerHTML += '<div class="project-budget-summary" style="color:var(--text-secondary);font-size:0.8125rem;font-family:var(--font-mono);display:flex;flex-wrap:wrap;gap:4px 12px"><span>Contract: ' + formatCurrencyFull(proj.budget.revised) + '</span><span class="budget-sep" style="color:var(--text-tertiary)">|</span><span>Spent: ' + formatCurrencyFull(proj.budget.spent) + '</span><span class="budget-sep" style="color:var(--text-tertiary)">|</span><span>Remaining: ' + formatCurrencyFull(proj.budget.remaining) + '</span></div>';
   headerEl.innerHTML = headerHTML;
 
   // === 2. TABS ===
@@ -2985,11 +3422,11 @@ function renderProjectDetail() {
     { key: 'changeOrders', label: 'Change Orders' },
     { key: 'subs', label: 'Subs' }
   ];
-  var tabsHTML = '<div style="display:flex;gap:0;border-bottom:1px solid var(--border);margin-bottom:24px">';
+  var tabsHTML = '<div style="display:flex;gap:0;border-bottom:1px solid var(--border-default);margin-bottom:24px">';
   tabs.forEach(function(tab) {
     var isActive = (currentProjectTab === tab.key);
-    var colorStyle = isActive ? 'color:var(--text-primary);border-bottom:3px solid var(--accent);font-weight:600' : 'color:var(--text-muted);border-bottom:3px solid transparent';
-    tabsHTML += '<button onclick="currentProjectTab=\'' + tab.key + '\';renderProjectDetail()" style="background:none;border:none;padding:12px 20px;cursor:pointer;font-family:var(--font-heading);font-size:0.875rem;font-weight:500;transition:all 0.2s;' + colorStyle + '" onmouseover="if(currentProjectTab!==\'' + tab.key + '\')this.style.color=\'var(--text-secondary)\'" onmouseout="if(currentProjectTab!==\'' + tab.key + '\')this.style.color=\'var(--text-muted)\'">' + tab.label + '</button>';
+    var colorStyle = isActive ? 'color:var(--text-primary);border-bottom:3px solid var(--accent);font-weight:600' : 'color:var(--text-tertiary);border-bottom:3px solid transparent';
+    tabsHTML += '<button onclick="currentProjectTab=\'' + tab.key + '\';renderProjectDetail()" style="background:none;border:none;padding:12px 20px;cursor:pointer;font-family:var(--font-heading);font-size:0.875rem;font-weight:500;transition:all var(--duration-fast) var(--ease-smooth);' + colorStyle + '" onmouseover="if(currentProjectTab!==\'' + tab.key + '\')this.style.color=\'var(--text-secondary)\'" onmouseout="if(currentProjectTab!==\'' + tab.key + '\')this.style.color=\'var(--text-tertiary)\'">' + tab.label + '</button>';
   });
   tabsHTML += '</div>';
   tabsEl.innerHTML = tabsHTML;
@@ -3012,20 +3449,20 @@ function renderOverviewTab(proj) {
 
   var circumference = 2 * Math.PI * 52;
   var offset = circumference * (1 - proj.progress / 100);
-  var ringStroke = proj.progress === 100 ? 'var(--success)' : 'var(--accent)';
+  var ringStroke = proj.progress === 100 ? 'var(--status-success)' : 'var(--accent)';
 
   // Progress ring SVG
   var ringHTML = '<svg width="120" height="120" viewBox="0 0 120 120">' +
-    '<circle cx="60" cy="60" r="52" fill="none" stroke="var(--border)" stroke-width="8"/>' +
+    '<circle cx="60" cy="60" r="52" fill="none" stroke="var(--border-default)" stroke-width="8"/>' +
     '<circle cx="60" cy="60" r="52" fill="none" stroke="' + ringStroke + '" stroke-width="8" ' +
-    'stroke-dasharray="' + circumference.toFixed(2) + '" stroke-dashoffset="' + offset.toFixed(2) + '" ' +
-    'stroke-linecap="round" transform="rotate(-90 60 60)" style="transition:stroke-dashoffset 1s ease"/>' +
-    '<text x="60" y="55" text-anchor="middle" font-family="var(--font-mono)" font-size="28" font-weight="700" fill="var(--text-primary)">' + proj.progress + '%</text>' +
-    '<text x="60" y="75" text-anchor="middle" font-family="var(--font-body)" font-size="11" fill="var(--text-muted)">Complete</text>' +
+    'stroke-dasharray="' + circumference.toFixed(2) + '" stroke-dashoffset="' + circumference.toFixed(2) + '" ' +
+    'stroke-linecap="round" transform="rotate(-90 60 60)" data-ring-target="' + proj.progress + '"/>' +
+    '<text x="60" y="55" text-anchor="middle" font-family="var(--font-mono)" font-size="28" font-weight="700" fill="var(--text-primary)" data-ring-number>0%</text>' +
+    '<text x="60" y="75" text-anchor="middle" font-family="var(--font-body)" font-size="11" fill="var(--text-tertiary)">Complete</text>' +
     '</svg>';
 
   // === Full two-column layout for ALL projects ===
-  var html = '<div id="project-overview" style="display:grid;grid-template-columns:3fr 2fr;gap:24px">';
+  var html = '<div id="project-overview" class="animate-in" style="display:grid;grid-template-columns:3fr 2fr;gap:24px">';
 
   // LEFT COLUMN (60%)
   html += '<div>';
@@ -3035,7 +3472,7 @@ function renderOverviewTab(proj) {
 
   // Phase + completion
   html += '<p style="color:var(--text-secondary);font-weight:500;margin-bottom:6px">' + proj.currentPhase + '</p>';
-  html += '<p style="color:var(--text-muted);font-size:0.8125rem;margin-bottom:24px">Est. Completion: ' + formatDate(proj.estCompletion) + '</p>';
+  html += '<p style="color:var(--text-tertiary);font-size:0.8125rem;margin-bottom:24px">Est. Completion: ' + formatDate(proj.estCompletion) + '</p>';
 
   // Weekly update card
   var weeklyHeading = proj.progress === 100 ? 'Project Completion Summary' : 'Weekly Update &mdash; Week of February 17, 2026';
@@ -3051,15 +3488,15 @@ function renderOverviewTab(proj) {
   if (detail.clientMessage) {
     html += '<div class="card" style="padding:24px;margin-top:16px">';
     html += '<h4 style="font-weight:600;margin-bottom:12px">Latest Client Message</h4>';
-    html += '<div style="background:var(--bg-secondary);border-radius:var(--radius-md);padding:16px;margin-bottom:12px">';
+    html += '<div style="background:var(--surface-secondary);border-radius:var(--radius-md);padding:16px;margin-bottom:12px">';
     html += '<div style="display:flex;justify-content:space-between;margin-bottom:8px">';
     html += '<span style="font-weight:600;color:var(--text-primary)">' + detail.clientMessage.from + '</span>';
-    html += '<span style="color:var(--text-muted);font-size:0.8125rem">' + detail.clientMessage.date + '</span>';
+    html += '<span style="color:var(--text-tertiary);font-size:0.8125rem">' + detail.clientMessage.date + '</span>';
     html += '</div>';
     html += '<p style="color:var(--text-secondary);line-height:1.6">' + detail.clientMessage.text + '</p>';
     html += '</div>';
     html += '<div style="display:flex;gap:8px">';
-    html += '<input type="text" placeholder="Reply to ' + detail.clientMessage.from.split(' ')[0] + '..." style="flex:1;padding:10px 14px;border:1px solid var(--border);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:0.875rem">';
+    html += '<input type="text" placeholder="Reply to ' + detail.clientMessage.from.split(' ')[0] + '..." style="flex:1;padding:10px 14px;border:1px solid var(--border-default);border-radius:var(--radius-sm);font-family:var(--font-body);font-size:0.875rem">';
     html += '<button class="btn btn-primary" onclick="sendClientReply(\'' + detail.clientMessage.from.replace(/'/g, "\\'") + '\')">Send</button>';
     html += '</div>';
     html += '</div>';
@@ -3072,21 +3509,21 @@ function renderOverviewTab(proj) {
 
   // Next milestone / project status card
   if (proj.progress === 100) {
-    html += '<div class="card" style="padding:20px;border-left:4px solid var(--success);margin-bottom:16px">';
-    html += '<p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px">Project Status</p>';
+    html += '<div class="card" style="padding:20px;border-left:4px solid var(--status-success);margin-bottom:16px">';
+    html += '<p style="font-size:0.75rem;color:var(--text-tertiary);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px">Project Status</p>';
     html += '<p style="font-weight:600;margin-bottom:6px;color:var(--text-primary)">Complete &mdash; In Warranty</p>';
     if (detail.completedDate) {
       var cd2 = new Date(detail.completedDate + 'T00:00:00');
       var cdStr2 = cd2.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
-      html += '<p style="color:var(--text-muted);font-size:0.875rem">Completed ' + cdStr2 + '</p>';
+      html += '<p style="color:var(--text-tertiary);font-size:0.875rem">Completed ' + cdStr2 + '</p>';
     }
     html += '</div>';
   } else {
-    var milestoneColor = (proj.daysToMilestone !== null && proj.daysToMilestone <= 5) ? 'var(--warning)' : 'var(--text-muted)';
+    var milestoneColor = (proj.daysToMilestone !== null && proj.daysToMilestone <= 5) ? 'var(--status-warning)' : 'var(--text-tertiary)';
     html += '<div class="card" style="padding:20px;border-left:4px solid var(--accent);margin-bottom:16px">';
-    html += '<p style="font-size:0.75rem;color:var(--text-muted);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px">Next Milestone</p>';
+    html += '<p style="font-size:0.75rem;color:var(--text-tertiary);margin-bottom:4px;text-transform:uppercase;letter-spacing:0.5px">Next Milestone</p>';
     html += '<p style="font-weight:600;margin-bottom:6px;color:var(--text-primary)">' + proj.nextMilestone + '</p>';
-    html += '<p style="color:' + milestoneColor + ';font-size:0.875rem;font-weight:600">' + proj.daysToMilestone + ' days</p>';
+    html += '<p style="color:' + milestoneColor + ';font-size:0.875rem;font-weight:600;font-family:var(--font-mono)">' + proj.daysToMilestone + ' days</p>';
     html += '</div>';
   }
 
@@ -3094,10 +3531,10 @@ function renderOverviewTab(proj) {
   html += '<div class="card" style="padding:20px;margin-bottom:16px">';
   html += '<h4 style="font-weight:600;margin-bottom:12px">Project Team</h4>';
   detail.team.forEach(function(member, i) {
-    if (i > 0) html += '<div style="border-top:1px solid var(--border-light);margin:8px 0"></div>';
+    if (i > 0) html += '<div style="border-top:1px solid var(--border-subtle);margin:8px 0"></div>';
     html += '<div style="display:flex;justify-content:space-between;align-items:center;padding:4px 0">';
     html += '<span style="font-weight:500;color:var(--text-primary)">' + member.name + '</span>';
-    html += '<span style="color:var(--text-muted);font-size:0.8125rem">' + member.role + '</span>';
+    html += '<span style="color:var(--text-tertiary);font-size:0.8125rem">' + member.role + '</span>';
     html += '</div>';
   });
   html += '</div>';
@@ -3110,9 +3547,9 @@ function renderOverviewTab(proj) {
 
   html += '<div class="card" style="padding:20px">';
   html += '<h4 style="font-weight:600;margin-bottom:12px">Quick Stats</h4>';
-  html += '<p style="color:var(--text-secondary);margin-bottom:8px"><span style="font-weight:600">' + completeMilestones + ' of ' + totalMilestones + '</span> milestones complete</p>';
-  html += '<p style="color:var(--text-secondary);margin-bottom:8px"><span style="font-weight:600">' + approvedCOs + '</span> approved change orders</p>';
-  html += '<p style="color:var(--text-secondary)"><span style="font-weight:600">' + subCount + '</span> subs assigned</p>';
+  html += '<p style="color:var(--text-secondary);margin-bottom:8px"><span style="font-weight:600;font-family:var(--font-mono)">' + completeMilestones + ' of ' + totalMilestones + '</span> milestones complete</p>';
+  html += '<p style="color:var(--text-secondary);margin-bottom:8px"><span style="font-weight:600;font-family:var(--font-mono)">' + approvedCOs + '</span> approved change orders</p>';
+  html += '<p style="color:var(--text-secondary)"><span style="font-weight:600;font-family:var(--font-mono)">' + subCount + '</span> subs assigned</p>';
   html += '</div>';
 
   html += '</div>'; // end right column
@@ -3134,29 +3571,57 @@ function renderBudgetTab(proj) {
 
   // Calculate totals dynamically
   var totalBudget = 0, totalSpent = 0, totalRemaining = 0;
+  var countComplete = 0, countInProgress = 0, countRemaining = 0;
   for (var j = 0; j < cats.length; j++) {
     totalBudget += cats[j].budget;
     totalSpent += cats[j].spent;
     totalRemaining += cats[j].remaining;
+    if (cats[j].status === 'Complete') countComplete++;
+    else if (cats[j].status === 'In Progress') countInProgress++;
+    else countRemaining++;
   }
+
+  var spentPct = totalBudget > 0 ? Math.round(totalSpent / totalBudget * 100) : 0;
+
+  // === BUDGET SUMMARY WIDGET ===
+  var summaryHtml = '<div class="card animate-in" style="margin-bottom:20px;padding:20px 24px">';
+  summaryHtml += '<div class="budget-summary-bar"><div class="budget-summary-fill" style="width:' + spentPct + '%"></div></div>';
+  summaryHtml += '<div style="font-family:var(--font-mono);font-size:0.875rem;color:var(--text-secondary);margin-bottom:8px">';
+  summaryHtml += formatCurrencyFull(totalSpent) + ' spent &middot; ' + formatCurrencyFull(totalRemaining) + ' remaining &middot; of ' + formatCurrencyFull(proj.budget.revised) + ' revised contract';
+  summaryHtml += '</div>';
+  summaryHtml += '<div style="display:flex;gap:16px;font-size:0.8125rem;color:var(--text-tertiary)">';
+  summaryHtml += '<span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--status-success);margin-right:6px;vertical-align:middle"></span>' + countComplete + ' Complete</span>';
+  summaryHtml += '<span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-right:6px;vertical-align:middle"></span>' + countInProgress + ' In Progress</span>';
+  summaryHtml += '<span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--border-default);margin-right:6px;vertical-align:middle"></span>' + countRemaining + ' Remaining</span>';
+  summaryHtml += '</div></div>';
 
   var rowsHtml = '';
 
   for (var i = 0; i < cats.length; i++) {
     var cat = cats[i];
-    var bgStyle = (i % 2 === 1) ? 'background:var(--bg-secondary);' : '';
+    var bgStyle = (i % 2 === 1) ? 'background:var(--surface-secondary);' : '';
     var remainingStyle = 'text-align:right;font-family:var(--font-mono);padding:10px 12px;';
     if (cat.remaining === 0 && cat.status === 'Complete') {
-      remainingStyle += 'color:var(--text-muted);';
+      remainingStyle += 'color:var(--text-tertiary);';
     }
 
-    rowsHtml += '<tr style="border-bottom:1px solid var(--border);' + bgStyle + '">' +
-      '<td style="padding:10px 12px;color:var(--text-muted);font-family:var(--font-mono);font-size:0.75rem">' + (i + 1) + '</td>' +
+    // Inline bar with conditional coloring
+    var barPct = cat.budget > 0 ? Math.round(cat.spent / cat.budget * 100) : 0;
+    var barColor = 'var(--accent)';
+    if (cat.status === 'Complete') barColor = 'var(--status-success)';
+    else if (barPct > 90) barColor = 'var(--status-warning)';
+    var barDelay = (i * 30) + 'ms';
+
+    rowsHtml += '<tr style="border-bottom:1px solid var(--border-default);' + bgStyle + 'transition:background var(--duration-instant) var(--ease-smooth)">' +
+      '<td style="padding:10px 12px;color:var(--text-tertiary);font-family:var(--font-mono);font-size:0.75rem">' + (i + 1) + '</td>' +
       '<td style="padding:10px 12px;color:var(--text-primary);font-weight:500">' + cat.name + '</td>' +
       '<td style="padding:10px 12px;text-align:right;font-family:var(--font-mono)">' + formatCurrencyFull(cat.budget) + '</td>' +
       '<td style="padding:10px 12px;text-align:right;font-family:var(--font-mono)">' + formatCurrencyFull(cat.spent) + '</td>' +
       '<td style="' + remainingStyle + '">' + formatCurrencyFull(cat.remaining) + '</td>' +
-      '<td style="padding:10px 12px">' + getStatusBadge(cat.status) + '</td>' +
+      '<td style="padding:10px 12px"><div style="display:flex;align-items:center;gap:8px">' +
+        '<div class="budget-row-bar"><div class="budget-row-fill" style="width:' + barPct + '%;background:' + barColor + ';animation-delay:' + barDelay + '"></div></div>' +
+        getStatusBadge(cat.status) +
+      '</div></td>' +
       '</tr>';
   }
 
@@ -3167,11 +3632,11 @@ function renderBudgetTab(proj) {
     if (detail.changeOrders[k].status === 'Pending') pendingSum += detail.changeOrders[k].amount;
   }
 
-  var html = '<div id="project-budget" class="card" style="overflow-x:auto">' +
+  var html = summaryHtml + '<div id="project-budget" class="card animate-in" style="overflow-x:auto">' +
     '<h3 style="font-family:var(--font-heading);margin-bottom:16px">Budget by Category</h3>' +
     '<table style="width:100%;border-collapse:collapse;font-size:0.875rem">' +
     '<thead>' +
-    '<tr style="border-bottom:2px solid var(--border);text-align:left">' +
+    '<tr style="border-bottom:2px solid var(--border-default);text-align:left">' +
     '<th style="padding:10px 12px;font-weight:600;color:var(--text-primary)">#</th>' +
     '<th style="padding:10px 12px;font-weight:600;color:var(--text-primary)">Category</th>' +
     '<th style="padding:10px 12px;font-weight:600;color:var(--text-primary);text-align:right">Budget</th>' +
@@ -3182,7 +3647,7 @@ function renderBudgetTab(proj) {
     '</thead>' +
     '<tbody>' + rowsHtml + '</tbody>' +
     '<tfoot>' +
-    '<tr style="border-top:2px solid var(--border);font-weight:700">' +
+    '<tr style="border-top:2px solid var(--border-default);font-weight:700">' +
     '<td></td>' +
     '<td style="padding:10px 12px">TOTAL (Original Contract)</td>' +
     '<td style="padding:10px 12px;text-align:right;font-family:var(--font-mono)">' + formatCurrencyFull(totalBudget) + '</td>' +
@@ -3194,21 +3659,22 @@ function renderBudgetTab(proj) {
     '</table>' +
     '</div>' +
     '<div style="display:flex;gap:24px;margin-top:20px;flex-wrap:wrap">' +
-    '<div class="card" style="flex:1;min-width:200px;padding:16px;border-left:4px solid var(--success)">' +
-    '<div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px">Approved Changes</div>' +
-    '<div style="font-size:1.25rem;font-weight:700;font-family:var(--font-mono);color:var(--success);margin-top:4px">+' + formatCurrencyFull(approvedSum) + '</div>' +
+    '<div class="card" style="flex:1;min-width:200px;padding:16px;border-left:4px solid var(--status-success)">' +
+    '<div style="font-size:0.75rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.5px">Approved Changes</div>' +
+    '<div style="font-size:1.25rem;font-weight:700;font-family:var(--font-mono);color:var(--status-success);margin-top:4px">+' + formatCurrencyFull(approvedSum) + '</div>' +
     '</div>' +
-    (pendingSum > 0 ? '<div class="card" style="flex:1;min-width:200px;padding:16px;border-left:4px solid var(--warning)">' +
-    '<div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px">Pending Changes</div>' +
-    '<div style="font-size:1.25rem;font-weight:700;font-family:var(--font-mono);color:var(--warning);margin-top:4px">+' + formatCurrencyFull(pendingSum) + '</div>' +
+    (pendingSum > 0 ? '<div class="card" style="flex:1;min-width:200px;padding:16px;border-left:4px solid var(--status-warning)">' +
+    '<div style="font-size:0.75rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.5px">Pending Changes</div>' +
+    '<div style="font-size:1.25rem;font-weight:700;font-family:var(--font-mono);color:var(--status-warning);margin-top:4px">+' + formatCurrencyFull(pendingSum) + '</div>' +
     '</div>' : '') +
     '<div class="card" style="flex:1;min-width:200px;padding:16px;border-left:4px solid var(--accent)">' +
-    '<div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px">Revised Contract</div>' +
+    '<div style="font-size:0.75rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.5px">Revised Contract</div>' +
     '<div style="font-size:1.25rem;font-weight:700;font-family:var(--font-mono);color:var(--text-primary);margin-top:4px">' + formatCurrencyFull(proj.budget.revised) + '</div>' +
     '</div>' +
     '</div>';
 
   container.innerHTML = html;
+  requestAnimationFrame(function() { staggerAnimateIn(container); });
 }
 
 function renderScheduleTab(proj) {
@@ -3229,49 +3695,48 @@ function renderScheduleTab(proj) {
     var rowBg = '';
 
     if (m.status === 'complete') {
-      circleStyle = 'background:var(--success);color:white;';
-      icon = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+      circleStyle = 'background:var(--status-success);';
+      icon = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-inverse)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
     } else if (m.status === 'current') {
-      circleStyle = 'background:var(--warning);color:white;box-shadow:0 0 0 4px var(--warning-light);';
-      icon = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>';
-      rowBg = 'background:var(--warning-light);border-radius:var(--radius-sm);padding:12px 12px 12px 0;margin-left:-12px;padding-left:12px;';
+      circleStyle = 'background:var(--status-warning);box-shadow:0 0 0 4px var(--status-warning-subtle);';
+      icon = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--text-inverse)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>';
+      rowBg = 'background:var(--status-warning-subtle);border-radius:var(--radius-sm);margin:-8px -12px;padding:8px 12px;';
     } else {
-      circleStyle = 'background:var(--bg-secondary);border:2px solid var(--border);color:var(--text-muted);';
+      circleStyle = 'background:var(--surface-secondary);border:2px solid var(--border-default);';
       icon = '';
     }
 
+    // Connector line between dots
     var lineHtml = '';
     if (!isLast) {
       var nextStatus = milestones[i + 1].status;
       if (m.status === 'complete' && (nextStatus === 'complete' || nextStatus === 'current')) {
-        lineHtml = '<div style="width:2px;flex:1;margin-top:4px;background:var(--success)"></div>';
+        lineHtml = '<div style="width:2px;flex:1;min-height:8px;margin-top:4px;background:var(--status-success);margin-left:auto;margin-right:auto"></div>';
       } else {
-        lineHtml = '<div style="flex:1;margin-top:4px;border-left:2px dashed var(--border);margin-left:0"></div>';
+        lineHtml = '<div style="width:0;flex:1;min-height:8px;margin-top:4px;border-left:2px dashed var(--border-default);margin-left:auto;margin-right:auto"></div>';
       }
     }
 
     var nameStyle = 'font-weight:600;font-size:0.9375rem;color:var(--text-primary);';
     if (m.status === 'current') {
-      nameStyle += 'color:var(--warning);';
+      nameStyle += 'color:var(--status-warning);';
     }
 
-    itemsHtml += '<div class="milestone-item" style="display:flex;gap:16px;position:relative;padding-bottom:32px;' + rowBg + '">' +
-      '<div style="display:flex;flex-direction:column;align-items:center;min-width:28px">' +
-      '<div style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;' + circleStyle + '">' +
-      icon +
+    itemsHtml += '<div style="display:flex;gap:14px;' + rowBg + '">' +
+      '<div style="display:flex;flex-direction:column;align-items:center;width:28px;flex-shrink:0">' +
+        '<div style="width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;' + circleStyle + '">' + icon + '</div>' +
+        lineHtml +
       '</div>' +
-      lineHtml +
+      '<div style="flex:1;padding-top:4px;padding-bottom:' + (isLast ? '0' : '20px') + '">' +
+        '<div style="' + nameStyle + '">' + m.name + '</div>' +
+        '<div style="font-size:0.8125rem;color:var(--text-tertiary);margin-top:2px">' + formatDate(m.date) + '</div>' +
       '</div>' +
-      '<div style="flex:1;padding-top:4px">' +
-      '<div style="' + nameStyle + '">' + m.name + '</div>' +
-      '<div style="font-size:0.8125rem;color:var(--text-muted);margin-top:2px">' + formatDate(m.date) + '</div>' +
-      '</div>' +
-      '</div>';
+    '</div>';
   }
 
   var html = '<div id="project-schedule">' +
     '<h3 style="font-family:var(--font-heading);margin-bottom:20px">Project Milestones</h3>' +
-    '<div class="milestone-timeline">' +
+    '<div style="padding:0">' +
     itemsHtml +
     '</div>' +
     '</div>';
@@ -3295,8 +3760,8 @@ function renderPhotosTab(proj) {
       'onmouseleave="this.style.transform=\'\';this.style.boxShadow=\'\'">' +
       '<div style="height:200px;overflow:hidden">' +
       (photo.img ? '<img src="' + photo.img + '" alt="' + photo.title + '" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">' : '') +
-      '<div style="height:200px;background:linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-hover) 100%);display:flex;align-items:center;justify-content:center' + (photo.img ? ';display:none' : '') + '">' +
-      '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">' +
+      '<div style="height:200px;background:linear-gradient(135deg, var(--surface-secondary) 0%, var(--surface-secondary) 100%);display:flex;align-items:center;justify-content:center' + (photo.img ? ';display:none' : '') + '">' +
+      '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5">' +
       '<rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>' +
       '<circle cx="8.5" cy="8.5" r="1.5"/>' +
       '<polyline points="21 15 16 10 5 21"/>' +
@@ -3305,7 +3770,7 @@ function renderPhotosTab(proj) {
       '</div>' +
       '<div style="padding:14px">' +
       '<div style="font-weight:600;font-size:0.875rem;color:var(--text-primary)">' + photo.title + '</div>' +
-      '<div style="display:flex;justify-content:space-between;margin-top:6px;font-size:0.75rem;color:var(--text-muted)">' +
+      '<div style="display:flex;justify-content:space-between;margin-top:6px;font-size:0.75rem;color:var(--text-tertiary)">' +
       '<span>' + formatDate(photo.date) + '</span>' +
       '<span class="badge badge-muted">' + photo.phase + '</span>' +
       '</div>' +
@@ -3336,7 +3801,7 @@ function renderChangeOrdersTab(proj) {
   var cos = detail.changeOrders;
 
   if (cos.length === 0) {
-    container.innerHTML = '<div class="card" style="padding:32px;text-align:center;color:var(--text-muted)">' +
+    container.innerHTML = '<div class="card" style="padding:32px;text-align:center;color:var(--text-tertiary)">' +
       '<p>No change orders submitted for this project.</p></div>';
     return;
   }
@@ -3344,22 +3809,22 @@ function renderChangeOrdersTab(proj) {
 
   for (var i = 0; i < cos.length; i++) {
     var co = cos[i];
-    var bgStyle = (i % 2 === 1) ? 'background:var(--bg-secondary);' : '';
+    var bgStyle = (i % 2 === 1) ? 'background:var(--surface-secondary);' : '';
     var isCO004 = (co.id === 'CO-004');
     var rowId = isCO004 ? ' id="co-004-row"' : '';
 
-    var amountColor = co.status === 'Approved' ? 'var(--success)' : 'var(--warning)';
+    var amountColor = co.status === 'Approved' ? 'var(--status-success)' : 'var(--status-warning)';
     var actionCell = '';
     if (isCO004 && co.status === 'Pending') {
       actionCell = '<button class="btn btn-sm btn-primary" onclick="approveCO004(this)">Approve</button>';
     }
 
-    rowsHtml += '<tr' + rowId + ' style="border-bottom:1px solid var(--border);' + bgStyle + '">' +
+    rowsHtml += '<tr' + rowId + ' style="border-bottom:1px solid var(--border-default);' + bgStyle + '">' +
       '<td style="padding:10px 12px;font-weight:600;font-family:var(--font-mono)">' + co.id + '</td>' +
       '<td style="padding:10px 12px;max-width:300px;color:var(--text-primary)">' + co.description + '</td>' +
       '<td data-co-amount style="padding:10px 12px;text-align:right;font-family:var(--font-mono);font-weight:600;color:' + amountColor + '">+' + formatCurrencyFull(co.amount) + '</td>' +
       '<td data-co-status style="padding:10px 12px">' + getStatusBadge(co.status) + '</td>' +
-      '<td style="padding:10px 12px;color:var(--text-muted)">' + formatDate(co.date) + '</td>' +
+      '<td style="padding:10px 12px;color:var(--text-tertiary)">' + formatDate(co.date) + '</td>' +
       '<td style="padding:10px 12px;color:var(--text-secondary)">' + co.requestedBy + '</td>' +
       '<td style="padding:10px 12px">' + actionCell + '</td>' +
       '</tr>';
@@ -3369,7 +3834,7 @@ function renderChangeOrdersTab(proj) {
     '<h3 style="font-family:var(--font-heading);margin-bottom:16px">Change Orders</h3>' +
     '<table style="width:100%;border-collapse:collapse;font-size:0.875rem">' +
     '<thead>' +
-    '<tr style="border-bottom:2px solid var(--border);text-align:left">' +
+    '<tr style="border-bottom:2px solid var(--border-default);text-align:left">' +
     '<th style="padding:10px 12px;font-weight:600">CO #</th>' +
     '<th style="padding:10px 12px;font-weight:600">Description</th>' +
     '<th style="padding:10px 12px;font-weight:600;text-align:right">Amount</th>' +
@@ -3387,29 +3852,88 @@ function renderChangeOrdersTab(proj) {
 }
 
 function approveCO004(btn) {
+  if (btn.disabled) return;
   var row = document.getElementById('co-004-row');
-  if (row) {
-    var statusCell = row.querySelector('[data-co-status]');
-    if (statusCell) {
-      statusCell.innerHTML = getStatusBadge('Approved');
-    }
-    var amountCell = row.querySelector('[data-co-amount]');
-    if (amountCell) {
-      amountCell.style.color = 'var(--success)';
-    }
-    // Green flash
-    row.style.transition = 'background 400ms ease';
-    row.style.background = 'var(--success-light)';
-    setTimeout(function() { row.style.background = ''; }, 600);
-  }
-  // Disable button
-  btn.textContent = 'Approved \u2713';
-  btn.disabled = true;
-  btn.style.cursor = 'not-allowed';
-  btn.style.opacity = '0.6';
-  btn.style.background = 'var(--success)';
 
-  showToast('Change order CO-004 approved. Budget updated. Client notified.', 'success');
+  // Phase 1: Button press — scale down
+  btn.style.transition = 'transform 100ms var(--ease-smooth)';
+  btn.style.transform = 'scale(0.95)';
+
+  setTimeout(function() {
+    // Phase 2: Pause, then expand button to "Approved"
+    btn.style.transition = 'all 250ms var(--ease-out-expo)';
+    btn.style.transform = 'scale(1)';
+    btn.style.background = 'var(--status-success)';
+    btn.style.color = 'var(--text-inverse)';
+    btn.style.padding = '6px 18px';
+    btn.style.minWidth = '110px';
+    btn.textContent = 'Approved \u2713';
+    btn.disabled = true;
+    btn.style.cursor = 'not-allowed';
+
+    // Phase 3: Row green sweep
+    if (row) {
+      row.style.position = 'relative';
+      row.style.overflow = 'hidden';
+      row.classList.add('co-sweep-active');
+
+      // Update status badge
+      var statusCell = row.querySelector('[data-co-status]');
+      if (statusCell) {
+        statusCell.innerHTML = getStatusBadge('Approved');
+      }
+      var amountCell = row.querySelector('[data-co-amount]');
+      if (amountCell) {
+        amountCell.style.transition = 'color 300ms cubic-bezier(0.4, 0, 0.2, 1)';
+        amountCell.style.color = 'var(--status-success)';
+      }
+
+      // Phase 4: Particles burst from button
+      var btnRect = btn.getBoundingClientRect();
+      var rowRect = row.getBoundingClientRect();
+      for (var pi = 0; pi < 6; pi++) {
+        var particle = document.createElement('div');
+        particle.className = 'co-particle';
+        var angle = (pi / 6) * Math.PI * 2;
+        var dist = 30 + Math.random() * 40;
+        particle.style.setProperty('--px', (Math.cos(angle) * dist) + 'px');
+        particle.style.setProperty('--py', (Math.sin(angle) * dist) + 'px');
+        particle.style.left = (btnRect.left - rowRect.left + btnRect.width / 2 - 3) + 'px';
+        particle.style.top = (btnRect.top - rowRect.top + btnRect.height / 2 - 3) + 'px';
+        particle.style.animationDelay = (pi * 40) + 'ms';
+        row.appendChild(particle);
+        (function(p) {
+          setTimeout(function() { if (p.parentNode) p.parentNode.removeChild(p); }, 900);
+        })(particle);
+      }
+    }
+
+    // Phase 5: Toast
+    setTimeout(function() {
+      showToast('Change order CO-004 approved. Budget updated. Client notified.', 'success');
+    }, 300);
+
+    // Phase 6: Fade button to disabled state
+    setTimeout(function() {
+      btn.style.transition = 'opacity 300ms cubic-bezier(0.4, 0, 0.2, 1)';
+      btn.style.opacity = '0.6';
+    }, 600);
+
+    // Phase 7: Update dashboard change order count (3 → 2) if rendered
+    var attentionItems = document.querySelectorAll('.attention-item-count');
+    attentionItems.forEach(function(item) {
+      if (item.textContent === '3') {
+        item.style.transition = 'transform 200ms cubic-bezier(0.4, 0, 0.2, 1)';
+        item.style.transform = 'scale(0.8)';
+        setTimeout(function() {
+          item.textContent = '2';
+          item.style.transform = 'scale(1.1)';
+          setTimeout(function() { item.style.transform = 'scale(1)'; }, 150);
+        }, 200);
+      }
+    });
+
+  }, 300); // 100ms press + 200ms pause
 }
 
 function renderSubsTab(proj) {
@@ -3425,12 +3949,12 @@ function renderSubsTab(proj) {
     var sub = subs[i];
     var bgStyle = '';
     if (sub.name === 'Heritage Roofing Co.') {
-      bgStyle = 'background:var(--warning-light);';
+      bgStyle = 'background:var(--status-warning-subtle);';
     } else if (i % 2 === 1) {
-      bgStyle = 'background:var(--bg-secondary);';
+      bgStyle = 'background:var(--surface-secondary);';
     }
 
-    rowsHtml += '<tr style="border-bottom:1px solid var(--border);' + bgStyle + '">' +
+    rowsHtml += '<tr style="border-bottom:1px solid var(--border-default);' + bgStyle + '">' +
       '<td style="padding:10px 12px;color:var(--text-primary);font-weight:500">' + sub.name + '</td>' +
       '<td style="padding:10px 12px;color:var(--text-secondary)">' + sub.trade + '</td>' +
       '<td style="padding:10px 12px">' + getStatusBadge(sub.status) + '</td>' +
@@ -3441,7 +3965,7 @@ function renderSubsTab(proj) {
     '<h3 style="font-family:var(--font-heading);margin-bottom:16px">Assigned Subcontractors</h3>' +
     '<table style="width:100%;border-collapse:collapse;font-size:0.875rem">' +
     '<thead>' +
-    '<tr style="border-bottom:2px solid var(--border);text-align:left">' +
+    '<tr style="border-bottom:2px solid var(--border-default);text-align:left">' +
     '<th style="padding:10px 12px;font-weight:600">Company</th>' +
     '<th style="padding:10px 12px;font-weight:600">Trade</th>' +
     '<th style="padding:10px 12px;font-weight:600">Status</th>' +
@@ -3489,11 +4013,11 @@ function renderSubHub() {
     var count = projectCounts[proj] || 0;
     var isActive = subFilterProject === proj;
     var chipStyle = isActive
-      ? 'background:var(--accent);color:#fff;border-color:var(--accent)'
-      : 'background:var(--bg-card);color:var(--text-secondary);border-color:var(--border)';
+      ? 'background:var(--accent);color:var(--text-inverse);border-color:var(--accent)'
+      : 'background:var(--surface-card);color:var(--text-secondary);border-color:var(--border-default)';
     chipsHTML += '<button onclick="filterSubsByProject(\'' + proj.replace(/'/g, "\\'") + '\')" ' +
-      'style="' + chipStyle + ';font-family:var(--font-body);font-size:0.8125rem;font-weight:500;' +
-      'padding:6px 14px;border-radius:20px;border:1px solid;cursor:pointer;transition:all 150ms ease;white-space:nowrap">' +
+      'style="' + chipStyle + ';font-family:var(--font-heading);font-size:0.8125rem;font-weight:500;' +
+      'padding:6px 14px;border-radius:20px;border:1px solid;cursor:pointer;transition:all var(--duration-fast) var(--ease-smooth);white-space:nowrap">' +
       proj + ' (' + count + ')</button>';
   }
   chipsHTML += '</div>';
@@ -3502,12 +4026,12 @@ function renderSubHub() {
   var shimmerOverlay = 'position:relative;overflow:hidden;';
   var shimmerPseudo = '<div style="position:absolute;top:0;left:0;right:0;bottom:0;pointer-events:none;' +
     'background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.4) 50%,transparent 100%);' +
-    'background-size:200% 100%;animation:alertShimmer 1.5s ease 0.5s 1 forwards"></div>';
+    'background-size:200% 100%;animation:alertShimmer 1.5s var(--ease-smooth) 0.5s 1 forwards"></div>';
 
   var alertsHTML = '';
 
   // Alert 1 — Insurance warning
-  alertsHTML += '<div class="alert-banner alert-banner-warning" id="alert-insurance" style="' + shimmerOverlay + 'margin-bottom:12px">' +
+  alertsHTML += '<div class="alert-banner animate-in alert-banner-warning animate-in" id="alert-insurance" style="' + shimmerOverlay + 'margin-bottom:12px">' +
     shimmerPseudo +
     '<svg class="alert-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
       '<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>' +
@@ -3519,14 +4043,14 @@ function renderSubHub() {
       '<div style="font-size:0.8125rem;color:var(--text-secondary);line-height:1.5;margin-bottom:12px">' +
         'GL insurance expires in 46 days (Apr 8, 2026). Active on 3 projects. Renewal confirmation required.' +
       '</div>' +
-      '<button class="btn btn-sm" style="background:var(--warning);color:white;border:none" ' +
+      '<button class="btn btn-sm" style="background:var(--status-warning);color:white;border:none" ' +
         'onclick="resolveAlert(\'alert-insurance\',\'Renewal request sent to Heritage Roofing Co. Auto-follow-up in 14 days.\')">' +
         'Request Renewal</button>' +
     '</div>' +
   '</div>';
 
   // Alert 2 — Schedule conflict
-  alertsHTML += '<div class="alert-banner alert-banner-danger" id="alert-schedule" style="' + shimmerOverlay + 'margin-bottom:24px">' +
+  alertsHTML += '<div class="alert-banner animate-in alert-banner-danger animate-in" id="alert-schedule" style="' + shimmerOverlay + 'margin-bottom:24px">' +
     shimmerPseudo +
     '<svg class="alert-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
       '<rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>' +
@@ -3629,8 +4153,8 @@ function renderSubTable() {
     var sub = subs[i];
 
     var rowStyle = '';
-    if (sub.id === 4) rowStyle = ' style="background:var(--warning-light) !important"';
-    if (sub.id === 5) rowStyle = ' style="background:var(--danger-light) !important"';
+    if (sub.id === 4) rowStyle = ' style="background:var(--status-warning-subtle) !important"';
+    if (sub.id === 5) rowStyle = ' style="background:var(--status-danger-subtle) !important"';
 
     var companyCell = '<td style="font-weight:600;color:var(--text-primary)">' + sub.name + '</td>';
     var tradeCell = '<td style="color:var(--text-secondary)">' + sub.trade + '</td>';
@@ -3641,7 +4165,7 @@ function renderSubTable() {
 
     var statusHTML = getStatusBadge(sub.status);
     if (sub.status === 'On-Call') {
-      statusHTML = '<span class="badge badge-muted" style="border:1px dashed var(--text-muted)">' + sub.status + '</span>';
+      statusHTML = '<span class="badge badge-muted" style="border:1px dashed var(--text-tertiary)">' + sub.status + '</span>';
     }
     var statusCell = '<td>' + statusHTML + '</td>';
 
@@ -3649,7 +4173,7 @@ function renderSubTable() {
     var insStyle = 'font-family:var(--font-mono);font-size:0.8125rem';
     if (sub.id === 4) {
       insDate = '\u26A0\uFE0F ' + insDate;
-      insStyle += ';color:var(--warning);font-weight:600';
+      insStyle += ';color:var(--status-warning);font-weight:600';
     }
     var insCell = '<td style="' + insStyle + '">' + insDate + '</td>';
 
@@ -3674,9 +4198,9 @@ function resolveAlert(alertId, message) {
   var el = document.getElementById(alertId);
   if (el) {
     el.classList.remove('alert-banner-warning', 'alert-banner-danger');
-    el.style.background = 'var(--success-light)';
-    el.style.borderLeftColor = 'var(--success)';
-    el.querySelector('.alert-icon').style.color = 'var(--success)';
+    el.style.background = 'var(--status-success-subtle)';
+    el.style.borderLeftColor = 'var(--status-success)';
+    el.querySelector('.alert-icon').style.color = 'var(--status-success)';
     el.querySelector('.alert-icon').innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
     var btns = el.querySelectorAll('button');
     for (var i = 0; i < btns.length; i++) btns[i].style.display = 'none';
@@ -3722,11 +4246,11 @@ function renderClientPortal() {
   var showcase = DEMO_DATA.showcaseProject;
   var budget = portal.budget;
   var billedPct = ((budget.billed / budget.current) * 100).toFixed(1);
-  var circumference = 2 * Math.PI * 82;
+  var circumference = 2 * Math.PI * 90;
 
   // --- TOP NAVIGATION BAR ---
   var html = '';
-  html += '<div style="position:sticky;top:var(--banner-height);z-index:50;background:var(--bg-card);border-bottom:1px solid var(--border);padding:0 24px">';
+  html += '<div style="position:sticky;top:var(--banner-height);z-index:50;background:var(--surface-card);border-bottom:1px solid var(--border-default);padding:0 24px">';
   html += '<div style="max-width:840px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px">';
   html += '<div style="font-family:var(--font-heading);font-weight:600;font-size:1rem;color:var(--text-primary)">J.W. Design &amp; Construction</div>';
   html += '<div style="display:flex;gap:4px">';
@@ -3740,14 +4264,14 @@ function renderClientPortal() {
   for (var n = 0; n < navItems.length; n++) {
     var nav = navItems[n];
     html += '<button class="btn-ghost btn-sm" style="font-family:var(--font-body);font-size:0.8125rem;font-weight:500;color:var(--text-secondary);padding:8px 14px;border:none;border-radius:var(--radius-sm);transition:color 0.2s,background 0.2s" ';
-    html += 'onmouseenter="this.style.color=\'var(--accent)\';this.style.background=\'var(--accent-light)\'" ';
+    html += 'onmouseenter="this.style.color=\'var(--accent)\';this.style.background=\'var(--accent-muted)\'" ';
     html += 'onmouseleave="this.style.color=\'var(--text-secondary)\';this.style.background=\'transparent\'" ';
     html += 'onclick="document.getElementById(\'' + nav.target + '\').scrollIntoView({behavior:\'smooth\',block:\'start\'})">';
     html += nav.label;
     html += '</button>';
   }
   html += '</div>';
-  html += '<button class="btn-ghost btn-sm" style="color:var(--danger);font-size:0.8125rem;font-weight:500;border:none;font-family:var(--font-body)" onclick="navigateTo(\'dashboard\')">Exit Client View</button>';
+  html += '<button class="btn-ghost btn-sm" style="color:var(--status-danger);font-size:0.8125rem;font-weight:500;border:none;font-family:var(--font-body)" onclick="navigateTo(\'dashboard\')">Exit Client View</button>';
   html += '</div>';
   html += '</div>';
 
@@ -3757,35 +4281,38 @@ function renderClientPortal() {
   // --- GREETING ---
   html += '<div style="text-align:center;margin-bottom:48px">';
   html += '<h1 style="font-family:var(--font-heading);font-size:1.75rem;font-weight:700;color:var(--text-primary);margin-bottom:8px">' + portal.greeting + '</h1>';
-  html += '<p style="color:var(--text-muted);font-size:1rem">' + portal.projectName + '</p>';
+  html += '<p style="color:var(--text-tertiary);font-size:1rem">' + portal.projectName + '</p>';
   html += '</div>';
 
   // === SECTION 1: OVERVIEW ===
   html += '<div id="client-overview">';
-  html += '<div id="client-progress-ring" style="text-align:center;margin-bottom:32px">';
-  html += '<svg width="180" height="180" viewBox="0 0 180 180" style="display:inline-block">';
-  html += '<circle cx="90" cy="90" r="82" fill="none" stroke="var(--border)" stroke-width="5"/>';
-  html += '<circle id="client-ring-fill" cx="90" cy="90" r="82" fill="none" stroke="var(--accent)" stroke-width="5" stroke-linecap="round" stroke-dasharray="' + circumference.toFixed(2) + '" stroke-dashoffset="' + circumference.toFixed(2) + '" transform="rotate(-90 90 90)" style="transition:none"/>';
-  html += '<text id="client-ring-text" x="90" y="86" text-anchor="middle" dominant-baseline="middle" font-family="var(--font-mono)" font-weight="700" font-size="2.5rem" fill="var(--text-primary)">0%</text>';
-  html += '<text x="90" y="112" text-anchor="middle" dominant-baseline="middle" font-family="var(--font-body)" font-size="0.8125rem" fill="var(--text-muted)">Complete</text>';
+  html += '<div id="client-progress-ring" class="client-ring-glow" style="text-align:center;margin-bottom:32px">';
+  html += '<svg width="200" height="200" viewBox="0 0 200 200" style="display:inline-block">';
+  html += '<defs><linearGradient id="ring-gradient" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="var(--accent)"/><stop offset="100%" stop-color="var(--blue-400)"/></linearGradient></defs>';
+  html += '<circle cx="100" cy="100" r="90" fill="none" stroke="var(--border-default)" stroke-width="6" opacity="0.5"/>';
+  html += '<circle cx="100" cy="100" r="90" fill="none" stroke="var(--border-subtle)" stroke-width="6" stroke-dasharray="4 8" opacity="0.3"/>';
+  html += '<circle id="client-ring-fill" cx="100" cy="100" r="90" fill="none" stroke="url(#ring-gradient)" stroke-width="6" stroke-linecap="round" stroke-dasharray="' + circumference.toFixed(2) + '" stroke-dashoffset="' + circumference.toFixed(2) + '" transform="rotate(-90 100 100)" style="transition:none"/>';
+  html += '<text id="client-ring-text" x="100" y="92" text-anchor="middle" dominant-baseline="middle" font-family="var(--font-mono)" font-weight="700" font-size="2.75rem" fill="var(--text-primary)">0%</text>';
+  html += '<text x="100" y="120" text-anchor="middle" dominant-baseline="middle" font-family="var(--font-body)" font-size="0.8125rem" fill="var(--text-tertiary)">Complete</text>';
+  html += '<text x="100" y="138" text-anchor="middle" dominant-baseline="middle" font-family="var(--font-heading)" font-weight="600" font-size="0.625rem" letter-spacing="1.5px" text-transform="uppercase" fill="var(--status-success)">ON TRACK</text>';
   html += '</svg>';
   html += '</div>';
   html += '<div style="text-align:center;margin-bottom:8px">';
   html += '<div style="font-family:var(--font-heading);font-weight:500;font-size:1.125rem;color:var(--text-primary)">' + portal.currentPhase + '</div>';
   html += '</div>';
-  html += '<div style="text-align:center;color:var(--text-muted);font-size:0.9375rem;margin-bottom:24px">Estimated Completion: ' + portal.estCompletion + '</div>';
+  html += '<div style="text-align:center;color:var(--text-tertiary);font-size:0.9375rem;margin-bottom:24px">Estimated Completion: ' + portal.estCompletion + '</div>';
   html += '<div class="card" style="border-left:3px solid var(--accent);margin-top:24px;max-width:400px;margin-left:auto;margin-right:auto;padding:16px 20px">';
-  html += '<div style="font-size:0.75rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px">Next Milestone</div>';
+  html += '<div style="font-size:0.75rem;color:var(--text-tertiary);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:4px">Next Milestone</div>';
   html += '<div style="font-weight:600;color:var(--text-primary)">' + portal.nextMilestone.name + '</div>';
-  html += '<div style="color:var(--warning);font-weight:600;margin-top:4px;font-family:var(--font-mono)">' + portal.nextMilestone.days + ' days</div>';
+  html += '<div style="color:var(--status-warning);font-weight:600;margin-top:4px;font-family:var(--font-mono)">' + portal.nextMilestone.days + ' days</div>';
   html += '</div>';
   html += '</div>';
 
-  html += '<div style="height:1px;background:var(--border-light);margin:48px 0"></div>';
+  html += '<div style="height:1px;background:var(--border-subtle);margin:48px 0"></div>';
 
   // === SECTION 2: MILESTONE TIMELINE ===
   html += '<div id="client-milestones">';
-  html += '<h2 style="font-family:var(--font-heading);font-size:1.25rem;font-weight:600;color:var(--text-primary);margin-bottom:24px">Project Timeline</h2>';
+  html += '<h2 class="animate-in" style="font-family:var(--font-heading);font-size:1.25rem;font-weight:600;color:var(--text-primary);margin-bottom:24px">Project Timeline</h2>';
 
   var milestones = showcase.milestones;
   for (var mi = 0; mi < milestones.length; mi++) {
@@ -3797,25 +4324,25 @@ function renderClientPortal() {
     if (!isLast) {
       var nextStatus = milestones[mi + 1].status;
       var lineStyle = (m.status === 'complete' && (nextStatus === 'complete' || nextStatus === 'current')) ? 'solid' : 'dashed';
-      var lineColor = (m.status === 'complete' && (nextStatus === 'complete' || nextStatus === 'current')) ? 'var(--success)' : 'var(--border)';
+      var lineColor = (m.status === 'complete' && (nextStatus === 'complete' || nextStatus === 'current')) ? 'var(--status-success)' : 'var(--border-default)';
       html += '<div style="position:absolute;left:11px;top:24px;bottom:0;width:2px;border-left:2px ' + lineStyle + ' ' + lineColor + '"></div>';
     }
 
     if (m.status === 'complete') {
-      html += '<div style="width:24px;height:24px;border-radius:50%;background:#DCFCE7;border:2px solid var(--success);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1">';
-      html += '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
+      html += '<div style="width:24px;height:24px;border-radius:50%;background:var(--status-success-subtle);border:2px solid var(--status-success);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1">';
+      html += '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--status-success)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
       html += '</div>';
     } else if (m.status === 'current') {
-      html += '<div style="width:24px;height:24px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1;animation:clientPulse 2s ease-in-out infinite">';
+      html += '<div style="width:24px;height:24px;border-radius:50%;background:var(--accent);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative;z-index:1;animation:clientPulse 1.5s var(--ease-smooth) infinite">';
       html += '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>';
       html += '</div>';
     } else {
-      html += '<div style="width:24px;height:24px;border-radius:50%;background:var(--bg-secondary);border:2px solid var(--border);flex-shrink:0;position:relative;z-index:1"></div>';
+      html += '<div style="width:24px;height:24px;border-radius:50%;background:var(--surface-secondary);border:2px solid var(--border-default);flex-shrink:0;position:relative;z-index:1"></div>';
     }
 
     html += '<div style="padding-top:1px">';
     html += '<div style="font-size:1rem;font-weight:500;color:var(--text-primary)">' + m.name + '</div>';
-    html += '<div style="font-size:0.875rem;color:var(--text-muted);margin-top:2px">' + formatDate(m.date) + '</div>';
+    html += '<div style="font-size:0.875rem;color:var(--text-tertiary);margin-top:2px">' + formatDate(m.date) + '</div>';
     html += '</div>';
     html += '</div>';
   }
@@ -3823,31 +4350,31 @@ function renderClientPortal() {
   html += '<style>@keyframes clientPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(44,95,138,0.3); } 50% { box-shadow: 0 0 0 8px rgba(44,95,138,0); } }</style>';
   html += '</div>';
 
-  html += '<div style="height:1px;background:var(--border-light);margin:48px 0"></div>';
+  html += '<div style="height:1px;background:var(--border-subtle);margin:48px 0"></div>';
 
   // === SECTION 3: BUDGET ===
   html += '<div id="client-budget">';
-  html += '<h2 style="font-family:var(--font-heading);font-size:1.25rem;font-weight:600;color:var(--text-primary);margin-bottom:24px">Budget Overview</h2>';
+  html += '<h2 class="animate-in" style="font-family:var(--font-heading);font-size:1.25rem;font-weight:600;color:var(--text-primary);margin-bottom:24px">Budget Overview</h2>';
   html += '<div style="max-width:500px">';
-  html += '<div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border-light)"><span style="color:var(--text-secondary);font-size:0.9375rem">Original Contract</span><span style="font-family:var(--font-mono);font-weight:500;color:var(--text-primary);font-size:0.9375rem">' + formatCurrencyFull(budget.original) + '</span></div>';
-  html += '<div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border-light)"><span style="color:var(--text-secondary);font-size:0.9375rem">Approved Changes</span><span style="font-family:var(--font-mono);font-weight:500;color:var(--success);font-size:0.9375rem">+' + formatCurrencyFull(budget.changes) + '</span></div>';
-  html += '<div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border-light)"><span style="color:var(--text-primary);font-size:0.9375rem;font-weight:700">Current Contract</span><span style="font-family:var(--font-mono);font-weight:700;color:var(--text-primary);font-size:0.9375rem">' + formatCurrencyFull(budget.current) + '</span></div>';
-  html += '<div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border-light)"><span style="color:var(--text-secondary);font-size:0.9375rem">Billed to Date</span><span style="font-family:var(--font-mono);font-weight:500;color:var(--text-primary);font-size:0.9375rem">' + formatCurrencyFull(budget.billed) + '</span></div>';
-  html += '<div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border-light)"><span style="color:var(--text-secondary);font-size:0.9375rem">Remaining</span><span style="font-family:var(--font-mono);font-weight:500;color:var(--text-primary);font-size:0.9375rem">' + formatCurrencyFull(budget.remaining) + '</span></div>';
+  html += '<div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border-subtle)"><span style="color:var(--text-secondary);font-size:0.9375rem">Original Contract</span><span style="font-family:var(--font-mono);font-weight:500;color:var(--text-primary);font-size:0.9375rem">' + formatCurrencyFull(budget.original) + '</span></div>';
+  html += '<div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border-subtle)"><span style="color:var(--text-secondary);font-size:0.9375rem">Approved Changes</span><span style="font-family:var(--font-mono);font-weight:500;color:var(--status-success);font-size:0.9375rem">+' + formatCurrencyFull(budget.changes) + '</span></div>';
+  html += '<div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border-subtle)"><span style="color:var(--text-primary);font-size:0.9375rem;font-weight:700">Current Contract</span><span style="font-family:var(--font-mono);font-weight:700;color:var(--text-primary);font-size:0.9375rem">' + formatCurrencyFull(budget.current) + '</span></div>';
+  html += '<div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border-subtle)"><span style="color:var(--text-secondary);font-size:0.9375rem">Billed to Date</span><span style="font-family:var(--font-mono);font-weight:500;color:var(--text-primary);font-size:0.9375rem">' + formatCurrencyFull(budget.billed) + '</span></div>';
+  html += '<div style="display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid var(--border-subtle)"><span style="color:var(--text-secondary);font-size:0.9375rem">Remaining</span><span style="font-family:var(--font-mono);font-weight:500;color:var(--text-primary);font-size:0.9375rem">' + formatCurrencyFull(budget.remaining) + '</span></div>';
   html += '</div>';
-  html += '<div style="height:8px;border-radius:4px;background:var(--border);margin-top:20px;max-width:500px"><div style="height:100%;border-radius:4px;background:var(--accent);width:' + billedPct + '%;transition:width 1s ease"></div></div>';
-  html += '<div style="font-size:0.75rem;color:var(--text-muted);margin-top:8px">' + billedPct + '% of contract billed</div>';
-  html += '<div style="display:flex;align-items:center;gap:8px;margin-top:16px;padding:12px 16px;background:var(--warning-light);border-radius:var(--radius-sm);max-width:500px">';
-  html += '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
-  html += '<span style="font-size:0.875rem;color:var(--warning)">1 change order pending your review &mdash; ' + formatCurrencyFull(budget.pendingCO) + '</span>';
+  html += '<div style="height:8px;border-radius:4px;background:var(--border-default);margin-top:20px;max-width:500px"><div style="height:100%;border-radius:4px;background:var(--accent);width:' + billedPct + '%;transition:width var(--duration-slowest) var(--ease-out-expo)"></div></div>';
+  html += '<div style="font-size:0.75rem;color:var(--text-tertiary);margin-top:8px;font-family:var(--font-mono)">' + billedPct + '% of contract billed</div>';
+  html += '<div style="display:flex;align-items:center;gap:8px;margin-top:16px;padding:12px 16px;background:var(--status-warning-subtle);border-radius:var(--radius-sm);max-width:500px">';
+  html += '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--status-warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>';
+  html += '<span style="font-size:0.875rem;color:var(--status-warning)">1 change order pending your review &mdash; <span style="font-family:var(--font-mono)">' + formatCurrencyFull(budget.pendingCO) + '</span></span>';
   html += '</div>';
   html += '</div>';
 
-  html += '<div style="height:1px;background:var(--border-light);margin:48px 0"></div>';
+  html += '<div style="height:1px;background:var(--border-subtle);margin:48px 0"></div>';
 
   // === SECTION 4: PHOTOS ===
   html += '<div id="client-photos">';
-  html += '<h2 style="font-family:var(--font-heading);font-size:1.25rem;font-weight:600;color:var(--text-primary);margin-bottom:24px">Progress Photos</h2>';
+  html += '<h2 class="animate-in" style="font-family:var(--font-heading);font-size:1.25rem;font-weight:600;color:var(--text-primary);margin-bottom:24px">Progress Photos</h2>';
   html += '<div style="display:grid;grid-template-columns:repeat(2,1fr);gap:20px">';
   var photos = showcase.photos;
   for (var pi = 0; pi < photos.length; pi++) {
@@ -3857,13 +4384,13 @@ function renderClientPortal() {
     if (photo.img) {
       html += '<img src="' + photo.img + '" alt="' + photo.title + '" style="width:100%;height:100%;object-fit:cover" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'">';
     }
-    html += '<div style="height:280px;background:linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-hover) 100%);display:flex;align-items:center;justify-content:center' + (photo.img ? ';display:none' : '') + '">';
-    html += '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>';
+    html += '<div style="height:280px;background:linear-gradient(135deg, var(--surface-secondary) 0%, var(--surface-secondary) 100%);display:flex;align-items:center;justify-content:center' + (photo.img ? ';display:none' : '') + '">';
+    html += '<svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>';
     html += '</div>';
     html += '</div>';
     html += '<div style="padding:16px">';
     html += '<div style="font-weight:600;font-size:0.9375rem;color:var(--text-primary)">' + photo.title + '</div>';
-    html += '<div style="display:flex;justify-content:space-between;margin-top:8px;font-size:0.8125rem;color:var(--text-muted)"><span>' + formatDate(photo.date) + '</span><span class="badge badge-muted">' + photo.phase + '</span></div>';
+    html += '<div style="display:flex;justify-content:space-between;margin-top:8px;font-size:0.8125rem;color:var(--text-tertiary)"><span>' + formatDate(photo.date) + '</span><span class="badge badge-muted">' + photo.phase + '</span></div>';
     html += '</div>';
     html += '</div>';
   }
@@ -3871,37 +4398,42 @@ function renderClientPortal() {
   html += '<style>@media (max-width: 600px) { #client-photos > div:nth-child(2) { grid-template-columns: 1fr !important; } }</style>';
   html += '</div>';
 
-  html += '<div style="height:1px;background:var(--border-light);margin:48px 0"></div>';
+  html += '<div style="height:1px;background:var(--border-subtle);margin:48px 0"></div>';
 
   // === SECTION 5: WEEKLY UPDATE ===
   html += '<div id="client-update-card">';
-  html += '<h2 style="font-family:var(--font-heading);font-size:1.25rem;font-weight:600;color:var(--text-primary);margin-bottom:24px">Weekly Update</h2>';
-  html += '<div class="card" style="padding:32px">';
-  html += '<div style="font-size:0.8125rem;color:var(--text-muted);margin-bottom:12px">Week of February 17, 2026</div>';
+  html += '<h2 class="animate-in" style="font-family:var(--font-heading);font-size:1.25rem;font-weight:600;color:var(--text-primary);margin-bottom:24px">Weekly Update</h2>';
+  html += '<div class="weekly-update-letter animate-in">';
+  html += '<div class="letter-header">';
+  html += '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>';
+  html += '<span class="jw-logo">J.W. Design &amp; Construction</span>';
+  html += '<span style="margin-left:auto;font-size:0.75rem;color:var(--text-tertiary)">Week of February 17, 2026</span>';
+  html += '</div>';
   var paragraphs = showcase.weeklyUpdate.split('\n\n');
-  html += '<div style="font-size:0.9375rem;line-height:1.8;color:var(--text-secondary)">';
+  html += '<div class="letter-body">';
   for (var q = 0; q < paragraphs.length; q++) {
-    html += '<p style="margin-bottom:' + (q < paragraphs.length - 1 ? '16px' : '0') + '">' + paragraphs[q] + '</p>';
+    html += '<p>' + paragraphs[q] + '</p>';
   }
   html += '</div>';
+  html += '<div class="letter-credit">\u2014 Derek Williams, Project Manager</div>';
   html += '</div>';
   html += '</div>';
 
-  html += '<div style="height:1px;background:var(--border-light);margin:48px 0"></div>';
+  html += '<div style="height:1px;background:var(--border-subtle);margin:48px 0"></div>';
 
   // === SECTION 6: MESSAGES ===
   html += '<div id="client-message-thread">';
-  html += '<h2 style="font-family:var(--font-heading);font-size:1.25rem;font-weight:600;color:var(--text-primary);margin-bottom:24px">Messages</h2>';
+  html += '<h2 class="animate-in" style="font-family:var(--font-heading);font-size:1.25rem;font-weight:600;color:var(--text-primary);margin-bottom:24px">Messages</h2>';
   var msg = showcase.clientMessage;
   html += '<div style="display:flex;gap:12px;margin-bottom:24px">';
-  html += '<div style="width:36px;height:36px;border-radius:50%;background:var(--accent-light);color:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-weight:600;font-size:0.75rem;flex-shrink:0">CM</div>';
+  html += '<div style="width:36px;height:36px;border-radius:50%;background:var(--accent-muted);color:var(--accent);display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);font-weight:600;font-size:0.75rem;flex-shrink:0">CM</div>';
   html += '<div>';
-  html += '<div style="font-size:0.8125rem;color:var(--text-muted);margin-bottom:6px"><span style="font-weight:600;color:var(--text-primary)">' + msg.from + '</span> &middot; ' + msg.date + '</div>';
-  html += '<div style="background:var(--bg-secondary);border-radius:var(--radius-lg);padding:16px 20px;font-size:0.9375rem;line-height:1.7;color:var(--text-secondary);max-width:600px">' + msg.text + '</div>';
+  html += '<div style="font-size:0.8125rem;color:var(--text-tertiary);margin-bottom:6px"><span style="font-weight:600;color:var(--text-primary)">' + msg.from + '</span> &middot; ' + msg.date + '</div>';
+  html += '<div style="background:var(--surface-secondary);border-radius:var(--radius-lg);padding:16px 20px;font-size:0.9375rem;line-height:1.7;color:var(--text-secondary);max-width:600px">' + msg.text + '</div>';
   html += '</div>';
   html += '</div>';
   html += '<div style="margin-top:20px">';
-  html += '<textarea id="client-reply-input" style="width:100%;border:1px solid var(--border);border-radius:var(--radius-md);padding:14px 16px;font-family:var(--font-body);font-size:0.9375rem;resize:vertical;min-height:80px;outline:none;background:var(--bg-card)" placeholder="Type your reply..." rows="3"></textarea>';
+  html += '<textarea id="client-reply-input" style="width:100%;border:1px solid var(--border-default);border-radius:var(--radius-md);padding:14px 16px;font-family:var(--font-body);font-size:0.9375rem;resize:vertical;min-height:80px;outline:none;background:var(--surface-card)" placeholder="Type your reply..." rows="3"></textarea>';
   html += '<div style="display:flex;justify-content:flex-end;margin-top:12px">';
   html += '<button class="btn btn-primary" style="padding:10px 24px;font-size:0.875rem;border-radius:var(--radius-md)" onclick="sendClientReply()">Send Message</button>';
   html += '</div>';
@@ -3920,29 +4452,7 @@ function animateClientProgress() {
   if (!ringFill || !ringText) return;
 
   var targetProgress = DEMO_DATA.clientPortal.progress;
-  var circumference = 2 * Math.PI * 82;
-  var duration = 1500;
-  var startTime = null;
-
-  ringFill.style.strokeDashoffset = circumference;
-  ringText.textContent = '0%';
-
-  function animate(timestamp) {
-    if (!startTime) startTime = timestamp;
-    var elapsed = timestamp - startTime;
-    var progress = Math.min(elapsed / duration, 1);
-    var eased = 1 - Math.pow(1 - progress, 3);
-    var currentValue = Math.round(eased * targetProgress);
-
-    ringText.textContent = currentValue + '%';
-    ringFill.style.strokeDashoffset = circumference * (1 - (eased * targetProgress / 100));
-
-    if (progress < 1) {
-      requestAnimationFrame(animate);
-    }
-  }
-
-  requestAnimationFrame(animate);
+  animateProgressRing(ringFill, ringText, targetProgress, 1200);
 }
 
 function sendClientReply(clientName) {
@@ -3989,39 +4499,39 @@ function renderDocuments() {
   DEMO_DATA.projects.forEach(function(project, index) {
     var folderId = project.id;
     var isComplete = project.status === 'Complete';
-    var iconColor = isComplete ? 'var(--success)' : 'var(--accent)';
-    var completeSuffix = isComplete ? ' <span style="color:var(--text-muted);font-weight:400">[Complete]</span>' : '';
+    var iconColor = isComplete ? 'var(--status-success)' : 'var(--accent)';
+    var completeSuffix = isComplete ? ' <span style="color:var(--text-tertiary);font-weight:400">[Complete]</span>' : '';
     var fileCount = 12 + (index * 7) % 25;
 
     var subHtml = '';
     subFolders.forEach(function(sf, si) {
       var subFileCount = 2 + ((index * 3 + si * 5) % 7);
       var isLast = si === subFolders.length - 1;
-      var borderStyle = isLast ? 'border-bottom:none' : 'border-bottom:1px solid var(--border-light)';
+      var borderStyle = isLast ? 'border-bottom:none' : 'border-bottom:1px solid var(--border-subtle)';
 
       subHtml += '<div onclick="showToast(\'Documents for ' + sf.replace(/'/g, "\\'") + ' \u2014 ' + subFileCount + ' files. Full document management available in Command Center.\', \'accent\')" style="display:flex;align-items:center;gap:10px;padding:8px 0;cursor:pointer;' + borderStyle + ';font-size:0.8125rem;color:var(--text-secondary);transition:color 150ms" onmouseenter="this.style.color=\'var(--accent)\'" onmouseleave="this.style.color=\'var(--text-secondary)\'">' +
-        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
+        '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
           '<path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>' +
         '</svg>' +
         sf +
-        '<span style="margin-left:auto;font-size:0.6875rem;color:var(--text-muted);font-family:var(--font-mono)">' + subFileCount + '</span>' +
+        '<span style="margin-left:auto;font-size:0.6875rem;color:var(--text-tertiary);font-family:var(--font-mono)">' + subFileCount + '</span>' +
       '</div>';
     });
 
-    html += '<div class="doc-folder" style="border:1px solid var(--border);border-radius:var(--radius-md);margin-bottom:8px;overflow:hidden">' +
-      '<div class="doc-folder-header" onclick="toggleDocFolder(\'' + folderId + '\')" style="display:flex;align-items:center;gap:12px;padding:14px 20px;cursor:pointer;transition:background 150ms;background:var(--bg-card)" onmouseenter="this.style.background=\'var(--bg-hover)\'" onmouseleave="this.style.background=\'var(--bg-card)\'">' +
+    html += '<div class="doc-folder" style="border:1px solid var(--border-default);border-radius:var(--radius-md);margin-bottom:8px;overflow:hidden">' +
+      '<div class="doc-folder-header" onclick="toggleDocFolder(\'' + folderId + '\')" style="display:flex;align-items:center;gap:12px;padding:14px 20px;cursor:pointer;transition:background 150ms;background:var(--surface-card)" onmouseenter="this.style.background=\'var(--surface-secondary)\'" onmouseleave="this.style.background=\'var(--surface-card)\'">' +
         '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="' + iconColor + '" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' +
           '<path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>' +
         '</svg>' +
         '<span style="flex:1;font-family:var(--font-heading);font-weight:500;font-size:0.9375rem;color:var(--text-primary)">' +
           project.name + completeSuffix +
         '</span>' +
-        '<span style="font-size:0.75rem;color:var(--text-muted);font-family:var(--font-mono)">' + fileCount + ' files</span>' +
-        '<svg class="doc-chevron" id="chevron-' + folderId + '" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-muted)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition:transform 300ms;flex-shrink:0">' +
+        '<span style="font-size:0.75rem;color:var(--text-tertiary);font-family:var(--font-mono)">' + fileCount + ' files</span>' +
+        '<svg class="doc-chevron" id="chevron-' + folderId + '" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition:transform 300ms;flex-shrink:0">' +
           '<polyline points="9 18 15 12 9 6"/>' +
         '</svg>' +
       '</div>' +
-      '<div class="doc-folder-content" id="content-' + folderId + '" style="max-height:0;overflow:hidden;transition:max-height 300ms ease;background:var(--bg-primary)">' +
+      '<div class="doc-folder-content" id="content-' + folderId + '" style="max-height:0;overflow:hidden;transition:max-height 300ms var(--ease-out-expo);background:var(--surface-primary)">' +
         '<div style="padding:8px 20px 12px 52px">' +
           subHtml +
         '</div>' +
@@ -4054,15 +4564,16 @@ function renderReports() {
   var cards = [
     { value: '$92.7M', color: 'var(--accent)', label: 'Across 7 projects' },
     { value: '$12.7M', color: 'var(--accent)', label: '5 projects under construction' },
-    { value: '+1.2%', color: 'var(--success)', label: 'Across active projects' },
-    { value: '94%', color: 'var(--success)', label: '51 of 54 milestones met' }
+    { value: '+1.2%', color: 'var(--status-success)', label: 'Across active projects' },
+    { value: '94%', color: 'var(--status-success)', label: '51 of 54 milestones met' }
   ];
 
   var cardsHtml = '<div class="report-metrics-grid" id="report-cards">';
   cards.forEach(function(card, i) {
-    cardsHtml += '<div class="card" style="padding:20px 24px;text-align:center">' +
-      '<div id="report-num-' + i + '" style="font-family:var(--font-mono);font-size:1.5rem;font-weight:700;color:' + card.color + '">' + card.value + '</div>' +
-      '<div style="font-size:0.75rem;color:var(--text-muted);margin-top:4px">' + card.label + '</div>' +
+    var accentClass = card.color === 'var(--status-success)' ? ' success' : '';
+    cardsHtml += '<div class="card report-card-accent animate-in' + accentClass + '" style="padding:20px 24px;text-align:center">' +
+      '<div id="report-num-' + i + '" style="font-family:var(--font-mono);font-size:1.5rem;font-weight:700;color:' + card.color + '">0</div>' +
+      '<div style="font-size:0.75rem;color:var(--text-tertiary);margin-top:4px">' + card.label + '</div>' +
     '</div>';
   });
   cardsHtml += '</div>';
@@ -4071,7 +4582,7 @@ function renderReports() {
     return p.status !== 'Complete';
   });
 
-  var barChartHtml = '<div class="card card-clickable" style="margin-top:24px" onclick="showToast(\'Full analytics dashboard available in your Command Center.\', \'accent\')">';
+  var barChartHtml = '<div class="card card-clickable animate-in" style="margin-top:24px" onclick="showToast(\'Full analytics dashboard available in your Command Center.\', \'accent\')">';
   barChartHtml += '<h3 style="font-family:var(--font-heading);font-size:1rem;font-weight:600;margin-bottom:20px">Budget Performance by Project</h3>';
 
   activeProjects.forEach(function(project, i) {
@@ -4086,10 +4597,10 @@ function renderReports() {
 
     barChartHtml += '<div style="display:flex;align-items:center;gap:12px;margin-bottom:' + marginBottom + '">' +
       '<div style="width:140px;font-size:0.8125rem;color:var(--text-secondary);overflow:hidden;text-overflow:ellipsis;white-space:nowrap;flex-shrink:0">' + shortName + '</div>' +
-      '<div style="flex:1;position:relative;height:24px;background:var(--bg-secondary);border-radius:var(--radius-sm);overflow:hidden">' +
-        '<div style="position:absolute;left:0;top:0;bottom:0;background:var(--accent);border-radius:var(--radius-sm);width:' + spentPct + '%;transition:width 0.8s ease"></div>' +
+      '<div style="flex:1;position:relative;height:24px;background:var(--surface-secondary);border-radius:var(--radius-sm);overflow:hidden">' +
+        '<div class="report-bar-animated" data-target-width="' + spentPct + '%" style="position:absolute;left:0;top:0;bottom:0;background:var(--accent);border-radius:var(--radius-sm);width:0;animation-delay:' + (i * 80) + 'ms"></div>' +
       '</div>' +
-      '<div style="width:100px;text-align:right;font-size:0.75rem;color:var(--text-muted);font-family:var(--font-mono);flex-shrink:0">' +
+      '<div style="width:100px;text-align:right;font-size:0.75rem;color:var(--text-tertiary);font-family:var(--font-mono);flex-shrink:0">' +
         spentPct + '% &middot; ' + spentFormatted +
       '</div>' +
     '</div>';
@@ -4099,10 +4610,10 @@ function renderReports() {
 
   var legendItems = [
     { label: 'Hospitality', pct: '88%', color: 'var(--accent)' },
-    { label: 'Winery', pct: '6%', color: 'var(--success)' },
-    { label: 'Retail', pct: '4%', color: 'var(--warning)' },
-    { label: 'Mixed-Use', pct: '2%', color: 'var(--text-muted)' },
-    { label: 'Residential', pct: '1%', color: 'var(--border)' }
+    { label: 'Winery', pct: '6%', color: 'var(--status-success)' },
+    { label: 'Retail', pct: '4%', color: 'var(--status-warning)' },
+    { label: 'Mixed-Use', pct: '2%', color: 'var(--text-tertiary)' },
+    { label: 'Residential', pct: '1%', color: 'var(--border-default)' }
   ];
 
   var legendHtml = '';
@@ -4110,17 +4621,40 @@ function renderReports() {
     legendHtml += '<div style="display:flex;align-items:center;gap:8px;font-size:0.8125rem">' +
       '<div style="width:10px;height:10px;border-radius:2px;background:' + item.color + ';flex-shrink:0"></div>' +
       '<span style="color:var(--text-secondary)">' + item.label + '</span>' +
-      '<span style="color:var(--text-muted);margin-left:auto;font-family:var(--font-mono)">' + item.pct + '</span>' +
+      '<span style="color:var(--text-tertiary);margin-left:auto;font-family:var(--font-mono)">' + item.pct + '</span>' +
     '</div>';
   });
 
-  var donutHtml = '<div class="card card-clickable" style="margin-top:24px" onclick="showToast(\'Full analytics dashboard available in your Command Center.\', \'accent\')">' +
+  // SVG donut with clockwise reveal
+  var donutRadius = 70;
+  var donutCirc = 2 * Math.PI * donutRadius;
+  var donutSegments = [
+    { pct: 88, color: 'var(--accent)' },
+    { pct: 6, color: 'var(--status-success)' },
+    { pct: 4, color: 'var(--status-warning)' },
+    { pct: 1.5, color: 'var(--text-tertiary)' },
+    { pct: 0.5, color: 'var(--border-default)' }
+  ];
+  var donutSvgParts = '';
+  var donutOffset = 0;
+  for (var ds = 0; ds < donutSegments.length; ds++) {
+    var seg = donutSegments[ds];
+    var segLen = (seg.pct / 100) * donutCirc;
+    donutSvgParts += '<circle cx="90" cy="90" r="' + donutRadius + '" fill="none" stroke="' + seg.color + '" stroke-width="20" stroke-dasharray="' + segLen.toFixed(2) + ' ' + (donutCirc - segLen).toFixed(2) + '" stroke-dashoffset="' + (-donutOffset).toFixed(2) + '" transform="rotate(-90 90 90)"/>';
+    donutOffset += segLen;
+  }
+
+  var donutHtml = '<div class="card card-clickable animate-in" style="margin-top:24px" onclick="showToast(\'Full analytics dashboard available in your Command Center.\', \'accent\')">' +
     '<h3 style="font-family:var(--font-heading);font-size:1rem;font-weight:600;margin-bottom:20px">Portfolio by Project Type</h3>' +
     '<div style="display:flex;align-items:center;gap:40px;flex-wrap:wrap;justify-content:center">' +
-      '<div style="width:180px;height:180px;border-radius:50%;background:conic-gradient(var(--accent) 0% 88%, var(--success) 88% 94%, var(--warning) 94% 98%, var(--text-muted) 98% 99.5%, var(--border) 99.5% 100%);position:relative">' +
-        '<div style="position:absolute;inset:40px;background:var(--bg-card);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-direction:column">' +
-          '<div style="font-family:var(--font-mono);font-weight:700;font-size:1.125rem;color:var(--text-primary)">$92.7M</div>' +
-          '<div style="font-size:0.6875rem;color:var(--text-muted)">Total Value</div>' +
+      '<div id="report-donut" style="position:relative;width:180px;height:180px">' +
+        '<svg width="180" height="180" viewBox="0 0 180 180">' +
+          '<circle cx="90" cy="90" r="' + donutRadius + '" fill="none" stroke="var(--surface-secondary)" stroke-width="20"/>' +
+          donutSvgParts +
+        '</svg>' +
+        '<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column">' +
+          '<div id="report-donut-value" style="font-family:var(--font-mono);font-weight:700;font-size:1.125rem;color:var(--text-primary)">$0M</div>' +
+          '<div style="font-size:0.6875rem;color:var(--text-tertiary)">Total Value</div>' +
         '</div>' +
       '</div>' +
       '<div style="display:flex;flex-direction:column;gap:8px">' +
@@ -4129,12 +4663,14 @@ function renderReports() {
     '</div>' +
   '</div>';
 
-  var footerHtml = '<p style="text-align:center;color:var(--text-muted);font-style:italic;margin-top:32px;font-size:0.875rem">' +
+  var footerHtml = '<p style="text-align:center;color:var(--text-tertiary);font-style:italic;margin-top:32px;font-size:0.875rem">' +
     'Full analytics dashboard available in your Command Center.' +
   '</p>';
 
   container.innerHTML = cardsHtml + barChartHtml + donutHtml + footerHtml;
   animateReportNumbers();
+  animateReportBars();
+  animateReportDonut();
 }
 
 function animateReportNumbers() {
@@ -4165,6 +4701,134 @@ function animateReportNumbers() {
   }
 
   requestAnimationFrame(animate);
+}
+
+function animateReportBars() {
+  var bars = document.querySelectorAll('.report-bar-animated');
+  bars.forEach(function(bar) {
+    var targetW = bar.getAttribute('data-target-width');
+    // Reset to 0 then animate via CSS animation to target
+    bar.style.width = '0';
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        bar.style.animation = 'none';
+        bar.style.transition = 'width 600ms var(--ease-out-expo)';
+        var delay = parseInt(bar.style.animationDelay) || 0;
+        setTimeout(function() {
+          bar.style.width = targetW;
+        }, delay);
+      });
+    });
+  });
+}
+
+function animateReportDonut() {
+  var donutEl = document.getElementById('report-donut');
+  if (!donutEl) return;
+  var svg = donutEl.querySelector('svg');
+  if (!svg) return;
+
+  // Clip-path reveal: animate a circular mask
+  svg.style.clipPath = 'circle(0% at 50% 50%)';
+  svg.style.transition = 'clip-path 1s var(--ease-out-expo)';
+  setTimeout(function() {
+    svg.style.clipPath = 'circle(100% at 50% 50%)';
+  }, 100);
+
+  // Animate center value
+  var valEl = document.getElementById('report-donut-value');
+  if (valEl) {
+    var start = performance.now();
+    var duration = 1200;
+    (function frame(now) {
+      var p = Math.min((now - start) / duration, 1);
+      var e = 1 - Math.pow(1 - p, 3);
+      valEl.textContent = '$' + (e * 92.7).toFixed(1) + 'M';
+      if (p < 1) requestAnimationFrame(frame);
+    })(performance.now());
+  }
+}
+
+// ===== ANIMATION UTILITIES =====
+
+function animateProgressRing(ringEl, numberEl, targetPercent, duration) {
+  duration = duration || 1200;
+  var circ = 2 * Math.PI * parseFloat(ringEl.getAttribute('r'));
+  var targetOff = circ * (1 - targetPercent / 100);
+  ringEl.style.strokeDasharray = circ;
+  ringEl.style.strokeDashoffset = circ;
+  ringEl.style.transition = 'none';
+  var start = performance.now();
+  (function frame(now) {
+    var p = Math.min((now - start) / duration, 1);
+    var e = 1 - Math.pow(1 - p, 4); // ease-out-quart
+    ringEl.style.strokeDashoffset = circ - (circ - targetOff) * e;
+    if (numberEl) numberEl.textContent = Math.round(targetPercent * e) + '%';
+    if (p < 1) requestAnimationFrame(frame);
+  })(performance.now());
+}
+
+function animateNumber(el, target, duration, prefix, suffix) {
+  prefix = prefix || ''; suffix = suffix || '';
+  if (el.getAttribute('data-animated') === 'true') return;
+  el.setAttribute('data-animated', 'true');
+  var start = performance.now();
+  (function frame(now) {
+    var p = Math.min((now - start) / (duration || 1000), 1);
+    var e = 1 - Math.pow(1 - p, 4); // ease-out-quart
+    el.textContent = prefix + Math.round(target * e).toLocaleString() + suffix;
+    if (p < 1) requestAnimationFrame(frame);
+  })(performance.now());
+}
+
+function staggerAnimateIn(container, delay) {
+  container = container || document;
+  delay = delay || 40;
+  var els = container.querySelectorAll('.animate-in:not(.animated)');
+  for (var i = 0; i < els.length; i++) {
+    (function(el, index) {
+      setTimeout(function() {
+        // Preserve complete card opacity
+        if (el.classList.contains('complete')) {
+          el.style.setProperty('--final-opacity', '0.55');
+        }
+        el.classList.add('animated');
+        // For complete project cards, reduce opacity after animation
+        if (el.classList.contains('complete')) {
+          setTimeout(function() { el.style.opacity = '0.55'; }, 300);
+        }
+      }, index * delay);
+    })(els[i], i);
+  }
+
+  // Also animate metric numbers
+  setTimeout(function() {
+    var metricNums = container.querySelectorAll('.metric-number[data-animate-target]');
+    for (var j = 0; j < metricNums.length; j++) {
+      var el = metricNums[j];
+      if (el.getAttribute('data-animated') === 'true') continue;
+      var raw = el.getAttribute('data-animate-target');
+      var numVal = parseFloat(raw.replace(/[^0-9.\-]/g, ''));
+      var prefix = raw.match(/^[^0-9.\-]*/)[0] || '';
+      var suffix = raw.match(/[^0-9.\-]*$/)[0] || '';
+      if (!isNaN(numVal)) {
+        animateNumber(el, numVal, 800, prefix, suffix);
+      }
+    }
+  }, els.length * delay);
+
+  // Animate any progress rings in this container
+  setTimeout(function() {
+    var rings = container.querySelectorAll('[data-ring-target]');
+    for (var k = 0; k < rings.length; k++) {
+      var ring = rings[k];
+      if (ring.getAttribute('data-animated') === 'true') continue;
+      ring.setAttribute('data-animated', 'true');
+      var target = parseFloat(ring.getAttribute('data-ring-target'));
+      var numberEl = ring.parentElement ? ring.parentElement.querySelector('[data-ring-number]') : null;
+      animateProgressRing(ring, numberEl, target, 1200);
+    }
+  }, els.length * delay + 100);
 }
 
 // ===== INITIALIZATION =====
